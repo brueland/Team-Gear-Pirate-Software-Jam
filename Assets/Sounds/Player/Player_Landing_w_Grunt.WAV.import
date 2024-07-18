@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d1nfc5gbp5own"
-path="res://.godot/imported/Player_Landing_w_Grunt.WAV-12ea5fc4dee8f37f2424e259e71801c2.sample"
+path="res://.godot/imported/Player_Landing_w_Grunt.WAV-de237369ac1888ccc873fc67058c1821.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/Player_Sounds/Player_Landing_w_Grunt.WAV"
-dest_files=["res://.godot/imported/Player_Landing_w_Grunt.WAV-12ea5fc4dee8f37f2424e259e71801c2.sample"]
+source_file="res://Assets/Sounds/Player/Player_Landing_w_Grunt.WAV"
+dest_files=["res://.godot/imported/Player_Landing_w_Grunt.WAV-de237369ac1888ccc873fc67058c1821.sample"]
 
 [params]
 

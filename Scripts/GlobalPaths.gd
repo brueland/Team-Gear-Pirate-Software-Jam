@@ -30,7 +30,7 @@ const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Grapple/Aiming.png"
 const DASH_UPGRADE: String = "res://Scenes/Items/fragment_piece.tscn"
 
 #AUDIO BUSES
-const AUDIO_BUS_LAYOUT = "res://default_bus_layout.tres"
+const AUDIO_BUS_LAYOUT = "res://Layouts/default_bus_layout.tres"
 const MASTER_BUS :String = &"Master"
 const BGM_BUS : String = &"BGM"
 const SFX_BUS : String = &"SFX"

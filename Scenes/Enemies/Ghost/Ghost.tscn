@@ -1,0 +1,176 @@
+[gd_scene load_steps=23 format=3 uid="uid://dac54w6hyd25f"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Ghost/Ghost.gd" id="1_1fhny"]
+[ext_resource type="Shader" path="res://Materials/Shaders/Dissolve.gdshader" id="2_n70m8"]
+[ext_resource type="Texture2D" uid="uid://c7v8qoc7gylk4" path="res://Assets/Sprites/Enemies/Ghost/Ghost.png" id="3_ely6n"]
+[ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="4_pkxyj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_di5am"]
+height = 24.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ff6o"]
+shader = ExtResource("2_n70m8")
+shader_parameter/dissolvePercent = 0.0
+shader_parameter/dissolveSpeed = null
+shader_parameter/dissolving = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5rtt"]
+atlas = ExtResource("3_ely6n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7lof"]
+atlas = ExtResource("3_ely6n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taod5"]
+atlas = ExtResource("3_ely6n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyl8y"]
+atlas = ExtResource("3_ely6n")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlbt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5rtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7lof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taod5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyl8y")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mgqdj"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_0l7eu"]
+offsets = PackedFloat32Array(0, 0.0486726, 0.920354, 1)
+colors = PackedColorArray(0.0627451, 0.121569, 0.203922, 0, 0.0105752, 0.0281144, 0.0325335, 1, 0.00290835, 0.00756682, 0.00857496, 1, 0.0745098, 0.137255, 0.141176, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_flf38"]
+gradient = SubResource("Gradient_0l7eu")
+
+[sub_resource type="Curve" id="Curve_4frgp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.126096, 1), 0.0, 0.0, 0, 0, Vector2(0.507675, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_p8mmq"]
+curve = SubResource("Curve_4frgp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k3d88"]
+resource_local_to_scene = true
+lifetime_randomness = 0.06
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 1, 1)
+emission_shape = 2
+emission_sphere_radius = 0.2
+angle_min = -32.0
+angle_max = 30.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+radial_velocity_min = -10.0
+radial_velocity_max = 10.0
+gravity = Vector3(0, -40, 0)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+damping_min = 26.201
+damping_max = 26.201
+scale_min = 0.25
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_p8mmq")
+color_ramp = SubResource("GradientTexture1D_flf38")
+anim_speed_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 14.18
+turbulence_noise_speed = Vector3(1, 1, 0)
+turbulence_noise_speed_random = 2.45
+turbulence_influence_min = 0.145
+turbulence_influence_max = 0.175
+turbulence_initial_displacement_min = -1.0
+
+[sub_resource type="Gradient" id="Gradient_hfge4"]
+offsets = PackedFloat32Array(0.0114416, 0.0526316, 0.935961, 0.981693)
+colors = PackedColorArray(0.0627451, 0.121569, 0.2, 0, 0.00851628, 0.0221068, 0.0255096, 1, 0.0172919, 0.0323944, 0.0427904, 1, 0.0627451, 0.121569, 0.2, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1231"]
+gradient = SubResource("Gradient_hfge4")
+
+[sub_resource type="Curve" id="Curve_2s3q1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496711, 1), 0.0, 0.0, 0, 0, Vector2(0.970395, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qfrw6"]
+curve = SubResource("Curve_2s3q1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ac8lx"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4.76, 2.575, 1)
+emission_shape = 2
+emission_sphere_radius = 4.21
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_qfrw6")
+color_ramp = SubResource("GradientTexture1D_b1231")
+anim_speed_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 6.41
+turbulence_noise_speed = Vector3(-1, 1, 0)
+turbulence_influence_min = 0.35
+turbulence_influence_max = 0.403
+turbulence_initial_displacement_min = -1.0
+
+[node name="GhostEnemy" type="CharacterBody2D"]
+script = ExtResource("1_1fhny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_di5am")
+
+[node name="GhostSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_5ff6o")
+sprite_frames = SubResource("SpriteFrames_jlbt8")
+animation = &"Idle"
+
+[node name="TrailParticles" type="GPUParticles2D" parent="GhostSprite"]
+material = SubResource("CanvasItemMaterial_mgqdj")
+position = Vector2(-8, 9)
+scale = Vector2(5.32639, 5.32639)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_k3d88")
+texture = ExtResource("4_pkxyj")
+randomness = 1.0
+trail_lifetime = 10.0
+trail_section_subdivisions = 1
+
+[node name="StaticSmokeParticles" type="GPUParticles2D" parent="GhostSprite"]
+material = SubResource("CanvasItemMaterial_mgqdj")
+position = Vector2(-11, 10.1852)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_ac8lx")
+texture = ExtResource("4_pkxyj")
+lifetime = 4.0
+randomness = 1.0
+local_coords = true
+draw_order = 0
+trail_lifetime = 10.0
+trail_section_subdivisions = 1

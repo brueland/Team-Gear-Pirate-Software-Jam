@@ -24,6 +24,7 @@ driver/mix_rate=48000
 
 GlobalPaths="*res://Scripts/GlobalPaths.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
+GlobalReferences="*res://global_references.gd"
 
 [dialogic]
 

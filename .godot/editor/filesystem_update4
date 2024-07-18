@@ -1,6 +1,13 @@
 res://Layouts/default_bus_layout.tres
 res://Scenes/Levels/SBX/sbx_main.tscn
+res://Scripts/Components/HealthComponent.gd
 res://Scripts/Player/HookPath.gd
-res://Scenes/Player/GrapplingHook.tscn
-res://Scenes/Levels/Prison/PauseMenu.gd
-res://Scripts/UI/PauseMenu.gd
+res://Materials/Shaders/Dissolve.gdshader
+res://Scenes/Player/Player.tscn
+res://Scenes/Levels/SBX/sbx_level.tscn
+res://Scenes/UI/game_ui.tscn
+res://Scenes/Enemies/Ghost/Ghost.tscn
+res://Scenes/Levels/Prison/prison_tiles.tscn
+res://Scenes/Levels/Lab/LabTiles.tscn
+res://Scenes/Levels/Lab/Lab.tscn
+res://Scripts/Player/PlayerAnimationController.gd
