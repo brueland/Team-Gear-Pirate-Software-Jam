@@ -81,6 +81,7 @@ var aim_reset_counter_max : int = 100
 @export var controllerEnabled : bool = true
 
 func _ready():
+	GlobalReferences.playerBody = self
 	playerSprite.play("right_idle")
 	mantle_timer.connect("timeout", _on_mantle_timer_timeout)
 	hang_timer.connect("timeout", _on_hang_timer_timeout)
