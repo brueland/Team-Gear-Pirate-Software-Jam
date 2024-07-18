@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7v8qoc7gylk4"
-path="res://.godot/imported/Ghost.png-81c2a6faa5a4944ef99c089e7c7dc5a6.ctex"
+uid="uid://cfpnyyy7rmf37"
+path="res://.godot/imported/SmokeParticles.png-eb5801512aadffda0ea7dbc111c6398a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Ghost.png"
-dest_files=["res://.godot/imported/Ghost.png-81c2a6faa5a4944ef99c089e7c7dc5a6.ctex"]
+source_file="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png"
+dest_files=["res://.godot/imported/SmokeParticles.png-eb5801512aadffda0ea7dbc111c6398a.ctex"]
 
 [params]
 

@@ -60,7 +60,6 @@ func chooseAnimation():
 				playAnimation("dash")
 		player.movement.gliding:
 			if animation.contains("parasol") == false:
-				print(10)
 				playAnimation("parasol_open")
 				await animation_finished
 				playAnimation("parasol_glid")

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bthwxorrodtsh"
-path="res://.godot/imported/HookMiss.wav-0f74377a479ed77c46d07d4f767cb03c.sample"
+path="res://.godot/imported/HookMiss.wav-4f79241f542d48c00ff3c306a579995d.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/Player_Sounds/HookMiss.wav"
-dest_files=["res://.godot/imported/HookMiss.wav-0f74377a479ed77c46d07d4f767cb03c.sample"]
+source_file="res://Assets/Sounds/Player/HookMiss.wav"
+dest_files=["res://.godot/imported/HookMiss.wav-4f79241f542d48c00ff3c306a579995d.sample"]
 
 [params]
 

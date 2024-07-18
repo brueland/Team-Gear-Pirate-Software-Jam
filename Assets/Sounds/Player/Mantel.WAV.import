@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://clbjusvojuljx"
-path="res://.godot/imported/Mantel.WAV-49bb531c6418f83af139ed9075882acc.sample"
+path="res://.godot/imported/Mantel.WAV-36d75310bebe5c83d824d7979d10a4b1.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/Player_Sounds/Mantel.WAV"
-dest_files=["res://.godot/imported/Mantel.WAV-49bb531c6418f83af139ed9075882acc.sample"]
+source_file="res://Assets/Sounds/Player/Mantel.WAV"
+dest_files=["res://.godot/imported/Mantel.WAV-36d75310bebe5c83d824d7979d10a4b1.sample"]
 
 [params]
 
