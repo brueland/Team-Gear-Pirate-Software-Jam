@@ -26,62 +26,6 @@ GlobalPaths="*res://Scripts/GlobalPaths.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 GlobalReferences="*res://global_references.gd"
 
-[dialogic]
-
-directories/dch_directory={
-"MC": "res://Dialogic/Characters/MC.dch",
-"Soothing_Voice": "res://Dialogic/Characters/Soothing_Voice.dch"
-}
-directories/dtl_directory={
-"Dream1-1": "res://Dialogic/Timelines/Dream1-1.dtl",
-"Dream1-2": "res://Dialogic/Timelines/Dream1-2.dtl",
-"Dream1-3": "res://Dialogic/Timelines/Dream1-3.dtl",
-"Prison1-1": "res://Dialogic/Timelines/Prison1-1.dtl",
-"Prison1-2": "res://Dialogic/Timelines/Prison1-2.dtl",
-"Prison1-3": "res://Dialogic/Timelines/Prison1-3.dtl",
-"Prison1-4": "res://Dialogic/Timelines/Prison1-4.dtl"
-}
-glossary/default_case_sensitive=true
-layout/style_list=["res://Dialogic/Styles/Style.tres"]
-layout/default_style="res://Dialogic/Styles/Style.tres"
-variables={
-"Dialogue1": false,
-"Dialogue2": false,
-"Dialogue3": false,
-"Dialogue4": false,
-"Dialogue5": false,
-"Dialogue6": false,
-"Dialogue7": false,
-"Dialogue8": false,
-"WakeUp": false
-}
-text/letter_speed=0.01
-text/initial_text_reveal_skippable=true
-text/text_reveal_skip_delay=0.1
-text/autoadvance_per_character_delay=0.1
-text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.5
-animations/leave_default_length=0.5
-animations/leave_default_wait=true
-animations/join_default_wait=true
-choices/autofocus_first=true
-choices/delay=0.2
-choices/reveal_delay=0
-choices/reveal_by_input=false
-save/autosave_delay=60.0
-save/encryption_on_exports_only=true
-text/autopauses={}
-translation/enabled=true
-translation/original_locale="en"
-translation/file_mode=1
-translation/translation_folder="res://Dialogic/Translation"
-translation/save_mode=0
-translation/add_separator=false
-translation/id_counter=54
-translation/intern/save_mode=0
-translation/intern/file_mode=1
-translation/intern/translation_folder="res://Dialogic/Translation"
-
 [display]
 
 window/stretch/mode="canvas_items"
@@ -154,15 +98,6 @@ Reset={
 changeDifficulty={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"echo":false,"script":null)
-]
-}
-dialogic_default_action={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
 Pause={
