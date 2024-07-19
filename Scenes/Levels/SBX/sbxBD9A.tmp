@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://o6ucr1l65mpj"]
+
+[ext_resource type="PackedScene" uid="uid://bmrq4ow8mnkml" path="res://Scenes/Player/Player.tscn" id="1_fde0w"]
+[ext_resource type="PackedScene" uid="uid://cp43vyf7fw63k" path="res://Scenes/Levels/SBX/sbx_level.tscn" id="2_cit3m"]
+[ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="3_re0yl"]
+[ext_resource type="PackedScene" uid="uid://dac54w6hyd25f" path="res://Scenes/Enemies/Ghost/Ghost.tscn" id="4_7sr23"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="5_bvi6u"]
+
+[sub_resource type="Environment" id="Environment_aikb8"]
+ambient_light_energy = 2.71
+glow_enabled = true
+glow_mix = 0.711
+fog_enabled = true
+fog_light_energy = 1.85
+adjustment_brightness = 0.01
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w5mf5"]
+polygon = PackedVector2Array(-9, -5, 0, -9, 4, -3, 3, 9, -3, 10, -8, 7)
+
+[node name="sbx" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fde0w")]
+position = Vector2(90, -32)
+dash_enabled = true
+mouseEnabled = true
+controllerEnabled = false
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+position = Vector2(20, -19)
+shadow_enabled = true
+texture = ExtResource("5_bvi6u")
+texture_scale = 0.5
+
+[node name="sbx_level" parent="." instance=ExtResource("2_cit3m")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="sbx_level/ParallaxBackground/ParallaxBackGroundFarBack/CanvasGroup" index="7"]
+color = Color(0, 0, 0, 1)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(114, -37)
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("3_re0yl")
+player = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(90, -32),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":1,"collision_mask":57,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":Resource("res://Scripts/Player/PlayerController.gd"),"run_speed":150.0,"jump_height":-600.0,"max_jumps":1,"dash_enabled":true,"dash_speed":400.0,"aim_radius":64.0,"mouseEnabled":true,"controllerEnabled":false)
+
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aikb8")
+
+[node name="GhostEnemy" parent="." instance=ExtResource("4_7sr23")]
+position = Vector2(127, -52)
+speed = 30.0
+dir = Vector2(1, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="GhostEnemy"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_w5mf5")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[editable path="sbx_level"]

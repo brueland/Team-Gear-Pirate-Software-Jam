@@ -39,12 +39,14 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 				grapple_speed = 0.0
 				attached = true
 				retracting = true
+		elif body is EnemyBaseClass:
+			retract()
+
 	if retracting or attached:
-		if body.is_class("CharacterBody2D"):
+		if body is Player:
 			queue_free()
 
 
 func retract():
 	retracting = true
 	grapple_speed = -1.0 * max_speed
-	
