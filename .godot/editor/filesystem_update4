@@ -1,5 +1,5 @@
 res://Layouts/default_bus_layout.tres
+res://Scenes/Items/Lantern/Lantern.tscn
 res://Scenes/Levels/SBX/sbx_main.tscn
 res://Scenes/Enemies/Ghost/Ghost.tscn
-res://Scripts/Player/Grappling.gd
-res://Scripts/Enemies/EnemyBaseClass.gd
+res://Scripts/Enemies/Ghost/Ghost.gd
