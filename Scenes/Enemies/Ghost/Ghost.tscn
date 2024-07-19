@@ -140,6 +140,8 @@ turbulence_influence_max = 0.403
 turbulence_initial_displacement_min = -1.0
 
 [node name="GhostEnemy" type="CharacterBody2D"]
+collision_layer = 206
+collision_mask = 10
 script = ExtResource("1_1fhny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

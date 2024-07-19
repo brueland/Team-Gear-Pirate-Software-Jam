@@ -1,4 +1,6 @@
-extends CharacterBody2D
+extends EnemyBaseClass
+class_name Ghost
+
 var player: CharacterBody2D
 
 @export var speed: float = 10.0
@@ -18,7 +20,7 @@ func  _process(delta):
 	move(delta)
 	handle_animation()
 	handle_particle_position()
-	print(facing_Right)
+	#print(facing_Right)
 
 func move(delta):
 	if!is_Chasing:
