@@ -1,0 +1,33 @@
+extends EnemyBaseClass
+class_name Drone
+
+var player: CharacterBody2D
+
+@export var speed: float = 50.0
+@export var is_Chasing: bool
+
+var direction: int = 1
+var sprite_direction: String = "right_"
+
+@onready var sprite = $DroneSprite
+
+var is_near_light: bool
+
+func _ready():
+	sprite.play("Idle")
+	player = GlobalReferences.playerBody
+
+func  _physics_process(delta):
+	if is_Chasing:
+		chase_player(delta)
+	else:
+		velocity = lerp(velocity, Vector2.ZERO, delta)
+	move_and_slide()
+
+func chase_player(delta):
+	velocity += position.direction_to(player.position) * speed * delta
+	
+	if velocity.x < 0.0:
+		direction = -1
+	elif velocity.x > 0.0:
+		direction = 1

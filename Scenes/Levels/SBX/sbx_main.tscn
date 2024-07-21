@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cp43vyf7fw63k" path="res://Scenes/Levels/SBX/sbx_level.tscn" id="2_cit3m"]
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="3_re0yl"]
 [ext_resource type="PackedScene" uid="uid://dac54w6hyd25f" path="res://Scenes/Enemies/Ghost/Ghost.tscn" id="4_7sr23"]
+[ext_resource type="PackedScene" uid="uid://b02yl2wuvuplo" path="res://Scenes/Enemies/Drone/Drone.tscn" id="6_6fyen"]
 
 [sub_resource type="Environment" id="Environment_aikb8"]
 ambient_light_energy = 2.0
@@ -13,9 +14,6 @@ glow_mix = 0.711
 fog_enabled = true
 fog_light_energy = 1.85
 adjustment_brightness = 0.01
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w5mf5"]
-polygon = PackedVector2Array(-9, -5, 0, -9, 4, -3, 3, 9, -3, 10, -8, 7)
 
 [node name="sbx" type="Node2D"]
 
@@ -49,11 +47,13 @@ position = Vector2(127, -52)
 speed = 30.0
 is_Chasing = true
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="GhostEnemy"]
-visible = false
-occluder = SubResource("OccluderPolygon2D_w5mf5")
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="Drone" parent="." instance=ExtResource("6_6fyen")]
+visible = false
+position = Vector2(-20, -106)
+is_Chasing = true
 
 [editable path="sbx_level"]

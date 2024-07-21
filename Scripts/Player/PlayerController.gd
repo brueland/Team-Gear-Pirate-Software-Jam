@@ -287,21 +287,25 @@ func handle_state():
 				change_state(STATE_FALL, direction)
 			
 		STATE_HANGING:
-			if Input.is_action_just_pressed("Jump") and !grappling:
+			if Input.is_action_just_pressed("Jump"):
 				can_hang = false
 				hang_timer.start()
 				change_state(STATE_JUMP, new_direction)
-			elif Input.is_action_just_pressed("Dash") and dash_enabled and !grappling:
+			elif Input.is_action_just_pressed("Dash") and dash_enabled:
 				can_hang = false
 				hang_timer.start()
 				change_state(STATE_DASHING, new_direction)
+			elif Input.is_action_just_pressed("GrapplingHook"):
+				can_hang = false
+				hang_timer.start()
+				change_state(STATE_FALL, new_direction)
 			elif move_left:
 				new_direction = -1
 				change_state(STATE_HANGING, new_direction)
 			elif move_right:
 				new_direction = 1
 				change_state(STATE_HANGING, new_direction)
-			elif Input.is_action_just_pressed("Crouch") and !grappling:
+			elif Input.is_action_just_pressed("Crouch"):
 				can_hang = false
 				hang_timer.start()
 				change_state(STATE_FALL, direction)
@@ -369,7 +373,7 @@ func mantle_check():
 					change_state(STATE_MANTLING, direction)
 
 func hang_check():
-	if upRaycast.is_colliding() and can_hang:
+	if upRaycast.is_colliding() and can_hang and grappling:
 		var collider = upRaycast.get_collider()
 		if collider.is_class("TileMap"):
 			var rid = upRaycast.get_collider_rid()
@@ -378,7 +382,6 @@ func hang_check():
 				change_state(STATE_HANGING, direction)
 
 
-			
 func emit_dash_particles():
 	## Controls the styled effect for dashing
 	

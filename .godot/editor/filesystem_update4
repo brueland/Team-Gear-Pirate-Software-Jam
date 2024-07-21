@@ -1,5 +1,1 @@
-res://Layouts/default_bus_layout.tres
-res://Scenes/Items/Lantern/Lantern.tscn
 res://Scenes/Levels/SBX/sbx_main.tscn
-res://Scenes/Enemies/Ghost/Ghost.tscn
-res://Scripts/Enemies/Ghost/Ghost.gd

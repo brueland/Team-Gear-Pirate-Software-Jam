@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://b02yl2wuvuplo"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Drone/Drone.gd" id="1_76c0l"]
+[ext_resource type="Texture2D" uid="uid://bbe1caa7adrer" path="res://Assets/Sprites/Enemies/Drone/Drone.png" id="2_6570j"]
+[ext_resource type="Texture2D" uid="uid://bqcggwgsqe5n5" path="res://Assets/Sprites/Lighting/DroneLight.png" id="3_w66ly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkdm2"]
+atlas = ExtResource("2_6570j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jemye"]
+atlas = ExtResource("2_6570j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d6kd"]
+atlas = ExtResource("2_6570j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjs0t"]
+atlas = ExtResource("2_6570j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yxyu"]
+atlas = ExtResource("2_6570j")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8q6t"]
+atlas = ExtResource("2_6570j")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu2nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkdm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jemye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d6kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjs0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yxyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8q6t")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rm1a8"]
+
+[node name="Drone" type="CharacterBody2D"]
+script = ExtResource("1_76c0l")
+
+[node name="DroneSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hu2nw")
+animation = &"Idle"
+frame_progress = 0.0969469
+
+[node name="DroneCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_rm1a8")
+
+[node name="DroneLight" type="PointLight2D" parent="."]
+position = Vector2(0, 9)
+range_z_min = 0
+range_z_max = 50
+texture = ExtResource("3_w66ly")

@@ -1,12 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dac54w6hyd25f"]
+[gd_scene load_steps=24 format=3 uid="uid://dac54w6hyd25f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Ghost/Ghost.gd" id="1_1fhny"]
 [ext_resource type="Shader" path="res://Materials/Shaders/Dissolve.gdshader" id="2_n70m8"]
 [ext_resource type="Texture2D" uid="uid://c7v8qoc7gylk4" path="res://Assets/Sprites/Enemies/Ghost/Ghost.png" id="3_ely6n"]
 [ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="4_pkxyj"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_di5am"]
-height = 24.0
+[ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="5_nqdlu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ff6o"]
 shader = ExtResource("2_n70m8")
@@ -62,7 +60,7 @@ particles_anim_v_frames = 2
 particles_anim_loop = true
 
 [sub_resource type="Gradient" id="Gradient_0l7eu"]
-offsets = PackedFloat32Array(0, 0.0486726, 0.920354, 1)
+offsets = PackedFloat32Array(0, 0.0486726, 0.882353, 1)
 colors = PackedColorArray(0.0627451, 0.121569, 0.203922, 0, 0.0105752, 0.0281144, 0.0325335, 1, 0.00290835, 0.00756682, 0.00857496, 1, 0.0745098, 0.137255, 0.141176, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_flf38"]
@@ -139,13 +137,11 @@ turbulence_influence_min = 0.35
 turbulence_influence_max = 0.403
 turbulence_initial_displacement_min = -1.0
 
-[node name="GhostEnemy" type="CharacterBody2D"]
-collision_layer = 0
-script = ExtResource("1_1fhny")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_di5am"]
+height = 24.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
-shape = SubResource("CapsuleShape2D_di5am")
+[node name="GhostEnemy" type="CharacterBody2D"]
+script = ExtResource("1_1fhny")
 
 [node name="GhostSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_5ff6o")
@@ -155,7 +151,7 @@ animation = &"Idle"
 [node name="TrailParticles" type="GPUParticles2D" parent="GhostSprite"]
 visible = false
 material = SubResource("CanvasItemMaterial_mgqdj")
-position = Vector2(-8, 9)
+position = Vector2(-15, 5)
 scale = Vector2(5.32639, 5.32639)
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_k3d88")
@@ -165,15 +161,18 @@ trail_lifetime = 10.0
 trail_section_subdivisions = 1
 
 [node name="StaticSmokeParticles" type="GPUParticles2D" parent="GhostSprite"]
-visible = false
 material = SubResource("CanvasItemMaterial_mgqdj")
-position = Vector2(-11, 10.1852)
+position = Vector2(-15, 5)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_ac8lx")
 texture = ExtResource("4_pkxyj")
 lifetime = 4.0
 randomness = 1.0
-local_coords = true
-draw_order = 0
 trail_lifetime = 10.0
 trail_section_subdivisions = 1
+
+[node name="GhostCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_di5am")
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_nqdlu")]

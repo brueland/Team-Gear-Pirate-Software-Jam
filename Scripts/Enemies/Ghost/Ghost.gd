@@ -12,9 +12,9 @@ var sprite_direction: String = "right_"
 @onready var staticsmokeParticles = $GhostSprite/StaticSmokeParticles
 @onready var trailParticles = $GhostSprite/TrailParticles
 @onready var sprite = $GhostSprite
+@onready var collider = $GhostCollider
 
 var is_near_light: bool
-
 
 func _ready():
 	sprite.play("Idle")
@@ -53,4 +53,3 @@ func handle_particle_position():
 		staticsmokeParticles.position = Vector2(11,10)
 		trailParticles.position = Vector2(8,9)
 		
-# _on_area or body entered, detect lantern area and repel
