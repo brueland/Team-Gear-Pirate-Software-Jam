@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://o6ucr1l65mpj"]
+[gd_scene load_steps=15 format=3 uid="uid://o6ucr1l65mpj"]
 
 [ext_resource type="PackedScene" uid="uid://bmrq4ow8mnkml" path="res://Scenes/Player/Player.tscn" id="1_fde0w"]
 [ext_resource type="Script" path="res://Scripts/Levels/SBX/sbx_main.gd" id="1_ykd28"]
@@ -6,6 +6,69 @@
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="3_re0yl"]
 [ext_resource type="PackedScene" uid="uid://dac54w6hyd25f" path="res://Scenes/Enemies/Ghost/Ghost.tscn" id="4_7sr23"]
 [ext_resource type="PackedScene" uid="uid://b02yl2wuvuplo" path="res://Scenes/Enemies/Drone/Drone.tscn" id="6_6fyen"]
+[ext_resource type="Texture2D" uid="uid://d184q3kgw4m1h" path="res://Assets/Sprites/curtain.png" id="6_uoiy7"]
+[ext_resource type="Shader" path="res://Materials/Shaders/TransitionShader.gdshader" id="7_00p01"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4iv5"]
+shader = ExtResource("7_00p01")
+shader_parameter/cutoff = 1.0
+shader_parameter/smooth_size = 0.176
+shader_parameter/color = null
+shader_parameter/mask = ExtResource("6_uoiy7")
+
+[sub_resource type="Animation" id="Animation_eotk3"]
+resource_name = "Fade In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_l73cq"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vl568"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qupv0"]
+_data = {
+"Fade In": SubResource("Animation_eotk3"),
+"FadeOut": SubResource("Animation_l73cq"),
+"RESET": SubResource("Animation_vl568")
+}
 
 [sub_resource type="Environment" id="Environment_aikb8"]
 ambient_light_energy = 2.0
@@ -36,9 +99,26 @@ position = Vector2(-2, 3)
 position = Vector2(114, -37)
 zoom = Vector2(2, 2)
 process_callback = 0
+limit_left = -100000
+limit_right = 100000
 position_smoothing_enabled = true
+editor_draw_limits = true
 script = ExtResource("3_re0yl")
 player = NodePath("../Player")
+
+[node name="ColorRect" type="ColorRect" parent="Camera"]
+z_index = 12
+material = SubResource("ShaderMaterial_s4iv5")
+offset_left = 384.0
+offset_top = -422.0
+offset_right = 1203.0
+offset_bottom = 345.0
+rotation = 1.57025
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_qupv0")
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aikb8")

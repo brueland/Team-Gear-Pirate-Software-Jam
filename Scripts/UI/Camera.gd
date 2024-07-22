@@ -5,6 +5,9 @@ extends Camera2D
 var speedX = 300
 var speedY = 200
 
+func _ready():
+	GlobalReferences.camera = self
+
 	
 func _process(delta):
 	if player.velocity.x > 0:

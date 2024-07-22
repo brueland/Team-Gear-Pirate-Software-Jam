@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name MainLevel
 
 @onready var LevelContainer: Node = $LevelContainer
@@ -9,6 +9,7 @@ class_name MainLevel
 @export var room_entrance: String
 
 func _ready():
+	player = GlobalReferences.playerBody	
 	load_level(first_room, room_entrance)
 
 # Function to load a level

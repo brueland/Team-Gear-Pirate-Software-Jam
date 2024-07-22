@@ -309,6 +309,10 @@ size = Vector2(24, 187)
 script = ExtResource("1_35b1p")
 target_scene = "SBX_SCENE_2_PATH"
 target_door_name = "TransitionPoints/Transition_1"
+cameraLimitLeft = -500.0
+cameraLimitRight = 500.0
+cameraLimitTop = -500.0
+cameraLimitBottom = 500.0
 
 [node name="PrisonTiles" parent="." instance=ExtResource("3_0240j")]
 layer_0/name = "Floor"
