@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://biyywu5rff2t8"]
+
+[ext_resource type="Texture2D" uid="uid://cxgtvfygfdnq7" path="res://Assets/Sprites/TileSets/Lab/MedicalMachine.png" id="1_eamvx"]
+[ext_resource type="Texture2D" uid="uid://dxdacah8we1x4" path="res://Assets/Sprites/TileSets/Lab/MedicalMachineBG.png" id="2_bcl4w"]
+[ext_resource type="Texture2D" uid="uid://bqcggwgsqe5n5" path="res://Assets/Sprites/Lighting/DroneLight.png" id="3_afdqu"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="4_4uga2"]
+
+[node name="MedicalMachine" type="Sprite2D"]
+z_index = 2
+position = Vector2(187, 449)
+scale = Vector2(2, 2)
+texture = ExtResource("1_eamvx")
+
+[node name="MedicalMachineBg" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_bcl4w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-0.250006, 47.5)
+scale = Vector2(21.7773, 18.4688)
+range_z_max = 1
+texture = ExtResource("3_afdqu")
+texture_scale = 0.01
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(11.5, 9.5)
+color = Color(0.192157, 0.486275, 0.658824, 1)
+energy = 1.82
+blend_mode = 2
+texture = ExtResource("4_4uga2")
+texture_scale = 0.1
