@@ -3,7 +3,7 @@ extends Sprite2D
 
 var bodies_in_area = []
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 	#damage_bodies_in_area(delta) # Something happening with player jumping?
 

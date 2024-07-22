@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1721527104
+::res://::1721605585
 export_presets.cfg::TextFile::-1::1715806114::0::1::::<><>::
 global_references.gd::GDScript::-1::1721345813::0::1::::<>Node<>::
 README.md::TextFile::-1::1721312091::0::1::::<><>::
@@ -156,8 +156,8 @@ Grabber_Area_Texture.png::CompressedTexture2D::1354926831636515287::1715806114::
 Knob16x16.png::CompressedTexture2D::8896604634149151558::1715806114::1721423229::1::::<><>::
 Knob.png::CompressedTexture2D::2509428637126290547::1715806114::1721423229::1::::<><>::
 Slider_Area_Texture.png::CompressedTexture2D::6015988787304631570::1715806114::1721423229::1::::<><>::
-::res://Layouts/::1721527105
-default_bus_layout.tres::AudioBusLayout::4284374748074488437::1721527105::0::1::::<><>::
+::res://Layouts/::1721605587
+default_bus_layout.tres::AudioBusLayout::4284374748074488437::1721605587::0::1::::<><>::
 ::res://Materials/::1721258544
 ::res://Materials/Shaders/::1721422903
 Dissolve.gdshader::Shader::-1::1721422903::0::1::::<><>::
@@ -184,9 +184,10 @@ LabTiles.tscn::PackedScene::8350783136683264564::1721422767::0::1::::<><>::uid:/
 PauseMenu.gd::GDScript::-1::1721311177::0::1::::<>Panel<>::
 PrisonLighting.tscn::PackedScene::37686777310889218::1715806149::0::1::::<><>::
 prison_tiles.tscn::PackedScene::855683464112217928::1721422767::0::1::::<><>::uid://dwkdcinctiobw::::res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png
-::res://Scenes/Levels/SBX/::1721451410
-sbx_level.tscn::PackedScene::5887279824039827454::1721422766::0::1::::<><>::uid://mgq8m1i40iei::::res://Scenes/Levels/Prison/prison_tiles.tscn<>uid://ywbo3mqe0q1r::::res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png<>uid://c2bsobcf5na5e::::res://Assets/Sprites/TileSets/Prison/ParallaxImage.png<>uid://dwkdcinctiobw::::res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png
-sbx_main.tscn::PackedScene::1047858366355722359::1721451410::0::1::::<><>::uid://bmrq4ow8mnkml::::res://Scenes/Player/Player.tscn<>uid://bt142sob7ui0m::::res://Scenes/Items/Lantern/Lantern.tscn<>uid://cp43vyf7fw63k::::res://Scenes/Levels/SBX/sbx_level.tscn<>res://Scripts/UI/Camera.gd<>uid://dac54w6hyd25f::::res://Scenes/Enemies/Ghost/Ghost.tscn<>uid://b02yl2wuvuplo::::res://Scenes/Enemies/Drone/Drone.tscn
+::res://Scenes/Levels/SBX/::1721608651
+sbx_main.tscn::PackedScene::1047858366355722359::1721608650::0::1::::<><>::uid://bmrq4ow8mnkml::::res://Scenes/Player/Player.tscn<>res://Scripts/Levels/SBX/sbx_main.gd<>uid://bt142sob7ui0m::::res://Scenes/Items/Lantern/Lantern.tscn<>res://Scripts/UI/Camera.gd<>uid://dac54w6hyd25f::::res://Scenes/Enemies/Ghost/Ghost.tscn<>uid://b02yl2wuvuplo::::res://Scenes/Enemies/Drone/Drone.tscn
+sbx_room_1.tscn::PackedScene::5887279824039827454::1721608676::0::1::::<><>::res://Scripts/Levels/SBX/sbx_room_1.gd<>uid://mgq8m1i40iei::::res://Scenes/Levels/Prison/prison_tiles.tscn<>uid://ywbo3mqe0q1r::::res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png<>uid://c2bsobcf5na5e::::res://Assets/Sprites/TileSets/Prison/ParallaxImage.png<>uid://dwkdcinctiobw::::res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png
+sbx_room_2.tscn::PackedScene::3846389368665563380::1721608676::0::1::::<><>::res://Scripts/Levels/SBX/sbx_room_1.gd<>uid://mgq8m1i40iei::::res://Scenes/Levels/Prison/prison_tiles.tscn<>uid://ywbo3mqe0q1r::::res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png<>uid://c2bsobcf5na5e::::res://Assets/Sprites/TileSets/Prison/ParallaxImage.png<>uid://dwkdcinctiobw::::res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png
 TileSetTest.tscn::PackedScene::5533070664133859669::1714224578::0::1::::<><>::uid://dqx7b1eusufbw::::res://Assets/Sprites/TileSets/Grasslands/GrassLand.png<>uid://tbgpw3p26lqc::::res://Scenes/Levels/City/CityTiles.tscn<>res://Scenes/MC/Player.tscn
 ::res://Scenes/Objects/::1721308236
 ::res://Scenes/Player/::1721450361
@@ -203,9 +204,9 @@ game_ui.tscn::PackedScene::233616358428619441::1721430003::0::1::::<><>::res://S
 Main_Menu.tscn::PackedScene::2987121768650079423::1721423377::0::1::::<><>::res://Scripts/UI/Main_Menu.gd<>uid://73klxfni2msm::::res://Assets/Sounds/MenuAndUI/Game_Start.WAV<>uid://swaog5kf3gdl::::res://Assets/Sprites/UI/Title.png<>uid://5lfbylbmwklr::::res://Assets/Sprites/UI/UIBackGroundSprite.png<>uid://bd8usmux71oig::::res://Assets/Sounds/MenuAndUI/Menu_Click.WAV<>uid://xd7freyfwwrb::::res://Assets/Sounds/MenuAndUI/Menu_Select.WAV<>res://Scripts/UI/Start_Button.gd<>uid://d1xkgll5q80wr::::res://Textures/Slider_Theme.tres<>uid://xbddjqb3wxm2::::res://Scenes/UI/scenetransition.tscn<>uid://dy0t1p7yuibu1::::res://Assets/Sprites/UI/Sliders/Knob16x16.png<>uid://b3p8dpj7xgjsv::::res://Assets/Sounds/Music/BlueRustTheme.wav<>uid://dyte8fqt7m5c6::::res://Assets/Sprites/UI/OptionsPanel.png<>uid://sifmsaaopv75::::res://Assets/Fonts/upheavtt.ttf<>res://Scripts/UI/Main_Menu_Options.gd
 Main_Menu_Options.tscn::PackedScene::8287326386404934718::1715806114::0::1::::<><>::res://Scripts/UI/Main_Menu_Options.gd<>res://Scripts/GlobalPaths.gd
 scenetransition.tscn::PackedScene::1616595787299585183::1721310262::0::1::::<><>::res://Scripts/UI/scenetransition.gd
-::res://Scripts/::1721429084
+::res://Scripts/::1721606211
 AudioManager.gd::GDScript::-1::1715806114::0::1::::<>Node<>::
-GlobalPaths.gd::GDScript::-1::1721346489::0::1::::<>Node<>::
+GlobalPaths.gd::GDScript::-1::1721606211::0::1::::<>Node<>::
 ::res://Scripts/Components/::1721451556
 AttackComponent.gd::GDScript::-1::1714224578::0::1::::<>Node<>::
 HealthComponent.gd::GDScript::-1::1721451556::0::1::::HealthComponent<>Node2D<>::
@@ -217,12 +218,13 @@ Drone.gd::GDScript::-1::1721449288::0::1::::Drone<>EnemyBaseClass<>::
 ::res://Scripts/Enemies/Ghost/::1721451556
 Ghost.gd::GDScript::-1::1721451556::0::1::::Ghost<>EnemyBaseClass<>::
 ::res://Scripts/Items/::1721450230
-::res://Scripts/Items/Lantern/::1721451410
-Lantern.gd::GDScript::-1::1721451410::0::1::::<>Sprite2D<>::
+::res://Scripts/Items/Lantern/::1721605795
+Lantern.gd::GDScript::-1::1721605795::0::1::::<>Sprite2D<>::
 ::res://Scripts/Items/PowerUps/::1714323802
 ::res://Scripts/Levels/::1721309180
-::res://Scripts/Levels/SBX/::1721258545
-sbx_scene.gd::GDScript::-1::1714224578::0::1::::<>Node2D<>::
+::res://Scripts/Levels/SBX/::1721608646
+sbx_main.gd::GDScript::-1::1721608372::0::1::::MainLevel<>Node2D<>::
+sbx_room_1.gd::GDScript::-1::1721608646::0::1::::<>Node2D<>::
 ::res://Scripts/Objects/::1721429084
 Save Point.gd::GDScript::-1::1718127326::0::1::::<>Node2D<>::
 ::res://Scripts/Player/::1721446321

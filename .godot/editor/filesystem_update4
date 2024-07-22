@@ -1,1 +1,9 @@
+res://Layouts/default_bus_layout.tres
+res://Scenes/Levels/SBX/sbx_room_2.tscn
+res://Scripts/GlobalPaths.gd
+res://Scenes/Levels/SBX/sbx_room_1.tscn
 res://Scenes/Levels/SBX/sbx_main.tscn
+res://Scripts/Items/Lantern/Lantern.gd
+res://Scripts/Levels/SBX/sbx_room_1.gd
+res://Scripts/Levels/SBX/sbx_main.gd
+res://Scripts/Levels/SBX/sbx_room.gd
