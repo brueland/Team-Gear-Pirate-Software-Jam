@@ -7,3 +7,5 @@ res://Scripts/Levels/SBX/sbx_room.gd
 res://global_references.gd
 res://Scripts/Levels/SBX/sbx_main.gd
 res://Scripts/UI/Camera.gd
+res://Scenes/Levels/Lab/LabRoom1.tscn
+res://Scenes/Levels/Lab/ArchaeologyRoom.tscn
