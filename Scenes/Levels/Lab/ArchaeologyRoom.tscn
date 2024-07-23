@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b32cfy50biu4c"]
+[gd_scene load_steps=19 format=3 uid="uid://b32cfy50biu4c"]
 
 [ext_resource type="Texture2D" uid="uid://d2fioixtben5q" path="res://Assets/Sprites/TileSets/GreyBoxing/GrayBoxTilemap.png" id="1_v4d3o"]
 [ext_resource type="PackedScene" uid="uid://dq8ggb83m8s0s" path="res://Scenes/Levels/Lab/LabTiles.tscn" id="2_g23xh"]
@@ -4111,6 +4111,11 @@ terrain_set_0/terrain_1/name = "StoneFloor"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_o0k3c")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_su6if"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aimtm"]
+noise = SubResource("FastNoiseLite_su6if")
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o5kal"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_34bxi"]
@@ -4123,10 +4128,14 @@ noise = SubResource("FastNoiseLite_vjheq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ynk4"]
 shader = ExtResource("6_rhkgv")
+shader_parameter/dissolvePercent = 0.0
+shader_parameter/dissolveSpeed = null
+shader_parameter/dissolving = null
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/alpha = 1.0
-shader_parameter/distortion_strength = 0.367
+shader_parameter/distortion_strength = 0.0730001
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_aimtm")
 shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_34bxi")
 shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_7dofv")
 
