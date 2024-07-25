@@ -37,20 +37,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("4_e6es2")
 
-[node name="ColorRect" type="ColorRect" parent="Camera"]
-z_index = 12
-material = SubResource("ShaderMaterial_s4iv5")
-offset_left = 384.0
-offset_top = -422.0
-offset_right = 1203.0
-offset_bottom = 345.0
-rotation = 1.57025
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/ColorRect"]
-libraries = {
-"": SubResource("AnimationLibrary_qupv0")
-}
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aikb8")
 
