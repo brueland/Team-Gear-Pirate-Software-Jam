@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://df5n3sf4kj0lg"]
 
-[ext_resource type="PackedScene" uid="uid://cyia5jahvdgdy" path="res://Assets/Sprites/TileSets/GreyBoxing/graybox.tscn" id="1_ky6vt"]
+[ext_resource type="PackedScene" uid="uid://cyia5jahvdgdy" path="res://Scenes/Levels/SBX/graybox.tscn" id="1_ky6vt"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="2_g11s4"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_fp7fh"]
 [ext_resource type="Texture2D" uid="uid://bvv7khjinpuyp" path="res://Assets/Sprites/Decorations/log.png" id="4_h47if"]

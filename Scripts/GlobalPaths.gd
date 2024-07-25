@@ -27,12 +27,12 @@ const ARCH1_PATH: String = "res://Scenes/Levels/Lab/Archaeology/Arch1.tscn"
 const ARCH2_PATH: String = "res://Scenes/Levels/Lab/Archaeology/Arch2.tscn"
 
 # SCENES/LEVELS/LAB/BioEng
-const BIO_ENG1_PATH: String = "res://Scenes/Levels/Lab/BioEng/BioEng1.tscn"
-const BIO_ENG2_PATH: String = "res://Scenes/Levels/Lab/BioEng/BioEng2.tscn"
+const BIO1_PATH: String = "res://Scenes/Levels/Lab/BioEng/BioEng1.tscn"
+const BIO2_PATH: String = "res://Scenes/Levels/Lab/BioEng/BioEng2.tscn"
 
 # SCENES/LEVELS/LAB/Chemistry
-const CHEM1_ENG2_PATH: String = "res://Scenes/Levels/Lab/Chemistry/Chem1.tscn"
-const CHEM2_ENG2_PATH: String = "res://Scenes/Levels/Lab/Chemistry/Chem2.tscn"
+const CHEM1_PATH: String = "res://Scenes/Levels/Lab/Chemistry/Chem1.tscn"
+const CHEM2_PATH: String = "res://Scenes/Levels/Lab/Chemistry/Chem2.tscn"
 
 # SCENES/LEVELS/LAB/Secret
 const SECRET1_PATH: String = "res://Scenes/Levels/Lab/SecretRoom/Secret1.tscn"

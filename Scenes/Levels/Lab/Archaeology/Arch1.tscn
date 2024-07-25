@@ -4027,9 +4027,9 @@ shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_aimtm")
 shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_34bxi")
 shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_7dofv")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0ouq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eye5u"]
 resource_local_to_scene = true
-size = Vector2(599.5, 624)
+size = Vector2(1186.5, 366)
 
 [node name="Arch1" type="Node2D"]
 
@@ -4087,18 +4087,10 @@ material = SubResource("ShaderMaterial_7ynk4")
 position = Vector2(240, 222)
 texture = ExtResource("7_iu8tw")
 
-[node name="CameraBounds" parent="." instance=ExtResource("7_kd23i")]
-position = Vector2(97, 266)
-
-[node name="CameraBoundsShape" parent="CameraBounds" index="0"]
-position = Vector2(474.5, 71)
-scale = Vector2(2, 1)
-shape = SubResource("RectangleShape2D_r0ouq")
-
 [node name="TransitionPoints" type="Node" parent="."]
 
 [node name="Transition_1" parent="TransitionPoints" instance=ExtResource("8_xlet7")]
-position = Vector2(1139, 588)
+position = Vector2(1118, 587)
 rotation = 3.14159
 target_room = "FOREST2_PATH"
 target_room_entrance = "Transition_2"
@@ -4117,5 +4109,11 @@ position = Vector2(3, 471)
 target_room = "ARCH2_PATH"
 target_room_entrance = "Transition_1"
 
-[editable path="CameraBounds"]
+[node name="CameraBounds" parent="." instance=ExtResource("7_kd23i")]
+
+[node name="CameraBoundsShape" parent="CameraBounds" index="0"]
+position = Vector2(566.75, 466)
+shape = SubResource("RectangleShape2D_eye5u")
+
 [editable path="TransitionPoints/Transition_2"]
+[editable path="CameraBounds"]
