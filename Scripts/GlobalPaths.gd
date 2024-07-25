@@ -16,6 +16,11 @@ const PRISON_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison.tscn"
 # SCENES/LEVELS/DREAMSCENE
 const DREAM_SCENE_PATH: String = "res://Scenes/Levels/DreamSequences/DashDreamSequence.tscn"
 
+# SCENES/LEVELS/SBX
+const SBX_MAIN_SCENE_PATH: String = "res://Scenes/Levels/SBX/sbx_main.tscn"
+const SBX_SCENE_1_PATH: String = "res://Scenes/Levels/SBX/sbx_room_1.tscn"
+const SBX_SCENE_2_PATH: String = "res://Scenes/Levels/SBX/sbx_room_2.tscn"
+
 # ASSETS
 # ASSETS/SPRITES
 # ASSETS/SPRITES/LANTURN

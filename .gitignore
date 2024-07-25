@@ -32,6 +32,12 @@ misc/hooks/pre-commit-custom-*
 ### Godot generated files ###
 #############################
 
+export.cfg
+export_presets.cfg
+
+.tmp
+*.tmp
+
 # Buildsystem
 bin
 *.gen.*

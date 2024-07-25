@@ -18,7 +18,6 @@ func damage(attack):
 		health -= attack.damage
 	damageImmunityTimer = damageImmunity
 	if health > 0:
-		get_parent().currentMovement = get_parent().movement.takingDamage
 		get_parent().velocity.x = attack.knockback * 2 * attack.direction
 		get_parent().velocity.y = attack.knockupwards
 	else:

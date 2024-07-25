@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt142sob7ui0m"]
+
+[ext_resource type="Texture2D" uid="uid://cf640thpcrog" path="res://Assets/Sprites/Lantern/lantern.png" id="1_dmbra"]
+[ext_resource type="Script" path="res://Scripts/Items/Lantern/Lantern.gd" id="2_14b5k"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="2_cu8pd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0k2t"]
+radius = 70.0
+
+[node name="Lantern" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_dmbra")
+offset = Vector2(1.5, -1.5)
+script = ExtResource("2_14b5k")
+
+[node name="LanternLight" type="PointLight2D" parent="."]
+energy = 2.43
+blend_mode = 2
+range_z_min = -30
+range_z_max = 30
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.768627)
+texture = ExtResource("2_cu8pd")
+
+[node name="LanternLightFloor" type="PointLight2D" parent="."]
+blend_mode = 2
+shadow_color = Color(0, 0, 0, 0.768627)
+texture = ExtResource("2_cu8pd")
+
+[node name="LanternArea" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="LightCollision2D" type="CollisionShape2D" parent="LanternArea"]
+shape = SubResource("CircleShape2D_b0k2t")
+
+[connection signal="body_entered" from="LanternArea" to="." method="_on_lantern_area_body_entered"]
+[connection signal="body_exited" from="LanternArea" to="." method="_on_lantern_area_body_exited"]
