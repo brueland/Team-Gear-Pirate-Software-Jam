@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cp43vyf7fw63k"]
+[gd_scene load_steps=12 format=3 uid="uid://cp43vyf7fw63k"]
 
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="3_0240j"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="4_a6etn"]
@@ -305,6 +305,10 @@ texture = ExtResource("6_3up4r")
 [sub_resource type="TileSet" id="TileSet_pkxa5"]
 sources/0 = SubResource("TileSetAtlasSource_xyriy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eab6"]
+resource_local_to_scene = true
+size = Vector2(607, 331)
+
 [node name="sbx_room_1" type="Node2D"]
 
 [node name="PrisonTiles" parent="." instance=ExtResource("3_0240j")]
@@ -427,3 +431,9 @@ scale = Vector2(2.57791, 2.98146)
 texture = ExtResource("7_ykx1m")
 
 [node name="CameraBounds" parent="." instance=ExtResource("8_2lke4")]
+
+[node name="CameraBoundsShape" parent="CameraBounds" index="0"]
+position = Vector2(145.5, -56.5)
+shape = SubResource("RectangleShape2D_5eab6")
+
+[editable path="CameraBounds"]
