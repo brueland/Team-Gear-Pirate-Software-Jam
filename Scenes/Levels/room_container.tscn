@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c07q18q56d3jq"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/RoomContainer.gd" id="1_wa084"]
+
+[node name="RoomContainer" type="Node" node_paths=PackedStringArray("player")]
+script = ExtResource("1_wa084")
+player = NodePath("")
+first_room = "SBX_SCENE_1_PATH"

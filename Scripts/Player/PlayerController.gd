@@ -375,11 +375,12 @@ func mantle_check():
 func hang_check():
 	if upRaycast.is_colliding() and can_hang and grappling:
 		var collider = upRaycast.get_collider()
-		if collider.is_class("TileMap"):
-			var rid = upRaycast.get_collider_rid()
-			var layer = collider.get_layer_for_body_rid(rid)
-			if layer == 1:
-				change_state(STATE_HANGING, direction)
+		if collider:
+			if collider.is_class("TileMap"):
+				var rid = upRaycast.get_collider_rid()
+				var layer = collider.get_layer_for_body_rid(rid)
+				if layer == 1:
+					change_state(STATE_HANGING, direction)
 
 
 func emit_dash_particles():

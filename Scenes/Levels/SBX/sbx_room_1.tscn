@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp43vyf7fw63k"]
+[gd_scene load_steps=11 format=3 uid="uid://cp43vyf7fw63k"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/SBX/sbx_room.gd" id="1_35b1p"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="3_0240j"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="4_a6etn"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="5_0nw8q"]
+[ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="5_x62g8"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="6_3up4r"]
+[ext_resource type="PackedScene" uid="uid://b02yl2wuvuplo" path="res://Scenes/Enemies/Drone/Drone.tscn" id="6_h33it"]
+[ext_resource type="Texture2D" uid="uid://sf7i2ap7i5ul" path="res://Assets/Sprites/UI/Icons/ASprite.png" id="7_ykx1m"]
+[ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="8_2lke4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyriy"]
 texture = ExtResource("6_3up4r")
@@ -302,13 +305,7 @@ texture = ExtResource("6_3up4r")
 [sub_resource type="TileSet" id="TileSet_pkxa5"]
 sources/0 = SubResource("TileSetAtlasSource_xyriy")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vlfa"]
-size = Vector2(24, 187)
-
-[node name="sbx_level" type="Node2D"]
-script = ExtResource("1_35b1p")
-target_scene = "SBX_SCENE_2_PATH"
-target_door_name = "TransitionPoints/Transition_1"
+[node name="sbx_room_1" type="Node2D"]
 
 [node name="PrisonTiles" parent="." instance=ExtResource("3_0240j")]
 layer_0/name = "Floor"
@@ -405,12 +402,28 @@ layer_0/modulate = Color(1, 1, 1, 0.513726)
 
 [node name="TransitionPoints" type="Node" parent="."]
 
-[node name="Transition_1" type="Area2D" parent="TransitionPoints"]
-position = Vector2(-133, -100)
+[node name="Transition_1" parent="TransitionPoints" instance=ExtResource("5_x62g8")]
+position = Vector2(-92, -127)
+target_room_entrance = "Transition_1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionPoints/Transition_1"]
-position = Vector2(-29, -24)
-shape = SubResource("RectangleShape2D_6vlfa")
+[node name="Transition_2" parent="TransitionPoints" instance=ExtResource("5_x62g8")]
+position = Vector2(383, -159)
+rotation = 3.14159
+target_room_entrance = "Transition_2"
 
-[connection signal="body_entered" from="TransitionPoints/Transition_1" to="." method="_on_transition_1_body_entered"]
-[connection signal="body_exited" from="TransitionPoints/Transition_1" to="." method="_on_transition_1_body_exited"]
+[node name="Transition_3" parent="TransitionPoints" instance=ExtResource("5_x62g8")]
+position = Vector2(161, -137)
+rotation = 1.5708
+target_room_entrance = "Transition_3"
+
+[node name="Drone" parent="." instance=ExtResource("6_h33it")]
+position = Vector2(109, -114)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(91, -157)
+scale = Vector2(2.57791, 2.98146)
+texture = ExtResource("7_ykx1m")
+
+[node name="CameraBounds" parent="." instance=ExtResource("8_2lke4")]

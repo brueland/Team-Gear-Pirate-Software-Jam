@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://o6ucr1l65mpj"]
+[gd_scene load_steps=6 format=3 uid="uid://o6ucr1l65mpj"]
 
 [ext_resource type="PackedScene" uid="uid://bmrq4ow8mnkml" path="res://Scenes/Player/Player.tscn" id="1_fde0w"]
-[ext_resource type="Script" path="res://Scripts/Levels/SBX/sbx_main.gd" id="1_ykd28"]
+[ext_resource type="PackedScene" uid="uid://c07q18q56d3jq" path="res://Scenes/Levels/room_container.tscn" id="1_mc1ew"]
 [ext_resource type="PackedScene" uid="uid://bt142sob7ui0m" path="res://Scenes/Items/Lantern/Lantern.tscn" id="2_0pui2"]
-[ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="3_re0yl"]
-[ext_resource type="PackedScene" uid="uid://dac54w6hyd25f" path="res://Scenes/Enemies/Ghost/Ghost.tscn" id="4_7sr23"]
-[ext_resource type="PackedScene" uid="uid://b02yl2wuvuplo" path="res://Scenes/Enemies/Drone/Drone.tscn" id="6_6fyen"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_e6es2"]
 
 [sub_resource type="Environment" id="Environment_aikb8"]
 ambient_light_energy = 2.0
@@ -15,13 +13,12 @@ fog_enabled = true
 fog_light_energy = 1.85
 adjustment_brightness = 0.01
 
-[node name="sbx" type="Node2D" node_paths=PackedStringArray("player")]
-script = ExtResource("1_ykd28")
-player = NodePath("Player")
-first_room = "SBX_SCENE_1_PATH"
-room_entrance = "TransitionPoints/Transition_1"
+[node name="sbx" type="Node2D"]
 
-[node name="LevelContainer" type="Node" parent="."]
+[node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_mc1ew")]
+player = NodePath("../Player")
+camera = NodePath("../Player/Camera")
+first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("1_fde0w")]
 position = Vector2(90, -32)
@@ -32,26 +29,16 @@ controllerEnabled = false
 [node name="Lantern" parent="Player" instance=ExtResource("2_0pui2")]
 position = Vector2(-2, 3)
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(114, -37)
-zoom = Vector2(2, 2)
-process_callback = 0
+[node name="Camera" type="Camera2D" parent="Player"]
+zoom = Vector2(2.295, 2.295)
+limit_smoothed = true
 position_smoothing_enabled = true
-script = ExtResource("3_re0yl")
-player = NodePath("../Player")
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("4_e6es2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aikb8")
 
-[node name="GhostEnemy" parent="." instance=ExtResource("4_7sr23")]
-position = Vector2(127, -52)
-speed = 30.0
-is_Chasing = true
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.109804, 0.109804, 0.109804, 1)
-
-[node name="Drone" parent="." instance=ExtResource("6_6fyen")]
-position = Vector2(-20, -106)
-is_Chasing = true
