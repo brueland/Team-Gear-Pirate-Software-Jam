@@ -3932,9 +3932,9 @@ terrain_set_0/terrain_1/name = "StoneFloor"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_o0k3c")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aana5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37t4c"]
 resource_local_to_scene = true
-size = Vector2(1188, 626)
+size = Vector2(576.5, 639)
 
 [node name="Chem1" type="Node2D"]
 
@@ -3978,10 +3978,12 @@ target_room_entrance = "Transition_1"
 position = Vector2(-67, -94)
 
 [node name="CameraBounds" parent="." instance=ExtResource("4_4i26l")]
+position = Vector2(97, 266)
 
 [node name="CameraBoundsShape" parent="CameraBounds" index="0"]
-position = Vector2(560, 339)
-shape = SubResource("RectangleShape2D_aana5")
+position = Vector2(477.5, 61.5)
+scale = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_37t4c")
 
 [editable path="TransitionPoints/Transition_3"]
 [editable path="CameraBounds"]

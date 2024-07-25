@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bn0n37ud66irg"]
 
-[ext_resource type="PackedScene" uid="uid://cyia5jahvdgdy" path="res://Scenes/Levels/SBX/graybox.tscn" id="1_tccmy"]
+[ext_resource type="PackedScene" path="res://Assets/Sprites/TileSets/GreyBoxing/graybox.tscn" id="1_tccmy"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="2_kx146"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_ujhr4"]
 
