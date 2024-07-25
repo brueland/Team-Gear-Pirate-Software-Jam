@@ -1,6 +1,0 @@
-res://Scenes/Levels/SBX/sbx_main.tscn
-res://Scenes/Levels/SBX/sbx_room_1.tscn
-res://Scenes/Levels/SBX/sbx_room_2.tscn
-res://Scenes/Levels/transition_point.tscn
-res://Scripts/Levels/RoomContainer.gd
-res://Scripts/Levels/TransitionPointHandler.gd
