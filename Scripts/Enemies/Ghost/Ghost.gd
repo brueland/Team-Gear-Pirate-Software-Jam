@@ -30,7 +30,10 @@ func  _physics_process(delta):
 	move_and_slide()
 
 func chase_player(delta):
-	velocity += position.direction_to(player.position) * speed * delta
+	var target_position_noise = randf_range(0.90, 1.10)
+	var target_position = player.position*target_position_noise
+	
+	velocity = lerp(velocity, position.direction_to(target_position) * speed, delta) 
 	
 	if velocity.x < 0.0:
 		direction = -1

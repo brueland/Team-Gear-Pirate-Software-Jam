@@ -69,7 +69,13 @@ visible = false
 shape = SubResource("CircleShape2D_rm1a8")
 
 [node name="DroneLight" type="PointLight2D" parent="."]
-position = Vector2(0, 9)
+position = Vector2(-1.42109e-14, 55)
+scale = Vector2(0.0998792, 0.193096)
+energy = 4.38
+blend_mode = 2
 range_z_min = 0
 range_z_max = 50
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.278431)
+shadow_item_cull_mask = 0
 texture = ExtResource("3_w66ly")
