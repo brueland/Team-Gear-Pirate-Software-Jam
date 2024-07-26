@@ -363,7 +363,10 @@ func mantle_check():
 			if !headRaycast.is_colliding():
 				var collider = shoulderRaycast.get_collider()
 				if collider.is_class("TileMap"):
-					var target_y = position.y + collider.local_to_map(position).y
+					var collision_point = shoulderRaycast.get_collision_point()
+					var tile_size = collider.tile_set.tile_size.y
+					var target_y = floor(collision_point.y / tile_size) * tile_size + 6
+					#var target_y = position.y + collider.local_to_map(position).y
 					# This call deferred makes sure the player's location
 					# and collision location are set before updating y pos
 					call_deferred("_set_mantle_y_position", target_y)
