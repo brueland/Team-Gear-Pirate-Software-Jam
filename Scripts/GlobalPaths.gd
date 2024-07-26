@@ -21,6 +21,27 @@ const SBX_MAIN_SCENE_PATH: String = "res://Scenes/Levels/SBX/sbx_main.tscn"
 const SBX_SCENE_1_PATH: String = "res://Scenes/Levels/SBX/sbx_room_1.tscn"
 const SBX_SCENE_2_PATH: String = "res://Scenes/Levels/SBX/sbx_room_2.tscn"
 
+# SCENES/LEVELS/LAB
+# SCENES/LEVELS/LAB/Archaeology
+const ARCH1_PATH: String = "res://Scenes/Levels/Lab/Archaeology/Arch1.tscn"
+const ARCH2_PATH: String = "res://Scenes/Levels/Lab/Archaeology/Arch2.tscn"
+
+# SCENES/LEVELS/LAB/BioEng
+const BIO1_PATH: String = "res://Scenes/Levels/Lab/BioEng/BioEng1.tscn"
+const BIO2_PATH: String = "res://Scenes/Levels/Lab/BioEng/BioEng2.tscn"
+
+# SCENES/LEVELS/LAB/Chemistry
+const CHEM1_PATH: String = "res://Scenes/Levels/Lab/Chemistry/Chem1.tscn"
+const CHEM2_PATH: String = "res://Scenes/Levels/Lab/Chemistry/Chem2.tscn"
+
+# SCENES/LEVELS/LAB/Secret
+const SECRET1_PATH: String = "res://Scenes/Levels/Lab/SecretRoom/Secret1.tscn"
+const SECRET2_PATH: String = "res://Scenes/Levels/Lab/SecretRoom/Secret2.tscn"
+
+# SCENES/LEVELS/LAB/Forest
+const FOREST1_PATH: String = "res://Scenes/Levels/Lab/Forest/Forest1.tscn"
+const FOREST2_PATH: String = "res://Scenes/Levels/Lab/Forest/Forest2.tscn"
+
 # ASSETS
 # ASSETS/SPRITES
 # ASSETS/SPRITES/LANTURN

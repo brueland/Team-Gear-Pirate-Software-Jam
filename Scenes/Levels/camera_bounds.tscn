@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://ofaphgm1wmg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am2kn"]
-size = Vector2(584, 330)
+resource_local_to_scene = true
+size = Vector2(607, 331)
 
 [node name="CameraBounds" type="Area2D"]
 
 [node name="CameraBoundsShape" type="CollisionShape2D" parent="."]
-position = Vector2(146, -61)
 shape = SubResource("RectangleShape2D_am2kn")
 debug_color = Color(0, 0.6, 0.701961, 0)

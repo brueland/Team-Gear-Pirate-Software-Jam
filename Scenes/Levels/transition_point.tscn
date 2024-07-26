@@ -12,8 +12,6 @@ collision_priority = -1.0
 script = ExtResource("1_kmiei")
 target_room = "SBX_SCENE_2_PATH"
 target_room_entrance = "TransitionPoints/Transition_1"
-metadata/next_scene = "SBX_SCENE_2_PATH"
-metadata/next_scene_entrance = "TransitionPoints/Transition_1"
 
 [node name="TransitionCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-66, 0)
