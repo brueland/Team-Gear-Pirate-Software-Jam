@@ -718,7 +718,8 @@ script = ExtResource("1_bkal2")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"getting_up"
+animation = &"left_running"
+frame_progress = 0.537491
 speed_scale = 2.0
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
