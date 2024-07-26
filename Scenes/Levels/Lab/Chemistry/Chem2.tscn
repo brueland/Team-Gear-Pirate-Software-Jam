@@ -3961,7 +3961,7 @@ layer_4/tile_data = PackedInt32Array()
 position = Vector2(639, 370)
 rotation = 3.14159
 target_room = "CHEM1_PATH"
-target_room_entrance = "TransitionPoints/Transition_2"
+target_room_entrance = "Transition_2"
 
 [node name="CameraBounds" parent="." instance=ExtResource("4_d5iia")]
 
