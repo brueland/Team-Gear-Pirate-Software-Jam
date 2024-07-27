@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://bmrq4ow8mnkml"]
+[gd_scene load_steps=114 format=3 uid="uid://bmrq4ow8mnkml"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_bkal2"]
 [ext_resource type="Texture2D" uid="uid://bg5gbbn735ffl" path="res://Assets/Sprites/Player/Death.png" id="2_8t877"]
@@ -682,7 +682,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyc5k"]
 radius = 10.5
-height = 34.0
+height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdvuq"]
+radius = 11.0
 
 [sub_resource type="Gradient" id="Gradient_opmcp"]
 offsets = PackedFloat32Array(0, 0.513889, 1)
@@ -737,8 +740,14 @@ texture = ExtResource("25_ar4as")
 shape = SubResource("CircleShape2D_kiq4c")
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_gyc5k")
+
+[node name="HookCollisionArea2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="HookCollisonShape2D" type="CollisionShape2D" parent="HookCollisionArea2D"]
+shape = SubResource("CircleShape2D_mdvuq")
 
 [node name="PlayerRaycasts" type="Node2D" parent="."]
 
@@ -753,8 +762,12 @@ target_position = Vector2(11.5, 0)
 collision_mask = 8
 
 [node name="UpRaycast" type="RayCast2D" parent="PlayerRaycasts"]
-target_position = Vector2(0, -20)
-collision_mask = 10
+target_position = Vector2(0, -8)
+collision_mask = 2
+
+[node name="DownRaycast" type="RayCast2D" parent="PlayerRaycasts"]
+target_position = Vector2(0, 8)
+collision_mask = 2
 
 [node name="DashEffects" type="Node2D" parent="."]
 
@@ -807,3 +820,5 @@ one_shot = true
 [node name="HangTimer" type="Timer" parent="Timers"]
 wait_time = 0.3
 one_shot = true
+
+[connection signal="area_entered" from="HookCollisionArea2D" to="." method="_on_hook_collision_area_2d_area_entered"]

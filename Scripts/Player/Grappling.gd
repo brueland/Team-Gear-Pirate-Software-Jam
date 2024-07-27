@@ -14,7 +14,7 @@ var player: Player
 
 func _physics_process(delta):
 	position += transform.x * grapple_speed * delta
-	if (abs(player.global_position-global_position).length()) <= 4:
+	if retracting and (abs(player.global_position-global_position).length()) <= 4:
 		queue_free()
 	
 	if !attached and !retracting:
@@ -42,11 +42,13 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 		elif body is EnemyBaseClass:
 			retract()
 
-	if retracting or attached:
-		if body is Player:
-			queue_free()
-
-
 func retract():
 	retracting = true
 	grapple_speed = -1.0 * max_speed
+
+func _on_area_entered(area):
+	if not retracting:
+		if area.name == "GrappleObjectArea2D":
+			grapple_speed = 0.0
+			attached = true
+			retracting = true

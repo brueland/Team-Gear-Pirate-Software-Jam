@@ -17,6 +17,7 @@ class_name Player
 @onready var shoulderRaycast = $PlayerRaycasts/ShoulderRaycast
 @onready var headRaycast = $PlayerRaycasts/HeadRaycast
 @onready var upRaycast =  $PlayerRaycasts/UpRaycast
+@onready var downRaycast =  $PlayerRaycasts/DownRaycast
 @onready var raycastLength : float = 11.5
 
 # Dash Nodes
@@ -80,6 +81,10 @@ var aim_reset_counter_max : int = 100
 @export var mouseEnabled : bool = false
 @export var controllerEnabled : bool = true
 
+var area_entered_flag = false
+var entered_areas = []
+
+
 func _ready():
 	GlobalReferences.playerBody = self
 	playerSprite.play("right_idle")
@@ -100,7 +105,10 @@ func _physics_process(delta):
 		handle_aim_input()
 		handle_grapple_input()
 		handle_jump_input()
-	hang_check()
+		
+	if area_entered_flag:
+		process_entered_areas() # new Hang Check
+		
 	set_y_velocity(delta)
 	adjust_arm_pivot()
 	move_and_slide()
@@ -159,8 +167,6 @@ func handle_grapple_input():
 			change_state(STATE_IDLE, direction)
 
 		velocity = Vector2.ZERO
-		return grappling_hook
-	return
 
 func handle_aim_input():
 	if mouseEnabled and !controllerEnabled:
@@ -188,7 +194,6 @@ func handle_grapple(delta):
 	
 	if grappling_hook.attached:
 		velocity += (grappling_hook.global_position - global_position).normalized() * delta * grappling_hook.max_speed
-		
 		change_state(STATE_JUMP, direction)
 	else:
 		state = STATE_IDLE
@@ -366,7 +371,6 @@ func mantle_check():
 					var collision_point = shoulderRaycast.get_collision_point()
 					var tile_size = collider.tile_set.tile_size.y
 					var target_y = floor(collision_point.y / tile_size) * tile_size + 6
-					#var target_y = position.y + collider.local_to_map(position).y
 					# This call deferred makes sure the player's location
 					# and collision location are set before updating y pos
 					call_deferred("_set_mantle_y_position", target_y)
@@ -374,16 +378,6 @@ func mantle_check():
 					# Ultimately this call should be traced back to
 					# handle_state if correctly handled
 					change_state(STATE_MANTLING, direction)
-
-func hang_check():
-	if upRaycast.is_colliding() and can_hang and grappling:
-		var collider = upRaycast.get_collider()
-		if collider:
-			if collider.is_class("TileMap"):
-				var rid = upRaycast.get_collider_rid()
-				var layer = collider.get_layer_for_body_rid(rid)
-				if layer == 1:
-					change_state(STATE_HANGING, direction)
 
 
 func emit_dash_particles():
@@ -476,8 +470,32 @@ func adjust_arm_pivot():
 func _set_mantle_y_position(target_y):
 	position.y = target_y
 
+func _set_hang_position(target_x, target_y):
+	position.x = target_x
+	position.y = target_y
+	grappling_hook.queue_free()
+
 func _on_mantle_timer_timeout():
 	can_mantle = true
 	
 func _on_hang_timer_timeout():
 	can_hang = true
+
+func _on_hook_collision_area_2d_area_entered(area):
+	area_entered_flag = true
+	entered_areas.append(area)
+
+func process_entered_areas():
+	for area in entered_areas:
+		if grappling and can_hang:
+			if area.name == "GrappleObjectArea2D":
+				var target_position = area.get_node("HangPoint").global_position
+				change_state(STATE_HANGING, direction)
+				velocity = Vector2.ZERO
+				position.x = target_position.x
+				position.y = target_position.y + 16
+				grappling_hook.queue_free()
+				
+	# Reset the flag and clear the list
+	area_entered_flag = false
+	entered_areas.clear()

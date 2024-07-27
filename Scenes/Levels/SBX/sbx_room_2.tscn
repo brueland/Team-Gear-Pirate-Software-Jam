@@ -417,12 +417,6 @@ position = Vector2(-96, -138)
 target_room = "SBX_SCENE_1_PATH"
 target_room_entrance = "Transition_2"
 
-[node name="Transition_3" parent="TransitionPoints" instance=ExtResource("6_w0xi0")]
-position = Vector2(242, -146)
-rotation = 1.5708
-target_room = "SBX_SCENE_1_PATH"
-target_room_entrance = "Transition_3"
-
 [node name="GhostEnemy" parent="." instance=ExtResource("6_5pnmq")]
 position = Vector2(41, -98)
 is_Chasing = true
