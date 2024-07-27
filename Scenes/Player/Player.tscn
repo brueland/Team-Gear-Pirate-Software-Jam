@@ -682,7 +682,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyc5k"]
 radius = 10.5
-height = 32.0
+height = 28.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdvuq"]
 radius = 11.0
@@ -717,12 +717,12 @@ point_count = 2
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 57
+floor_snap_length = 8.0
 script = ExtResource("1_bkal2")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"left_running"
-frame_progress = 0.537491
+animation = &"right_running"
 speed_scale = 2.0
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
@@ -760,14 +760,6 @@ collision_mask = 10
 position = Vector2(0, -5)
 target_position = Vector2(11.5, 0)
 collision_mask = 8
-
-[node name="UpRaycast" type="RayCast2D" parent="PlayerRaycasts"]
-target_position = Vector2(0, -8)
-collision_mask = 2
-
-[node name="DownRaycast" type="RayCast2D" parent="PlayerRaycasts"]
-target_position = Vector2(0, 8)
-collision_mask = 2
 
 [node name="DashEffects" type="Node2D" parent="."]
 
