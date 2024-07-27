@@ -491,9 +491,9 @@ func process_entered_areas():
 			if area.name == "GrappleObjectArea2D":
 				var target_position = area.get_node("HangPoint").global_position
 				change_state(STATE_HANGING, direction)
-				velocity = Vector2.ZERO
+
 				position.x = target_position.x
-				position.y = target_position.y + 16
+				position.y = target_position.y + 20
 				grappling_hook.queue_free()
 				
 	# Reset the flag and clear the list
