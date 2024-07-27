@@ -18,7 +18,7 @@ adjustment_brightness = 0.01
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_b3l3q")]
 player = NodePath("../Player")
 camera = NodePath("../Player/Camera")
-first_room = "ARCH1_PATH"
+first_room = "FOREST2_PATH"
 first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]
