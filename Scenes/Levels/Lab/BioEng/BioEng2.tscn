@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2sicjdmkoq27"]
+[gd_scene load_steps=13 format=3 uid="uid://d2sicjdmkoq27"]
 
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="2_0qnsg"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="3_y8my6"]
@@ -3959,30 +3959,16 @@ size = Vector2(750, 290)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3pj3f"]
 noise = SubResource("FastNoiseLite_ncdt6")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bckid"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jrybq"]
-noise = SubResource("FastNoiseLite_bckid")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7ni76"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6wr6g"]
-noise = SubResource("FastNoiseLite_7ni76")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sup3s"]
 shader = ExtResource("5_swvys")
-shader_parameter/dissolvePercent = null
-shader_parameter/dissolveSpeed = null
-shader_parameter/dissolving = null
+shader_parameter/dissolve_percent = 0.0
+shader_parameter/distortion_strength = 0.05
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/alpha = 0.954
-shader_parameter/distortion_strength = 0.05
 shader_parameter/floatingSpeedX = 0.1
 shader_parameter/floatingSpeedY = 0.1
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_3pj3f")
-shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_jrybq")
-shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_6wr6g")
 
 [node name="BioEng2" type="Node2D"]
 
