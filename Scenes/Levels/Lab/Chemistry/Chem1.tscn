@@ -4096,12 +4096,13 @@ position = Vector2(-67, -94)
 [node name="CameraBounds" parent="." instance=ExtResource("4_4i26l")]
 
 [node name="CameraBoundsShape" parent="CameraBounds" index="0"]
-position = Vector2(560, 339)
+position = Vector2(561, 336)
 shape = SubResource("RectangleShape2D_aana5")
 
 [node name="ChemGhost" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_biqrr")
-position = Vector2(796, 608)
+position = Vector2(796, 605)
+scale = Vector2(1.164, 1.2)
 texture = ExtResource("5_yccp2")
 
 [editable path="TransitionPoints/Transition_3"]
