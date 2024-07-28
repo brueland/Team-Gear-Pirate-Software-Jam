@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn0n37ud66irg"]
+[gd_scene load_steps=13 format=3 uid="uid://bn0n37ud66irg"]
 
 [ext_resource type="PackedScene" uid="uid://cyia5jahvdgdy" path="res://Scenes/Levels/SBX/graybox.tscn" id="1_tccmy"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="2_kx146"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_ujhr4"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="4_f0idt"]
 [ext_resource type="Texture2D" uid="uid://ubyo4cva1j4x" path="res://Assets/Sprites/TileSets/Lab/[Forest-Cave] - [Tilemap]- [Pixel Art] - [Billy Newcomb].png" id="5_mpjbx"]
+[ext_resource type="Texture2D" uid="uid://v3m8jfcwewkj" path="res://Assets/Sprites/Lighting/SunLightTexture.png" id="6_133pv"]
+[ext_resource type="Texture2D" uid="uid://bg0c6nkar73c1" path="res://Assets/Sprites/Lighting/LightTexture.png" id="7_yoq41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jday2"]
 resource_local_to_scene = true
@@ -8082,6 +8084,25 @@ layer_3/tile_data = PackedInt32Array(1900540, 131072, 16, 1966076, 131072, 16, 2
 layer_4/name = "Forground"
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array()
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(430, 290)
+rotation = -5.2332
+scale = Vector2(0.737574, 1.03393)
+color = Color(0.788235, 0.760784, 0.65098, 1)
+energy = 4.86
+blend_mode = 2
+texture = ExtResource("6_133pv")
+
+[node name="PointLight2D3" type="PointLight2D" parent="PointLight2D"]
+position = Vector2(-167.245, -178.826)
+rotation = -0.522299
+scale = Vector2(1.21746, 0.730429)
+skew = -0.324542
+energy = 3.3
+blend_mode = 2
+texture = ExtResource("7_yoq41")
+texture_scale = 0.75
 
 [editable path="CameraBounds"]
 [editable path="TransitionPoints/Transition_1"]

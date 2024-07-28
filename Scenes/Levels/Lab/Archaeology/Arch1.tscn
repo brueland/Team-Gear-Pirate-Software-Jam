@@ -4336,16 +4336,17 @@ position = Vector2(566.75, 466)
 shape = SubResource("RectangleShape2D_eye5u")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(848, 642)
+position = Vector2(771, 719)
 rotation = 1.12748
 scale = Vector2(0.327991, 0.921241)
 texture = ExtResource("7_ixkvm")
+texture_scale = 1.6
 
 [node name="PointLight2D" type="PointLight2D" parent="PointLight2D"]
-position = Vector2(-40.6132, -161.879)
+position = Vector2(-101.992, -257.573)
 scale = Vector2(2.06821, 0.714988)
-color = Color(0.0313726, 0.0313726, 0.0313726, 1)
-energy = 2.99
+color = Color(0.270588, 0.247059, 0.168627, 1)
+energy = 2.51
 texture = ExtResource("8_t5ou7")
 
 [editable path="TransitionPoints/Transition_2"]

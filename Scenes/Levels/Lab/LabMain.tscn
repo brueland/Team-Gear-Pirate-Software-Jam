@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://Materials/Shaders/TransitionShader.gdshader" id="6_ibg4r"]
 [ext_resource type="Texture2D" uid="uid://d184q3kgw4m1h" path="res://Assets/Sprites/curtain.png" id="7_cxq6e"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_frymw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qik6i"]
 resource_local_to_scene = true
 shader = ExtResource("6_ibg4r")
 shader_parameter/cutoff = 1.0
@@ -29,7 +29,7 @@ adjustment_brightness = 0.01
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_b3l3q")]
 player = NodePath("../Player")
 camera = NodePath("../Player/Camera")
-first_room = "FOREST1_PATH"
+first_room = "FOREST2_PATH"
 first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]
@@ -50,7 +50,7 @@ drag_vertical_enabled = true
 script = ExtResource("4_4pk38")
 
 [node name="TextureRect" parent="Player/Camera" instance=ExtResource("5_87rhm")]
-material = SubResource("ShaderMaterial_frymw")
+material = SubResource("ShaderMaterial_qik6i")
 offset_left = -863.0
 offset_top = -851.0
 offset_right = 857.0
