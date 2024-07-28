@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsnxb3d7pqb4a"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Ghost/GhostSpawner.gd" id="1_4t8gy"]
+
+[node name="GhostSpawner" type="Node"]
+script = ExtResource("1_4t8gy")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

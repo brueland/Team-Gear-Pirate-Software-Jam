@@ -1,16 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://dac54w6hyd25f"]
+[gd_scene load_steps=23 format=3 uid="uid://dac54w6hyd25f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Ghost/Ghost.gd" id="1_1fhny"]
-[ext_resource type="Shader" path="res://Materials/Shaders/Dissolve.gdshader" id="2_n70m8"]
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="2_bepk2"]
 [ext_resource type="Texture2D" uid="uid://c7v8qoc7gylk4" path="res://Assets/Sprites/Enemies/Ghost/Ghost.png" id="3_ely6n"]
+[ext_resource type="Texture2D" uid="uid://da2ck616f5xc0" path="res://Textures/dissolve.png" id="3_scyni"]
 [ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="4_pkxyj"]
-[ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="5_nqdlu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ff6o"]
-shader = ExtResource("2_n70m8")
-shader_parameter/dissolvePercent = 0.0
-shader_parameter/dissolveSpeed = null
-shader_parameter/dissolving = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5rtt"]
 atlas = ExtResource("3_ely6n")
@@ -141,12 +135,14 @@ turbulence_initial_displacement_min = -1.0
 height = 24.0
 
 [node name="GhostEnemy" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_1fhny")
+is_Chasing = true
+shader_resource = ExtResource("2_bepk2")
+shader_noise_texture = ExtResource("3_scyni")
 
 [node name="GhostSprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_5ff6o")
 sprite_frames = SubResource("SpriteFrames_jlbt8")
 animation = &"Idle"
 
@@ -176,5 +172,3 @@ trail_section_subdivisions = 1
 [node name="GhostCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_di5am")
-
-[node name="HealthComponent" parent="." instance=ExtResource("5_nqdlu")]
