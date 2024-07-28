@@ -4,6 +4,8 @@ extends Node
 # SCENES
 # SCENES/MC
 const GRAPPLING_HOOK_PATH: String = "res://Scenes/Player/GrapplingHook.tscn"
+# SCENES/ENEMIES/GHOST
+const GHOST_PATH: String = "res://Scenes/Enemies/Ghost/Ghost.tscn"
 
 # SCENES/UI
 const MAIN_MENU_SCREEN_PATH: String = "res://Scenes/UI/Main_Menu.tscn"

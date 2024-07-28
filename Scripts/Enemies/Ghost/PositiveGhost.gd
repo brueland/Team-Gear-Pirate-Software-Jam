@@ -1,10 +1,9 @@
 extends EnemyBaseClass
-class_name Ghost
+class_name PositiveGhost
 
 var player: CharacterBody2D
 
 @export var speed: float = 50.0
-@export var is_Chasing: bool
 @export var max_health: float = 10.0
 @onready var current_health: float = max_health
 
@@ -16,13 +15,11 @@ var direction: int = 1
 var sprite_direction: String = "right_"
 var dying: bool = false
 
-@onready var staticsmokeParticles = $GhostSprite/StaticSmokeParticles
-@onready var trailParticles = $GhostSprite/TrailParticles
 @onready var sprite = $GhostSprite
 @onready var collider = $GhostCollider
+@onready var intent: bool = get_meta("Positive_Ghost", false)
 
 func _ready():
-	sprite.play("Idle")
 	player = GlobalReferences.playerBody
 	var unique_material = ShaderMaterial.new()
 	unique_material.shader = shader_resource
@@ -36,30 +33,14 @@ func _ready():
 	sprite.material.set_shader_parameter("dissolve_noise3", shader_noise_texture)
 
 func  _physics_process(delta):
-	if is_Chasing and !in_light:
-		chase_player(delta)
-	else:
-		velocity = lerp(velocity, Vector2.ZERO, delta*40)
+	velocity = lerp(velocity, Vector2.ZERO, delta*40)
 		
 	if !dying:
 		handle_animation()
-		handle_particle_position()
-		handle_particle_ratio()
 		heal(delta)
 	else:
 		dying_sequence(delta)
 	move_and_slide()
-
-func chase_player(delta):
-	var target_position_noise = randf_range(0.90, 1.10)
-	var target_position = player.position*target_position_noise
-	
-	velocity = lerp(velocity, position.direction_to(target_position) * speed, delta) 
-	
-	if velocity.x < 0.0:
-		direction = -1
-	elif velocity.x > 0.0:
-		direction = 1
 
 func handle_animation():	
 	if direction < 0:
@@ -69,16 +50,6 @@ func handle_animation():
 		sprite_direction = "left_"
 		sprite.flip_h = false
 
-func handle_particle_position():
-	if direction > 0:
-		staticsmokeParticles.position = Vector2(-11,10)
-		trailParticles.position = Vector2(-8,9)
-	else:
-		staticsmokeParticles.position = Vector2(11,10)
-		trailParticles.position = Vector2(8,9)
-		
-func handle_particle_ratio():
-	staticsmokeParticles.amount_ratio = clamp(current_health/max_health, 0.1, 1.0)
 
 func take_damage(damage_amount):
 	current_health -= damage_amount
@@ -86,7 +57,6 @@ func take_damage(damage_amount):
 		
 	if current_health <= 0:
 		dying = true
-		is_Chasing = false
 
 func dying_sequence(delta):
 	set_collision_layer_value(5, false)

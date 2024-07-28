@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-# TODO: Jump Buffer?
 # TODO: Grapple rope effect
 # TODO: sound FX
 
@@ -9,6 +8,7 @@ class_name Player
 @onready var playerSprite = $PlayerSprite
 @onready var armSprite = $PlayerSprite/Arm
 @onready var aimSprite = $PlayerSprite/AimReticle
+@onready var hand  = $PlayerSprite/Arm/Hand
 
 # Grappling Hook Scene Path
 @onready var grapplingHookScene : PackedScene = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
@@ -16,7 +16,6 @@ class_name Player
 # Mantle Raycast Nodes
 @onready var shoulderRaycast = $PlayerRaycasts/ShoulderRaycast
 @onready var headRaycast = $PlayerRaycasts/HeadRaycast
-@onready var upRaycast =  $PlayerRaycasts/UpRaycast
 @onready var raycastLength : float = 11.5
 
 # Dash Nodes
@@ -27,21 +26,27 @@ class_name Player
 # Timer Nodes
 @onready var mantle_timer : Timer = $Timers/MantleTimer
 @onready var hang_timer : Timer = $Timers/HangTimer
+@onready var damage_timer : Timer = $Timers/DamageTimer
+@onready var invincibility_timer : Timer = $Timers/InvincibilityTimer
 
 # Player Exports
 @export_category("Player Movement")
 @export var run_speed : float = 150.0
 @export var jump_height : float = -600.0
-@export var max_jumps : int = 1
+@export var max_jumps : int = 2
 @export var dash_enabled : bool = false
 @export var dash_speed : float = 400.0
 
+# Player Status
+@export_category("Player Status")
+@export var max_health : int = 2
+var current_health : int = max_health
+
+# Player Aiming
 @export_category("Player Aim")
 @export var aim_radius : float = 64.0
 
 @export_group("")
-
-
 
 # Enum to define States
 enum {
@@ -65,12 +70,15 @@ var state = STATE_IDLE
 var direction : int = 1
 var can_mantle : bool = true
 var can_hang : bool = true
+var can_damage : bool = true
 var jump_count : int  = 1
 var coyote_timeout : bool = false
 var coyote_y_velocity_limit : float = 100.0
 var aim_vector : Vector2 = Vector2.ZERO
 var grappling : bool = false
-var grappling_hook
+var grappling_hook: Grapple
+var held_lantern: Lantern = null
+
 
 # This is all just style, delete if dumb
 var aim_reset_counter : int = 0
@@ -80,12 +88,23 @@ var aim_reset_counter_max : int = 100
 @export var mouseEnabled : bool = false
 @export var controllerEnabled : bool = true
 
+var area_entered_flag = false
+var entered_areas = []
+
+signal game_over
+
 func _ready():
 	GlobalReferences.playerBody = self
+	current_health = max_health
 	playerSprite.play("right_idle")
+	_ready_timers()
+
+func _ready_timers():
 	mantle_timer.connect("timeout", _on_mantle_timer_timeout)
 	hang_timer.connect("timeout", _on_hang_timer_timeout)
-	
+	damage_timer.connect("timeout", _on_damage_timer_timeout)
+	invincibility_timer.connect("timeout", _on_invincibility_timer_timeout)
+
 func _physics_process(delta):
 	if is_on_floor():
 		velocity.y = 0.0
@@ -100,11 +119,15 @@ func _physics_process(delta):
 		handle_aim_input()
 		handle_grapple_input()
 		handle_jump_input()
-	hang_check()
+		
+	if area_entered_flag:
+		process_entered_areas() # new Hang Check
+	
 	set_y_velocity(delta)
 	adjust_arm_pivot()
+	adjust_held_item_position()
 	move_and_slide()
-	
+
 func handle_directional_input():
 	## Used to determine what changes in physics need to be applied
 	## based on the current inputs from the player
@@ -146,7 +169,8 @@ func handle_jump_input():
 func handle_grapple_input():
 	if (Input.is_action_just_pressed("GrapplingHook")
 		and state != STATE_DASHING 
-		and state != STATE_DAMAGE):
+		and state != STATE_DAMAGE
+		and held_lantern == null):
 
 		grappling_hook = grapplingHookScene.instantiate()
 		owner.add_child(grappling_hook)
@@ -159,8 +183,14 @@ func handle_grapple_input():
 			change_state(STATE_IDLE, direction)
 
 		velocity = Vector2.ZERO
-		return grappling_hook
-	return
+	elif (Input.is_action_just_pressed("GrapplingHook")
+		and state != STATE_DASHING 
+		and state != STATE_DAMAGE
+		and held_lantern != null):
+		held_lantern.global_position.x = hand.global_position.x
+		held_lantern.global_position.y = global_position.y
+		held_lantern = null
+		can_mantle = true
 
 func handle_aim_input():
 	if mouseEnabled and !controllerEnabled:
@@ -188,7 +218,6 @@ func handle_grapple(delta):
 	
 	if grappling_hook.attached:
 		velocity += (grappling_hook.global_position - global_position).normalized() * delta * grappling_hook.max_speed
-		
 		change_state(STATE_JUMP, direction)
 	else:
 		state = STATE_IDLE
@@ -205,6 +234,8 @@ func set_y_velocity(delta):
 		jump_count = 1
 		coyote_timeout = false
 		velocity = Vector2.ZERO
+	elif state == STATE_DAMAGE:
+		velocity = Vector2(-60.0*direction,-60.0)
 	else:
 		velocity.y += GRAVITY * delta
 
@@ -318,6 +349,12 @@ func handle_state():
 				change_state(STATE_IDLE, new_direction)
 			else:
 				change_state(STATE_FALL, new_direction)
+				
+		STATE_DAMAGE:
+			if can_damage:
+				can_damage = false 
+				damage_timer.start()
+
 
 func change_state(new_state, new_direction):
 	## Used for changing the animation and any directional 
@@ -330,11 +367,12 @@ func change_state(new_state, new_direction):
 	direction = new_direction
 	shoulderRaycast.target_position.x = direction * raycastLength
 	headRaycast.target_position.x = direction * raycastLength
+
 	
 	var facing : String = "right_"
 	if direction < 0:
 		facing = "left_"
-
+		
 	match state:
 		STATE_IDLE:
 			playerSprite.play(facing + "idle")
@@ -363,7 +401,9 @@ func mantle_check():
 			if !headRaycast.is_colliding():
 				var collider = shoulderRaycast.get_collider()
 				if collider.is_class("TileMap"):
-					var target_y = position.y + collider.local_to_map(position).y
+					var collision_point = shoulderRaycast.get_collision_point()
+					var tile_size = collider.tile_set.tile_size.y
+					var target_y = floor(collision_point.y / tile_size) * tile_size + 6
 					# This call deferred makes sure the player's location
 					# and collision location are set before updating y pos
 					call_deferred("_set_mantle_y_position", target_y)
@@ -371,16 +411,6 @@ func mantle_check():
 					# Ultimately this call should be traced back to
 					# handle_state if correctly handled
 					change_state(STATE_MANTLING, direction)
-
-func hang_check():
-	if upRaycast.is_colliding() and can_hang and grappling:
-		var collider = upRaycast.get_collider()
-		if collider:
-			if collider.is_class("TileMap"):
-				var rid = upRaycast.get_collider_rid()
-				var layer = collider.get_layer_for_body_rid(rid)
-				if layer == 1:
-					change_state(STATE_HANGING, direction)
 
 
 func emit_dash_particles():
@@ -470,11 +500,72 @@ func adjust_arm_pivot():
 	else:
 		armSprite.visible = true
 
+func adjust_held_item_position():
+	if held_lantern != null:
+		held_lantern.global_position = hand.global_position
+		held_lantern.global_position.y += 4
+		can_mantle = false
+
+func process_entered_areas():
+	for area in entered_areas:
+		if grappling and can_hang:
+			if area.name == "GrappleObjectArea2D":
+				var target_position = area.get_node("HangPoint").global_position
+				change_state(STATE_HANGING, direction)
+
+				position.x = target_position.x
+				position.y = target_position.y + 20
+				grappling_hook.queue_free()
+				
+	# Reset the flag and clear the list
+	area_entered_flag = false
+	entered_areas.clear()
+
+func take_damage(amount: int):
+	current_health -= amount
+	current_health = max(current_health, 0)
+		
+	if current_health <= 0:
+		die()
+	else:
+		change_state(STATE_DAMAGE, direction)
+
+func die():
+	change_state(STATE_DYING, direction)
+	set_physics_process(false)
+	set_process_input(false)
+	
+	if is_instance_valid(held_lantern):
+		held_lantern.queue_free()
+		
+	armSprite.visible = false
+	emit_signal("game_over")
+	
 func _set_mantle_y_position(target_y):
 	position.y = target_y
+
+func _set_hang_position(target_x, target_y):
+	position.x = target_x
+	position.y = target_y
+	grappling_hook.queue_free()
 
 func _on_mantle_timer_timeout():
 	can_mantle = true
 	
 func _on_hang_timer_timeout():
 	can_hang = true
+
+func _on_hook_collision_area_2d_area_entered(area):
+	area_entered_flag = true
+	entered_areas.append(area)
+
+func _on_hitbox_area_2d_area_entered(area):
+	if area.name == 'HazardArea2D' and can_damage:
+		take_damage(area.get_meta("DamageAmount"))
+
+func _on_damage_timer_timeout():
+	state = STATE_IDLE
+	invincibility_timer.start()
+
+func _on_invincibility_timer_timeout():
+	can_damage = true
