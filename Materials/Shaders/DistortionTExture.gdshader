@@ -16,10 +16,13 @@ uniform float alpha: hint_range(0.0, 1.0);
 
 uniform float distortion_strength: hint_range(-1.0, 1.0) = 0.1;
 
+uniform float floatingSpeedX =1;
+uniform float floatingSpeedY =1;
+
 void vertex() {
 	
 	VERTEX += vec2(0,0);
-	VERTEX += vec2(cos(TIME)*0.1, sin(TIME)*1.0);
+	VERTEX += vec2(cos(TIME)* floatingSpeedX, sin(TIME)*floatingSpeedY);
 }
 
 void fragment() {

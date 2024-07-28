@@ -141,8 +141,10 @@ Aim_Down={
 2d_physics/layer_5="Enemy"
 2d_physics/layer_6="BossDamage"
 2d_physics/layer_7="MantleSurface"
+2d_physics/layer_8="Items"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
+viewport/hdr_2d=true

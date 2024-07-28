@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg0c6nkar73c1"
-path="res://.godot/imported/LightTexture.png-bab889e09d36e8274c70f7aa2fea5f14.ctex"
+uid="uid://du3dsb4qrpe31"
+path="res://.godot/imported/BioGhost.png-a7bc2a468a264e99408217b5606866dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Lighting/LightTexture.png"
-dest_files=["res://.godot/imported/LightTexture.png-bab889e09d36e8274c70f7aa2fea5f14.ctex"]
+source_file="res://Assets/Sprites/BioGhost.png"
+dest_files=["res://.godot/imported/BioGhost.png-a7bc2a468a264e99408217b5606866dc.ctex"]
 
 [params]
 

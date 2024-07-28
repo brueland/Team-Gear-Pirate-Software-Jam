@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg0c6nkar73c1"
-path="res://.godot/imported/LightTexture.png-bab889e09d36e8274c70f7aa2fea5f14.ctex"
+uid="uid://b3ibblmrpp4em"
+path="res://.godot/imported/ArchGhost.png-441f507f4047adaa5c3b0a27a135c208.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Lighting/LightTexture.png"
-dest_files=["res://.godot/imported/LightTexture.png-bab889e09d36e8274c70f7aa2fea5f14.ctex"]
+source_file="res://Assets/Sprites/ArchGhost.png"
+dest_files=["res://.godot/imported/ArchGhost.png-441f507f4047adaa5c3b0a27a135c208.ctex"]
 
 [params]
 
