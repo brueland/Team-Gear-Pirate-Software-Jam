@@ -1,10 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwhhaipcwsipi"]
+[gd_scene load_steps=10 format=3 uid="uid://dwhhaipcwsipi"]
 
 [ext_resource type="PackedScene" uid="uid://c07q18q56d3jq" path="res://Scenes/Levels/room_container.tscn" id="1_b3l3q"]
 [ext_resource type="PackedScene" uid="uid://bmrq4ow8mnkml" path="res://Scenes/Player/Player.tscn" id="2_7iffm"]
 [ext_resource type="PackedScene" uid="uid://bt142sob7ui0m" path="res://Scenes/Items/Lantern/Lantern.tscn" id="3_upawx"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_4pk38"]
 [ext_resource type="PackedScene" uid="uid://bc0dr5caoiwv2" path="res://Scenes/Levels/Lab/TransitipnFadeout.tscn" id="5_87rhm"]
+[ext_resource type="Shader" path="res://Materials/Shaders/TransitionShader.gdshader" id="6_ibg4r"]
+[ext_resource type="Texture2D" uid="uid://d184q3kgw4m1h" path="res://Assets/Sprites/curtain.png" id="7_cxq6e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1o7oe"]
+resource_local_to_scene = true
+shader = ExtResource("6_ibg4r")
+shader_parameter/cutoff = 1.0
+shader_parameter/smooth_size = 0.248
+shader_parameter/color = null
+shader_parameter/mask = ExtResource("7_cxq6e")
 
 [sub_resource type="Environment" id="Environment_hfp0s"]
 ambient_light_energy = 2.0
@@ -19,7 +29,7 @@ adjustment_brightness = 0.01
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_b3l3q")]
 player = NodePath("../Player")
 camera = NodePath("../Player/Camera")
-first_room = "BIO1_PATH"
+first_room = "FOREST1_PATH"
 first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]
@@ -39,10 +49,17 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("4_4pk38")
 
+[node name="TextureRect" parent="Player/Camera" instance=ExtResource("5_87rhm")]
+material = SubResource("ShaderMaterial_1o7oe")
+offset_left = -863.0
+offset_top = -851.0
+offset_right = 857.0
+offset_bottom = 805.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hfp0s")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.109804, 0.109804, 0.109804, 1)
 
-[node name="TextureRect" parent="." instance=ExtResource("5_87rhm")]
+[editable path="Player/Lantern"]
