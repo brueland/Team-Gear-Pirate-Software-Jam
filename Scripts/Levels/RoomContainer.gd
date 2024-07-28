@@ -16,6 +16,13 @@ func _ready():
 func load_room(room_path: String, room_entrance: String):
 	# Defer the entire process to avoid modification during physics processing
 	can_transition = false
+	for child in get_tree().root.get_children():
+		if child is Lantern:
+			if !child.held:
+				child.queue_free() 	# This is so that when you Move to a new room
+									# if you've set down the lanturn, it returns
+									# to the place where it originally spawned
+				
 	call_deferred("_deferred_load_room", room_path, room_entrance)
 	
 func _deferred_load_room(room_path: String, room_entrance: String):
