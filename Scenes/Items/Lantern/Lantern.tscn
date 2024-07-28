@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://cf640thpcrog" path="res://Assets/Sprites/Lantern/lantern.png" id="1_dmbra"]
 [ext_resource type="Script" path="res://Scripts/Items/Lantern/Lantern.gd" id="2_14b5k"]
-[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="2_cu8pd"]
+[ext_resource type="Texture2D" uid="uid://bg0c6nkar73c1" path="res://Assets/Sprites/Lighting/LightTexture.png" id="2_cu8pd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0k2t"]
-radius = 70.0
+radius = 50.0038
 
 [node name="Lantern" type="Sprite2D"]
+position = Vector2(0, 0.30811)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_dmbra")
 offset = Vector2(1.5, -1.5)
@@ -28,7 +29,8 @@ shadow_color = Color(0, 0, 0, 0.768627)
 texture = ExtResource("2_cu8pd")
 
 [node name="LanternArea" type="Area2D" parent="."]
-collision_mask = 0
+collision_layer = 128
+collision_mask = 273
 
 [node name="LightCollision2D" type="CollisionShape2D" parent="LanternArea"]
 shape = SubResource("CircleShape2D_b0k2t")

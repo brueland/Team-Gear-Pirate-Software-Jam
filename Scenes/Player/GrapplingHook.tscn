@@ -22,4 +22,6 @@ joint_mode = 2
 [node name="OrianaEvansHook" type="Sprite2D" parent="."]
 texture = ExtResource("3_4kw6y")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

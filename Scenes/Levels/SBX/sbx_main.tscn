@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://o6ucr1l65mpj"]
+[gd_scene load_steps=5 format=3 uid="uid://o6ucr1l65mpj"]
 
 [ext_resource type="PackedScene" uid="uid://bmrq4ow8mnkml" path="res://Scenes/Player/Player.tscn" id="1_fde0w"]
 [ext_resource type="PackedScene" uid="uid://c07q18q56d3jq" path="res://Scenes/Levels/room_container.tscn" id="1_mc1ew"]
-[ext_resource type="PackedScene" uid="uid://bt142sob7ui0m" path="res://Scenes/Items/Lantern/Lantern.tscn" id="2_0pui2"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_e6es2"]
 
 [sub_resource type="Environment" id="Environment_aikb8"]
@@ -18,6 +17,7 @@ adjustment_brightness = 0.01
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_mc1ew")]
 player = NodePath("../Player")
 camera = NodePath("../Player/Camera")
+first_room = "SBX_SCENE_2_PATH"
 first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("1_fde0w")]
@@ -25,9 +25,6 @@ position = Vector2(90, -32)
 dash_enabled = true
 mouseEnabled = true
 controllerEnabled = false
-
-[node name="Lantern" parent="Player" instance=ExtResource("2_0pui2")]
-position = Vector2(-2, 3)
 
 [node name="Camera" type="Camera2D" parent="Player"]
 zoom = Vector2(2.295, 2.295)

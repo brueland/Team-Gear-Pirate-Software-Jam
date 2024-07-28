@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu2hqanyusni7"]
+[gd_scene load_steps=13 format=3 uid="uid://bu2hqanyusni7"]
 
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="2_uvyc5"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="3_2aupg"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="4_yd0s8"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="5_n5441"]
-[ext_resource type="PackedScene" uid="uid://dac54w6hyd25f" path="res://Scenes/Enemies/Ghost/Ghost.tscn" id="6_5pnmq"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="6_w0xi0"]
 [ext_resource type="Texture2D" uid="uid://0ke3fdjrj2f5" path="res://Assets/Sprites/UI/Icons/DSprite.png" id="7_6fg3w"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="8_lfs40"]
+[ext_resource type="PackedScene" uid="uid://bsnxb3d7pqb4a" path="res://Scenes/Enemies/Ghost/ghost_spawner.tscn" id="9_8plkk"]
+[ext_resource type="PackedScene" uid="uid://bt142sob7ui0m" path="res://Scenes/Items/Lantern/Lantern.tscn" id="9_sueof"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyriy"]
 texture = ExtResource("5_n5441")
@@ -417,16 +418,6 @@ position = Vector2(-96, -138)
 target_room = "SBX_SCENE_1_PATH"
 target_room_entrance = "Transition_2"
 
-[node name="Transition_3" parent="TransitionPoints" instance=ExtResource("6_w0xi0")]
-position = Vector2(242, -146)
-rotation = 1.5708
-target_room = "SBX_SCENE_1_PATH"
-target_room_entrance = "Transition_3"
-
-[node name="GhostEnemy" parent="." instance=ExtResource("6_5pnmq")]
-position = Vector2(41, -98)
-is_Chasing = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(86, -138)
 scale = Vector2(2.34434, 2.95003)
@@ -437,5 +428,10 @@ texture = ExtResource("7_6fg3w")
 [node name="CameraBoundsShape" parent="CameraBounds" index="0"]
 position = Vector2(143, -67)
 shape = SubResource("RectangleShape2D_aw4o7")
+
+[node name="Lantern" parent="." instance=ExtResource("9_sueof")]
+position = Vector2(88, -43)
+
+[node name="GhostSpawner" parent="." instance=ExtResource("9_8plkk")]
 
 [editable path="CameraBounds"]

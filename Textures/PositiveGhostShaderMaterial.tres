@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cddwqvf4t0qaq"]
+
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="1_3kk1t"]
+[ext_resource type="Texture2D" uid="uid://bgnwfhclq11ba" path="res://Textures/PositiveGhost.tres" id="2_ebuo8"]
+
+[resource]
+shader = ExtResource("1_3kk1t")
+shader_parameter/dissolve_percent = 0.0
+shader_parameter/distortion_strength = 0.02
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/alpha = 0.621
+shader_parameter/floatingSpeedX = 0.1
+shader_parameter/floatingSpeedY = 0.1
+shader_parameter/dissolve_noise = ExtResource("2_ebuo8")
