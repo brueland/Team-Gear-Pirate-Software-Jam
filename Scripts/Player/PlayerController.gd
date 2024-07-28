@@ -95,6 +95,7 @@ signal game_over
 
 func _ready():
 	GlobalReferences.playerBody = self
+
 	current_health = max_health
 	playerSprite.play("right_idle")
 	_ready_timers()
@@ -355,7 +356,6 @@ func handle_state():
 				can_damage = false 
 				damage_timer.start()
 
-
 func change_state(new_state, new_direction):
 	## Used for changing the animation and any directional 
 	## properties of the player, ie, the raycast directions
@@ -411,7 +411,6 @@ func mantle_check():
 					# Ultimately this call should be traced back to
 					# handle_state if correctly handled
 					change_state(STATE_MANTLING, direction)
-
 
 func emit_dash_particles():
 	## Controls the styled effect for dashing

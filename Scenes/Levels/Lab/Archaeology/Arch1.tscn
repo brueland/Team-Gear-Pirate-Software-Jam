@@ -4327,15 +4327,6 @@ texture = ExtResource("8_t5ou7")
 
 [node name="Decoration" type="Node" parent="."]
 
-[node name="DoorArea2D" parent="Decoration" instance=ExtResource("9_mbkan")]
-position = Vector2(-24, 469)
-
-[node name="DoorArea2D2" parent="Decoration" instance=ExtResource("9_mbkan")]
-position = Vector2(322, 245)
-
-[node name="DoorSprite2D" parent="Decoration/DoorArea2D2" index="0"]
-flip_h = false
-
 [node name="WhaleSkeleton" type="Sprite2D" parent="Decoration"]
 position = Vector2(333, 431)
 scale = Vector2(3.23437, 3.23438)
@@ -4359,9 +4350,14 @@ flip_h = true
 polygon = PackedVector2Array(43.0599, -24.7742, 23.5945, -12.977, 0.589905, -10.0276, -14.1567, -6.48848, -24.7742, 1.76958, -36.5714, 6.48848, -43.6498, 11.2074, -54.8572, 17.6958, -53.0876, 19.4654, -37.1613, 15.9263, -30.0829, 12.977, -20.6451, 2.35945, 1.76959, -6.48848, 22.4148, -8.84793, 38.3411, -20.0553)
 one_way_collision = true
 
+[node name="Door" parent="Decoration" instance=ExtResource("9_mbkan")]
+position = Vector2(-13, 470)
+
+[node name="Door2" parent="Decoration" instance=ExtResource("9_mbkan")]
+position = Vector2(335, 245)
+
 [node name="PositiveGhost" parent="." instance=ExtResource("8_kwuu4")]
 
 [editable path="TransitionPoints/Transition_2"]
 [editable path="TransitionPoints/Transition_3"]
 [editable path="CameraBounds"]
-[editable path="Decoration/DoorArea2D2"]

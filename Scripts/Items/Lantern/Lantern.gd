@@ -10,6 +10,7 @@ var bodies_in_area = []
 var held: bool = false
 
 func _ready():
+	GlobalReferences.lantern = self
 	start_floating()
 
 func _physics_process(delta):

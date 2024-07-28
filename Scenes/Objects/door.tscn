@@ -2,17 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://c5lwuyuvn3trd" path="res://Assets/Sprites/Items/door.png" id="1_dqigg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3qta"]
-size = Vector2(6.75123, 43.0783)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbe2m"]
+size = Vector2(4.50082, 43.0784)
 
-[node name="DoorArea2D" type="Area2D"]
+[node name="Door" type="Node2D"]
+
+[node name="DoorArea2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+
+[node name="DoorCollisionShape2D" type="CollisionShape2D" parent="DoorArea2D"]
+position = Vector2(0, 2.5)
+scale = Vector2(0.888726, 1.13746)
+shape = SubResource("RectangleShape2D_wbe2m")
 
 [node name="DoorSprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.888726, 1.13746)
 texture = ExtResource("1_dqigg")
 flip_h = true
-
-[node name="DoorCollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.4999)
-scale = Vector2(0.888726, 1.13746)
-shape = SubResource("RectangleShape2D_c3qta")
