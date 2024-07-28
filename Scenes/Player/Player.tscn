@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://bmrq4ow8mnkml"]
+[gd_scene load_steps=115 format=3 uid="uid://bmrq4ow8mnkml"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_bkal2"]
 [ext_resource type="Texture2D" uid="uid://bg5gbbn735ffl" path="res://Assets/Sprites/Player/Death.png" id="2_8t877"]
@@ -390,8 +390,26 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uom5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxwps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uom5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxwps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uom5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxwps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uom5t")
 }],
-"loop": true,
+"loop": false,
 "name": &"left_damage",
 "speed": 10.0
 }, {
@@ -538,8 +556,26 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ta7yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apdeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta7yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apdeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta7yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apdeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta7yp")
 }],
-"loop": true,
+"loop": false,
 "name": &"right_damage",
 "speed": 10.0
 }, {
@@ -682,7 +718,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyc5k"]
 radius = 10.5
-height = 28.0
+height = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdvuq"]
 radius = 11.0
@@ -715,6 +751,10 @@ frame_3/duration = 0.1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.974227, 0), -2.82848, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldxbc"]
+radius = 10.5
+height = 26.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 57
 floor_snap_length = 8.0
@@ -722,13 +762,16 @@ script = ExtResource("1_bkal2")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_running"
+animation = &"left_damage"
 speed_scale = 2.0
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
 position = Vector2(-1.5, -7.5)
 texture = ExtResource("24_1kxht")
 offset = Vector2(4.5, 0)
+
+[node name="Hand" type="Node2D" parent="PlayerSprite/Arm"]
+position = Vector2(11.5, -0.5)
 
 [node name="AimReticle" type="Sprite2D" parent="PlayerSprite"]
 visible = false
@@ -740,7 +783,6 @@ texture = ExtResource("25_ar4as")
 shape = SubResource("CircleShape2D_kiq4c")
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="HookCollisionArea2D" type="Area2D" parent="."]
@@ -813,4 +855,19 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="DamageTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+
+[node name="InvincibilityTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="HitboxArea2D" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="HitboxArea2D"]
+shape = SubResource("CapsuleShape2D_ldxbc")
+
 [connection signal="area_entered" from="HookCollisionArea2D" to="." method="_on_hook_collision_area_2d_area_entered"]
+[connection signal="area_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_area_entered"]
