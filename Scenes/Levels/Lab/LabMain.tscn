@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://Materials/Shaders/TransitionShader.gdshader" id="6_ibg4r"]
 [ext_resource type="Texture2D" uid="uid://d184q3kgw4m1h" path="res://Assets/Sprites/curtain.png" id="7_cxq6e"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qik6i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kth4"]
 resource_local_to_scene = true
 shader = ExtResource("6_ibg4r")
 shader_parameter/cutoff = 1.0
@@ -42,7 +42,7 @@ controllerEnabled = false
 position = Vector2(-2, 3)
 
 [node name="Camera" type="Camera2D" parent="Player"]
-zoom = Vector2(2.295, 2.295)
+zoom = Vector2(2.5, 2.5)
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -50,7 +50,7 @@ drag_vertical_enabled = true
 script = ExtResource("4_4pk38")
 
 [node name="TextureRect" parent="Player/Camera" instance=ExtResource("5_87rhm")]
-material = SubResource("ShaderMaterial_qik6i")
+material = SubResource("ShaderMaterial_6kth4")
 offset_left = -863.0
 offset_top = -851.0
 offset_right = 857.0
