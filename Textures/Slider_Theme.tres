@@ -28,7 +28,7 @@ texture_margin_bottom = 4.0
 axis_stretch_horizontal = 2
 
 [resource]
-Button/colors/font_color = Color(0.188235, 0.376471, 0.509804, 1)
+Button/colors/font_color = Color(0.14902, 0.309804, 0.427451, 1)
 Button/colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
 Button/colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
 Button/colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
