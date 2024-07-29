@@ -7,7 +7,6 @@
 [ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="5_swvys"]
 [ext_resource type="Texture2D" uid="uid://du3dsb4qrpe31" path="res://Assets/Sprites/NPCs/Ghosts/BioGhost.png" id="6_xk0nh"]
 
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
 texture = ExtResource("4_n1put")
 1:0/0 = 0
