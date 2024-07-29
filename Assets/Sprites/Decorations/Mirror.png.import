@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4sl7oyc8l3bb"
-path="res://.godot/imported/TitleWOrds.png-b69a3f5c32316af3e6facf95c65cf511.ctex"
+uid="uid://dum5fv53fx5co"
+path="res://.godot/imported/Mirror.png-4a7fd8d31aceb6e960e8ef711d9168be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/TitleWOrds.png"
-dest_files=["res://.godot/imported/TitleWOrds.png-b69a3f5c32316af3e6facf95c65cf511.ctex"]
+source_file="res://Assets/Sprites/Decorations/Mirror.png"
+dest_files=["res://.godot/imported/Mirror.png-4a7fd8d31aceb6e960e8ef711d9168be.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3ibblmrpp4em"
-path="res://.godot/imported/ArchGhost.png-441f507f4047adaa5c3b0a27a135c208.ctex"
+path="res://.godot/imported/ArchGhost.png-b0668bdf2cf8c0db6922e8437f3b0d1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ArchGhost.png"
-dest_files=["res://.godot/imported/ArchGhost.png-441f507f4047adaa5c3b0a27a135c208.ctex"]
+source_file="res://Assets/Sprites/NPCs/Ghosts/ArchGhost.png"
+dest_files=["res://.godot/imported/ArchGhost.png-b0668bdf2cf8c0db6922e8437f3b0d1a.ctex"]
 
 [params]
 

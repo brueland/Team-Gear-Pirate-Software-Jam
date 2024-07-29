@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dum5fv53fx5co"
-path="res://.godot/imported/Mirror.png-fd3dd8f60d7bf9ee792a59916e271d74.ctex"
+uid="uid://dl7pg5d7c5a7e"
+path="res://.godot/imported/HatGhost.png-0ca76a19566d4c600c7d7006293230d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Mirror.png"
-dest_files=["res://.godot/imported/Mirror.png-fd3dd8f60d7bf9ee792a59916e271d74.ctex"]
+source_file="res://Assets/Sprites/NPCs/Ghosts/HatGhost.png"
+dest_files=["res://.godot/imported/HatGhost.png-0ca76a19566d4c600c7d7006293230d6.ctex"]
 
 [params]
 
