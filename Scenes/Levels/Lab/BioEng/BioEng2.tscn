@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="3_y8my6"]
 [ext_resource type="PackedScene" uid="uid://biyywu5rff2t8" path="res://Scenes/Levels/Lab/BioEng/medical_machine.tscn" id="4_7rbff"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="4_n1put"]
-[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="5_swvys"]
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="5_swvys"]
 [ext_resource type="Texture2D" uid="uid://du3dsb4qrpe31" path="res://Assets/Sprites/NPCs/Ghosts/BioGhost.png" id="6_xk0nh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]

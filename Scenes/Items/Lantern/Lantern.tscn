@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt142sob7ui0m"]
 
-[ext_resource type="Texture2D" uid="uid://cf640thpcrog" path="res://Assets/Sprites/Lantern/lantern.png" id="1_dmbra"]
+[ext_resource type="Texture2D" uid="uid://cf640thpcrog" path="res://Assets/Sprites/Items/Lantern/lantern.png" id="1_dmbra"]
 [ext_resource type="Script" path="res://Scripts/Items/Lantern/Lantern.gd" id="2_14b5k"]
 [ext_resource type="Texture2D" uid="uid://bg0c6nkar73c1" path="res://Assets/Sprites/Lighting/LightTexture.png" id="2_cu8pd"]
 

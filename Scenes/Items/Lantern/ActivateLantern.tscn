@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://0xv8qtb5rn70"]
 
-[ext_resource type="Texture2D" uid="uid://cf640thpcrog" path="res://Assets/Sprites/Lantern/lantern.png" id="1_mcu8i"]
+[ext_resource type="Texture2D" uid="uid://cf640thpcrog" path="res://Assets/Sprites/Items/Lantern/lantern.png" id="1_mcu8i"]
 [ext_resource type="Script" path="res://Scripts/Items/Lantern/ActivateLantern.gd" id="2_2rojq"]
 [ext_resource type="Texture2D" uid="uid://bg0c6nkar73c1" path="res://Assets/Sprites/Lighting/LightTexture.png" id="3_d8l4w"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0k2t"]
 radius = 50.0038

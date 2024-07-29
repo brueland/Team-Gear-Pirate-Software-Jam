@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlfvlfcjgtiv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/GameUI.gd" id="1_eu326"]
-[ext_resource type="Texture2D" uid="uid://cjtfh567jyugy" path="res://Assets/Sprites/Lantern/lantern_full.png" id="2_ham3w"]
+[ext_resource type="Texture2D" uid="uid://cjtfh567jyugy" path="res://Assets/Sprites/Items/Lantern/lantern_full.png" id="2_ham3w"]
+
 
 [node name="GameUI" type="Control"]
 layout_mode = 3

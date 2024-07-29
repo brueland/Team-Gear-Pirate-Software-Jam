@@ -1,9 +1,10 @@
 [gd_scene load_steps=23 format=3 uid="uid://ceccic3fq3gbc"]
 
-[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="1_53lmx"]
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="1_53lmx"]
 [ext_resource type="Texture2D" uid="uid://3eh0ri6n0kl0" path="res://Assets/Sprites/Enemies/Skeletor2-Sheet.png" id="2_70sbn"]
 [ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="3_27oi0"]
 [ext_resource type="Texture2D" uid="uid://57h0iqcmimdp" path="res://Assets/Sprites/Enemies/Skeletor2BG.png" id="4_6qlrb"]
+
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yyofv"]
 seed = 2
