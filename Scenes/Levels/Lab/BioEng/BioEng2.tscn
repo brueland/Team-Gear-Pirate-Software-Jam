@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="3_y8my6"]
 [ext_resource type="PackedScene" uid="uid://biyywu5rff2t8" path="res://Scenes/Levels/Lab/BioEng/medical_machine.tscn" id="4_7rbff"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="4_n1put"]
-[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="5_swvys"]
-[ext_resource type="Texture2D" uid="uid://du3dsb4qrpe31" path="res://Assets/Sprites/BioGhost.png" id="6_xk0nh"]
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="5_swvys"]
+[ext_resource type="Texture2D" uid="uid://du3dsb4qrpe31" path="res://Assets/Sprites/NPCs/Ghosts/BioGhost.png" id="6_xk0nh"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
 texture = ExtResource("4_n1put")
@@ -3968,6 +3969,7 @@ shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/alpha = 0.954
 shader_parameter/floatingSpeedX = 0.1
 shader_parameter/floatingSpeedY = 0.1
+shader_parameter/color = null
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_3pj3f")
 
 [node name="BioEng2" type="Node2D"]

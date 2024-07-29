@@ -1,0 +1,143 @@
+[gd_scene load_steps=23 format=3 uid="uid://ceccic3fq3gbc"]
+
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="1_53lmx"]
+[ext_resource type="Texture2D" uid="uid://3eh0ri6n0kl0" path="res://Assets/Sprites/Enemies/Skeletor2-Sheet.png" id="2_70sbn"]
+[ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="3_27oi0"]
+[ext_resource type="Texture2D" uid="uid://57h0iqcmimdp" path="res://Assets/Sprites/Enemies/Skeletor2BG.png" id="4_6qlrb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yyofv"]
+seed = 2
+frequency = 0.0182
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p43o8"]
+seamless = true
+noise = SubResource("FastNoiseLite_yyofv")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_swmyk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vxurx"]
+seamless = true
+noise = SubResource("FastNoiseLite_swmyk")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nemln"]
+frequency = 0.4879
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tlbve"]
+seamless = true
+noise = SubResource("FastNoiseLite_nemln")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hpr1"]
+resource_local_to_scene = true
+shader = ExtResource("1_53lmx")
+shader_parameter/dissolve_percent = 0.212
+shader_parameter/distortion_strength = 0.02
+shader_parameter/offset1 = Vector2(0.01, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/alpha = 1.0
+shader_parameter/floatingSpeedX = 0.0
+shader_parameter/floatingSpeedY = 1.0
+shader_parameter/color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_p43o8")
+shader_parameter/dissolve_noise2 = SubResource("NoiseTexture2D_vxurx")
+shader_parameter/dissolve_noise3 = SubResource("NoiseTexture2D_tlbve")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_615yd"]
+atlas = ExtResource("2_70sbn")
+region = Rect2(0, 0, 80, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2yqx"]
+atlas = ExtResource("2_70sbn")
+region = Rect2(80, 0, 80, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csv1m"]
+atlas = ExtResource("2_70sbn")
+region = Rect2(160, 0, 80, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsaqn"]
+atlas = ExtResource("2_70sbn")
+region = Rect2(240, 0, 80, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_an54u"]
+animations = [{
+"frames": [{
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_615yd")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_f2yqx")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_csv1m")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_gsaqn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y6gda"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_1xnjp"]
+offsets = PackedFloat32Array(0.0114416, 0.0526316, 0.935961, 0.981693)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1231"]
+gradient = SubResource("Gradient_1xnjp")
+
+[sub_resource type="Curve" id="Curve_4hhg2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496711, 1), 0.0, 0.0, 0, 0, Vector2(0.970395, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qfrw6"]
+curve = SubResource("Curve_4hhg2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aye17"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.67, 2.49, 1)
+emission_shape = 2
+emission_sphere_radius = 13.81
+direction = Vector3(0, 0, 0)
+orbit_velocity_min = -0.275
+orbit_velocity_max = 0.065
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_qfrw6")
+color_ramp = SubResource("GradientTexture1D_b1231")
+anim_speed_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_speed = Vector3(-1, 1, 0)
+turbulence_influence_min = 0.35
+turbulence_influence_max = 0.403
+turbulence_initial_displacement_min = -1.0
+
+[node name="Skeletor" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_2hpr1")
+sprite_frames = SubResource("SpriteFrames_an54u")
+frame_progress = 0.996264
+
+[node name="StaticSmokeParticles" type="GPUParticles2D" parent="AnimatedSprite2D"]
+z_index = -1
+material = SubResource("CanvasItemMaterial_y6gda")
+position = Vector2(8, -2)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_aye17")
+texture = ExtResource("3_27oi0")
+randomness = 1.0
+trail_lifetime = 10.0
+trail_section_subdivisions = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(7, 1)
+texture = ExtResource("4_6qlrb")

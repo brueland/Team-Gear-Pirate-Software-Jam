@@ -18,6 +18,7 @@ uniform float alpha: hint_range(0.0, 1.0) = 1.0;
 uniform float floatingSpeedX =1;
 uniform float floatingSpeedY =1;
 
+uniform vec4 color: source_color;
 void vertex() {
 	VERTEX += vec2(0,0);
 	VERTEX += vec2(cos(TIME)* floatingSpeedX, sin(TIME)*floatingSpeedY);
@@ -34,8 +35,8 @@ void fragment() {
 	if(dissolve_percent >= noise.r)
 	{
 		final_color.a = 0.0;
-		COLOR = vec4(final_color.r, final_color.g,final_color.b, final_color.a);
+		COLOR = vec4(final_color.r + color.r, final_color.g + color.g,final_color.b +color.b, final_color.a);
 	}else{
-		COLOR = vec4(final_color.r, final_color.g,final_color.b, final_color.a * alpha);
+		COLOR = vec4(final_color.r  -color.r, final_color.g  -color.g,final_color.b -color.b, final_color.a * alpha);
 	}
 }
