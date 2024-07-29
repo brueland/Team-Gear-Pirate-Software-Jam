@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3ibblmrpp4em"
-path="res://.godot/imported/ArchGhost.png-441f507f4047adaa5c3b0a27a135c208.ctex"
+uid="uid://dcb5xwwlv5wl6"
+path="res://.godot/imported/ShadowBackground.png-597603fe1649e7edf4e6e806e124d692.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ArchGhost.png"
-dest_files=["res://.godot/imported/ArchGhost.png-441f507f4047adaa5c3b0a27a135c208.ctex"]
+source_file="res://Assets/Sprites/UI/ShadowBackground.png"
+dest_files=["res://.godot/imported/ShadowBackground.png-597603fe1649e7edf4e6e806e124d692.ctex"]
 
 [params]
 

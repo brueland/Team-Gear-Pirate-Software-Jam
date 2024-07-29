@@ -100,29 +100,31 @@ turbulence_initial_displacement_min = -1.0
 
 [sub_resource type="Gradient" id="Gradient_hfge4"]
 offsets = PackedFloat32Array(0.0114416, 0.0526316, 0.935961, 0.981693)
-colors = PackedColorArray(0.0627451, 0.121569, 0.2, 0, 0.00851628, 0.0221068, 0.0255096, 1, 0.0172919, 0.0323944, 0.0427904, 1, 0.0627451, 0.121569, 0.2, 0)
+colors = PackedColorArray(0.0117647, 0.0235294, 0.0313726, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0117647, 0.027451, 0.0352941, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1231"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pqvkp"]
 gradient = SubResource("Gradient_hfge4")
 
 [sub_resource type="Curve" id="Curve_2s3q1"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496711, 1), 0.0, 0.0, 0, 0, Vector2(0.970395, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_qfrw6"]
+[sub_resource type="CurveTexture" id="CurveTexture_e0210"]
 curve = SubResource("Curve_2s3q1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ac8lx"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(4.76, 2.575, 1)
+emission_shape_scale = Vector3(3.825, 2.575, 1)
 emission_shape = 2
-emission_sphere_radius = 4.21
+emission_sphere_radius = 3.91
 direction = Vector3(0, 0, 0)
+orbit_velocity_min = 0.075
+orbit_velocity_max = 0.45
 gravity = Vector3(0, -1, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_qfrw6")
-color_ramp = SubResource("GradientTexture1D_b1231")
+scale_curve = SubResource("CurveTexture_e0210")
+color_ramp = SubResource("GradientTexture1D_pqvkp")
 anim_speed_max = 1.0
 turbulence_enabled = true
 turbulence_noise_strength = 6.41
@@ -135,6 +137,7 @@ turbulence_initial_displacement_min = -1.0
 height = 24.0
 
 [node name="GhostEnemy" type="CharacterBody2D"]
+position = Vector2(-27, -5)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_1fhny")
@@ -161,10 +164,9 @@ trail_section_subdivisions = 1
 [node name="StaticSmokeParticles" type="GPUParticles2D" parent="GhostSprite"]
 material = SubResource("CanvasItemMaterial_mgqdj")
 position = Vector2(-15, 5)
-amount = 100
+amount = 500
 process_material = SubResource("ParticleProcessMaterial_ac8lx")
 texture = ExtResource("4_pkxyj")
-lifetime = 4.0
 randomness = 1.0
 trail_lifetime = 10.0
 trail_section_subdivisions = 1

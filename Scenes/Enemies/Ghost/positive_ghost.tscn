@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Ghost/PositiveGhost.gd" id="1_dqr3w"]
 [ext_resource type="Shader" path="res://Materials/Shaders/PositiveGhostDistortionTexture.gdshader" id="2_5eeel"]
 [ext_resource type="Texture2D" uid="uid://bgnwfhclq11ba" path="res://Textures/PositiveGhost.tres" id="3_myg8a"]
-[ext_resource type="Texture2D" uid="uid://b3ibblmrpp4em" path="res://Assets/Sprites/ArchGhost.png" id="4_88grh"]
+[ext_resource type="Texture2D" uid="uid://b3ibblmrpp4em" path="res://Assets/Sprites/NPCs/Ghosts/ArchGhost.png" id="4_88grh"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvu50"]
 radius = 86.977

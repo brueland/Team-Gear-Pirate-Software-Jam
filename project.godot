@@ -40,6 +40,10 @@ folder_colors={
 "res://Scripts/": "red"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 MoveLeft={

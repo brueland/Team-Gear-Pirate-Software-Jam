@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1mqn50anqe7e"]
+[gd_scene load_steps=12 format=3 uid="uid://b1mqn50anqe7e"]
 
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_n8rek"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="3_xmwtq"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="4_4i26l"]
-[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="4_6a8or"]
-[ext_resource type="Texture2D" uid="uid://cu574hldsmg4f" path="res://Assets/Sprites/ChemGhost.png" id="5_yccp2"]
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="4_6a8or"]
+[ext_resource type="Texture2D" uid="uid://cu574hldsmg4f" path="res://Assets/Sprites/NPCs/Ghosts/ChemGhost.png" id="5_yccp2"]
+
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
@@ -4024,30 +4025,16 @@ size = Vector2(1188, 626)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bn0sl"]
 noise = SubResource("FastNoiseLite_vdjsy")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cee3a"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mnwho"]
-noise = SubResource("FastNoiseLite_cee3a")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8xi00"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hvmtt"]
-noise = SubResource("FastNoiseLite_8xi00")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_biqrr"]
 shader = ExtResource("4_6a8or")
-shader_parameter/dissolvePercent = null
-shader_parameter/dissolveSpeed = null
-shader_parameter/dissolving = null
+shader_parameter/dissolve_percent = 0.0
+shader_parameter/distortion_strength = 0.02
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/alpha = 1.0
-shader_parameter/distortion_strength = 0.02
 shader_parameter/floatingSpeedX = 0.1
 shader_parameter/floatingSpeedY = 0.1
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_bn0sl")
-shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_mnwho")
-shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_hvmtt")
 
 [node name="Chem1" type="Node2D"]
 
