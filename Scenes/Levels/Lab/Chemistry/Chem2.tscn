@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_nsiqq"]
 [ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="4_5l7cu"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="4_d5iia"]
-[ext_resource type="Texture2D" uid="uid://dl7pg5d7c5a7e" path="res://Assets/Sprites/HatGhost.png" id="5_pbbwc"]
-[ext_resource type="Texture2D" uid="uid://dum5fv53fx5co" path="res://Assets/Sprites/Mirror.png" id="7_c1pqg"]
+[ext_resource type="Texture2D" uid="uid://dl7pg5d7c5a7e" path="res://Assets/Sprites/NPCs/Ghosts/HatGhost.png" id="5_pbbwc"]
+[ext_resource type="Texture2D" uid="uid://dum5fv53fx5co" path="res://Assets/Sprites/Decorations/Mirror.png" id="7_c1pqg"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
 texture = ExtResource("3_ib673")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl7pg5d7c5a7e"
-path="res://.godot/imported/HatGhost.png-5158a5cb6f3a7316d289195eef6e049e.ctex"
+uid="uid://cu574hldsmg4f"
+path="res://.godot/imported/ChemGhost.png-6edd46910f69b2f012a3b0b142341fd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/HatGhost.png"
-dest_files=["res://.godot/imported/HatGhost.png-5158a5cb6f3a7316d289195eef6e049e.ctex"]
+source_file="res://Assets/Sprites/NPCs/Ghosts/ChemGhost.png"
+dest_files=["res://.godot/imported/ChemGhost.png-6edd46910f69b2f012a3b0b142341fd8.ctex"]
 
 [params]
 

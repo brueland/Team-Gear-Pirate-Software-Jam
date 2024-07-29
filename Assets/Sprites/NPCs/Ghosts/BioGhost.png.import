@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://du3dsb4qrpe31"
-path="res://.godot/imported/BioGhost.png-a7bc2a468a264e99408217b5606866dc.ctex"
+path="res://.godot/imported/BioGhost.png-fbded87b7468ac75ffe739bd7c6b3a92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/BioGhost.png"
-dest_files=["res://.godot/imported/BioGhost.png-a7bc2a468a264e99408217b5606866dc.ctex"]
+source_file="res://Assets/Sprites/NPCs/Ghosts/BioGhost.png"
+dest_files=["res://.godot/imported/BioGhost.png-fbded87b7468ac75ffe739bd7c6b3a92.ctex"]
 
 [params]
 
