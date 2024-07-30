@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://bmrq4ow8mnkml"]
+[gd_scene load_steps=128 format=3 uid="uid://bmrq4ow8mnkml"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_bkal2"]
 [ext_resource type="Texture2D" uid="uid://bg5gbbn735ffl" path="res://Assets/Sprites/Player/Death.png" id="2_8t877"]
@@ -35,10 +35,6 @@
 [ext_resource type="AudioStream" uid="uid://cqpqdhxkybftr" path="res://Assets/Sounds/Player/Wood_Step_1.WAV" id="33_upngx"]
 [ext_resource type="AudioStream" uid="uid://bxs1w07l2li6e" path="res://Assets/Sounds/Player/Wood_Step_2.WAV" id="34_1cma3"]
 [ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Player/Hurt.WAV" id="35_pgl4m"]
-[ext_resource type="AudioStream" uid="uid://dhd8equuwemtc" path="res://Assets/Sounds/Player/GrappleRetrieve.WAV" id="36_jjwja"]
-[ext_resource type="AudioStream" uid="uid://wbffryedxy1u" path="res://Assets/Sounds/Player/GrappleShoot.WAV" id="37_vjcfx"]
-[ext_resource type="AudioStream" uid="uid://ur6mqt2cxmf" path="res://Assets/Sounds/Player/Hook_Attach.WAV" id="38_f6u7b"]
-[ext_resource type="AudioStream" uid="uid://bthwxorrodtsh" path="res://Assets/Sounds/Player/HookMiss.wav" id="39_6qyxx"]
 [ext_resource type="AudioStream" uid="uid://clbjusvojuljx" path="res://Assets/Sounds/Player/Mantel.WAV" id="40_pkeol"]
 [ext_resource type="AudioStream" uid="uid://bxhuvsd75wfb0" path="res://Assets/Sounds/Player/Mantel_w_Grunt.WAV" id="41_bspu8"]
 [ext_resource type="AudioStream" uid="uid://c4hnxl3x4tc3g" path="res://Assets/Sounds/Player/Player_Dash.WAV" id="42_kwjl1"]
@@ -779,7 +775,7 @@ script = ExtResource("1_bkal2")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"left_damage"
+animation = &"right_damage"
 speed_scale = 2.0
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
@@ -894,10 +890,6 @@ concreteStepTwo = ExtResource("32_ck2br")
 woodStepOne = ExtResource("33_upngx")
 woodStepTwo = ExtResource("34_1cma3")
 hurt = ExtResource("35_pgl4m")
-grappleRetrieve = ExtResource("36_jjwja")
-grappleShoot = ExtResource("37_vjcfx")
-hookAttach = ExtResource("38_f6u7b")
-hookHitWall = ExtResource("39_6qyxx")
 mantle = ExtResource("40_pkeol")
 mantle_w_Grunt = ExtResource("41_bspu8")
 dash = ExtResource("42_kwjl1")
@@ -906,6 +898,7 @@ playerJump_w_Grunt = ExtResource("44_gv2fd")
 playerLanding = ExtResource("45_55ifk")
 playerLanding_w_Grunt = ExtResource("46_yoncy")
 
+[connection signal="animation_changed" from="PlayerSprite" to="PlayerAudio" method="_on_player_sprite_animation_changed"]
 [connection signal="frame_changed" from="PlayerSprite" to="PlayerAudio" method="_on_player_sprite_frame_changed"]
 [connection signal="area_entered" from="HookCollisionArea2D" to="." method="_on_hook_collision_area_2d_area_entered"]
 [connection signal="area_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_area_entered"]
