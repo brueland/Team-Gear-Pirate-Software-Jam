@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg2gtcdy6c6ye"
-path="res://.godot/imported/PressurePlate.png-f744520988e0022c1ccc0e78fb65830a.ctex"
+uid="uid://chlkh26qgqfdf"
+path="res://.godot/imported/Moving Shelf.png-6fa6e85b5c7b707fc5a446b87a7fd296.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PressurePlate.png"
-dest_files=["res://.godot/imported/PressurePlate.png-f744520988e0022c1ccc0e78fb65830a.ctex"]
+source_file="res://Assets/Sprites/Moving Shelf.png"
+dest_files=["res://.godot/imported/Moving Shelf.png-6fa6e85b5c7b707fc5a446b87a7fd296.ctex"]
 
 [params]
 

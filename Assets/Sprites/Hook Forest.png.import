@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg2gtcdy6c6ye"
-path="res://.godot/imported/PressurePlate.png-f744520988e0022c1ccc0e78fb65830a.ctex"
+uid="uid://dqsbkov5tgn5m"
+path="res://.godot/imported/Hook Forest.png-c5056d1c994a2a2f930508b5b74c29e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PressurePlate.png"
-dest_files=["res://.godot/imported/PressurePlate.png-f744520988e0022c1ccc0e78fb65830a.ctex"]
+source_file="res://Assets/Sprites/Hook Forest.png"
+dest_files=["res://.godot/imported/Hook Forest.png-c5056d1c994a2a2f930508b5b74c29e4.ctex"]
 
 [params]
 
