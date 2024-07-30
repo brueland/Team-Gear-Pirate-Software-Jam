@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c07q18q56d3jq"]
+[gd_scene load_steps=3 format=3 uid="uid://c07q18q56d3jq"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/RoomContainer.gd" id="1_wa084"]
+[ext_resource type="PackedScene" uid="uid://bc0dr5caoiwv2" path="res://Scenes/Levels/transition_fadeout.tscn" id="2_64s7r"]
 
-[node name="RoomContainer" type="Node" node_paths=PackedStringArray("player")]
+[node name="RoomContainer" type="Node"]
 script = ExtResource("1_wa084")
-player = NodePath("")
 first_room = "SBX_SCENE_1_PATH"
+
+[node name="TransitionFadeout" parent="." instance=ExtResource("2_64s7r")]

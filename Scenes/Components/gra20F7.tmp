@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwnuija8w4hkk"]
-
-[ext_resource type="Script" path="res://Scripts/Components/GrapplingHookComponent.gd" id="1_7jvki"]
-[ext_resource type="PackedScene" uid="uid://mmcj2yssjc6a" path="res://Scenes/Objects/grapplingHook.tscn" id="2_3dtmc"]
-
-[node name="grapplingHookComponent" type="Node2D"]
-script = ExtResource("1_7jvki")
-
-[node name="GrapplingHook" parent="." instance=ExtResource("2_3dtmc")]

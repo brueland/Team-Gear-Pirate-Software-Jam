@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vlfa"]
 size = Vector2(24, 187)
 
-[node name="Transition_1" type="Area2D"]
+[node name="TransitionPoint" type="Area2D"]
 process_priority = -1
 process_physics_priority = -1
 collision_priority = -1.0
