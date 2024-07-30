@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwhhaipcwsipi"]
+[gd_scene load_steps=8 format=3 uid="uid://dwhhaipcwsipi"]
 
 [ext_resource type="PackedScene" uid="uid://c07q18q56d3jq" path="res://Scenes/Levels/room_container.tscn" id="1_b3l3q"]
 [ext_resource type="PackedScene" uid="uid://bmrq4ow8mnkml" path="res://Scenes/Player/Player.tscn" id="2_7iffm"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_4pk38"]
 [ext_resource type="AudioStream" uid="uid://ded2ais0kx8ym" path="res://Assets/Music/Levels/Lab/Music_ShadowBoss_Theme.wav" id="4_mq6wf"]
 [ext_resource type="AudioStream" uid="uid://b4dhf7s3dge3a" path="res://Assets/Music/Levels/Lab/Music_MainTheme.wav" id="5_m8n3x"]
+[ext_resource type="AudioStream" uid="uid://dclvigecn8e3v" path="res://Assets/Music/Levels/BlueRustTheme.wav" id="6_upxff"]
 
 [sub_resource type="Environment" id="Environment_hfp0s"]
 ambient_light_energy = 2.0
@@ -24,6 +25,7 @@ first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]
 position = Vector2(90, -32)
+max_jumps = 5
 dash_enabled = true
 mouseEnabled = true
 controllerEnabled = false
@@ -52,3 +54,6 @@ bus = &"BGM"
 stream = ExtResource("5_m8n3x")
 autoplay = true
 bus = &"BGM"
+
+[node name="Theme" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("6_upxff")

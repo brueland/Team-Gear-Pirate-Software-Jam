@@ -1,10 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1cvrosmfldpp"]
+[gd_scene load_steps=14 format=3 uid="uid://d1cvrosmfldpp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Ghost/PositiveGhost.gd" id="1_dqr3w"]
 [ext_resource type="Shader" path="res://Materials/Shaders/PositiveGhostDistortionTexture.gdshader" id="2_5eeel"]
 [ext_resource type="Texture2D" uid="uid://bgnwfhclq11ba" path="res://Textures/PositiveGhost.tres" id="3_myg8a"]
 [ext_resource type="Texture2D" uid="uid://b3ibblmrpp4em" path="res://Assets/Sprites/NPCs/Ghosts/ArchGhost.png" id="4_88grh"]
+[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTExture.gdshader" id="4_glwdk"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hpn35"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kjmdt"]
+noise = SubResource("FastNoiseLite_hpn35")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6vxe1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g3d6m"]
+noise = SubResource("FastNoiseLite_6vxe1")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kxx1p"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7tk5p"]
+noise = SubResource("FastNoiseLite_kxx1p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r72mp"]
+shader = ExtResource("4_glwdk")
+shader_parameter/dissolve_percent = 0.0
+shader_parameter/distortion_strength = 0.02
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/alpha = 1.0
+shader_parameter/floatingSpeedX = 0.1
+shader_parameter/floatingSpeedY = 0.1
+shader_parameter/color = null
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_kjmdt")
+shader_parameter/dissolve_noise2 = SubResource("NoiseTexture2D_g3d6m")
+shader_parameter/dissolve_noise3 = SubResource("NoiseTexture2D_7tk5p")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvu50"]
 radius = 86.977
@@ -19,6 +48,7 @@ shader_noise_texture = ExtResource("3_myg8a")
 metadata/positive_ghost = true
 
 [node name="GhostSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_r72mp")
 texture = ExtResource("4_88grh")
 
 [node name="GhostCollider" type="CollisionShape2D" parent="."]

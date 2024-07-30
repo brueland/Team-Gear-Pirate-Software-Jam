@@ -26,7 +26,7 @@ func _ready():
 	sprite.material = unique_material
 	
 	sprite.material.set_shader_parameter("alpha", 1)
-	sprite.material.set_shader_parameter("distortion_strength", 0)
+	sprite.material.set_shader_parameter("distortion_strength", 0.02)
 	sprite.material.set_shader_parameter("dissolve_percent", 0)
 	sprite.material.set_shader_parameter("dissolve_noise", shader_noise_texture)
 	sprite.material.set_shader_parameter("dissolve_noise2", shader_noise_texture)
