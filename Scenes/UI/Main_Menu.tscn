@@ -25,7 +25,7 @@ script = ExtResource("1_pu854")
 startGameSFX = ExtResource("2_lg28v")
 buttonClickSFX = ExtResource("3_s886s")
 buttonSelectSFX = ExtResource("4_jp4gn")
-options = NodePath("OptionsPanel")
+options = NodePath("Background/OptionsPanel")
 menu = NodePath("Menu")
 
 [node name="Menu" type="CanvasLayer" parent="."]
@@ -114,60 +114,58 @@ stream = ExtResource("12_xwvdt")
 autoplay = true
 bus = &"BGM"
 
-[node name="OptionsPanel" type="Sprite2D" parent="."]
-position = Vector2(580.722, 326)
-scale = Vector2(3.04832, 3.06019)
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(580, 326)
+scale = Vector2(3.06019, 3.06019)
 texture = ExtResource("6_x2wy8")
+
+[node name="OptionsPanel" type="Sprite2D" parent="Background"]
+position = Vector2(-1.30713, -1.96067)
+scale = Vector2(0.578684, 0.580937)
 script = ExtResource("20_vd3jo")
 
-[node name="BackButton" type="Button" parent="OptionsPanel"]
-offset_left = 94.0
-offset_top = 71.0
-offset_right = 177.0
-offset_bottom = 100.0
-theme_override_fonts/font = ExtResource("20_123r4")
-theme_override_font_sizes/font_size = 17
-text = "Back"
-flat = true
+[node name="Configs" type="VBoxContainer" parent="Background/OptionsPanel"]
+offset_left = -126.0
+offset_top = -48.0
+offset_right = 126.0
+offset_bottom = 36.0
 
-[node name="Configs" type="VBoxContainer" parent="OptionsPanel"]
-offset_left = -125.552
-offset_top = -47.7095
-offset_right = 126.448
-offset_bottom = 78.2905
-
-[node name="Sounds" type="HBoxContainer" parent="OptionsPanel/Configs"]
+[node name="Sounds" type="HBoxContainer" parent="Background/OptionsPanel/Configs"]
 layout_mode = 2
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="Names" type="VBoxContainer" parent="OptionsPanel/Configs/Sounds"]
+[node name="Names" type="VBoxContainer" parent="Background/OptionsPanel/Configs/Sounds"]
 layout_mode = 2
 
-[node name="Master" type="Label" parent="OptionsPanel/Configs/Sounds/Names"]
+[node name="Master" type="Label" parent="Background/OptionsPanel/Configs/Sounds/Names"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 15
 text = "Master"
 
-[node name="BGM" type="Label" parent="OptionsPanel/Configs/Sounds/Names"]
+[node name="BGM" type="Label" parent="Background/OptionsPanel/Configs/Sounds/Names"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 15
 text = "BGM"
 
-[node name="SFX" type="Label" parent="OptionsPanel/Configs/Sounds/Names"]
+[node name="SFX" type="Label" parent="Background/OptionsPanel/Configs/Sounds/Names"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 15
 text = "SFX"
 
-[node name="Sliders" type="VBoxContainer" parent="OptionsPanel/Configs/Sounds"]
+[node name="Sliders" type="VBoxContainer" parent="Background/OptionsPanel/Configs/Sounds"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Master" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+[node name="Master" type="HSlider" parent="Background/OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_icons/grabber = ExtResource("14_xj555")
@@ -175,7 +173,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MusicSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+[node name="MusicSlider" type="HSlider" parent="Background/OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_icons/grabber = ExtResource("14_xj555")
@@ -183,25 +181,37 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="SFXSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+[node name="SFXSlider" type="HSlider" parent="Background/OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Fullscreen" type="HBoxContainer" parent="OptionsPanel/Configs"]
+[node name="Fullscreen" type="HBoxContainer" parent="Background/OptionsPanel/Configs"]
 layout_mode = 2
 
-[node name="FullScreen" type="Label" parent="OptionsPanel/Configs/Fullscreen"]
+[node name="FullScreen" type="Label" parent="Background/OptionsPanel/Configs/Fullscreen"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 15
 text = "FullScreen"
 
-[node name="FullscreenButton" type="CheckButton" parent="OptionsPanel/Configs/Fullscreen"]
+[node name="FullscreenButton" type="CheckButton" parent="Background/OptionsPanel/Configs/Fullscreen"]
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
+
+[node name="BackButton" type="Button" parent="Background"]
+modulate = Color(0.517647, 0.611765, 0.647059, 1)
+offset_left = 84.3085
+offset_top = 69.6035
+offset_right = 167.308
+offset_bottom = 98.6035
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 17
+text = "Back"
+flat = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="mouse_entered" from="Menu/Start_Button" to="." method="_on_start_button_mouse_entered"]
@@ -210,11 +220,11 @@ theme = ExtResource("7_ofpi3")
 [connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="Menu/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
-[connection signal="mouse_entered" from="OptionsPanel/BackButton" to="." method="_on_back_button_mouse_entered"]
-[connection signal="pressed" from="OptionsPanel/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/Master" to="OptionsPanel" method="_on_master_value_changed"]
-[connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="OptionsPanel" method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="OptionsPanel" method="_on_sfx_slider_value_changed"]
-[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
-[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
-[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="OptionsPanel" method="_on_fullscreen_button_toggled"]
+[connection signal="value_changed" from="Background/OptionsPanel/Configs/Sounds/Sliders/Master" to="Background/OptionsPanel" method="_on_master_value_changed"]
+[connection signal="value_changed" from="Background/OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="Background/OptionsPanel" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Background/OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="Background/OptionsPanel" method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="Background/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="Background/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
+[connection signal="toggled" from="Background/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="Background/OptionsPanel" method="_on_fullscreen_button_toggled"]
+[connection signal="mouse_entered" from="Background/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="Background/BackButton" to="." method="_on_back_button_pressed"]
