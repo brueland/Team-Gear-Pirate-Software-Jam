@@ -25,9 +25,14 @@ class_name MainScene
 
 @export_category("Menus")
 
-
 @onready var player = $Player
 @onready var room_container = $RoomContainer
+
+# Dialogue options
+@export var dialogue_box: TextureRect
+@export var dialogue_text: Label
+var is_dialogue_visible: bool = false
+
 
 func _ready():
 	AudioManager.play_music(lab_music)
@@ -47,7 +52,7 @@ func check_room_flags():
 		elif BIO2_flag2:
 			AudioManager.play_music(bio2_music)
 			BIO2_flag2 = false
-			show_dialog("BlahBlahBlah")
+			show_dialogue("BlahBlahBlah")
 	
 	elif "SECRET2_PATH" in room_container.current_room:
 		if !SECRET2_flag1:
@@ -57,9 +62,18 @@ func check_room_flags():
 			AudioManager.play_music(boss_music)
 			SECRET2_flag2 = false
 		
-func show_dialog(dialogue: String):
-	pass
+func show_dialogue(dialogue: String):
+	print(dialogue)
+	dialogue_text.text = dialogue
+	dialogue_box.visible = true
+	is_dialogue_visible = true
 	
-#func game_over():
-	#print('game over')
-	#player.current_health = player.max_health
+func hide_dialogue():
+	dialogue_box.visible = false
+	is_dialogue_visible = false
+	
+func _input(event):
+	if event.is_action_pressed("ui_accept") and is_dialogue_visible:
+		print('next')
+		hide_dialogue()
+
