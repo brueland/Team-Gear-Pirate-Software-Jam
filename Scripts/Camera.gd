@@ -1,5 +1,8 @@
 extends Camera2D
 
+func _ready():
+	GlobalReferences.camera = self
+
 func set_camera_bounds(camera_bounds):
 	limit_bottom = camera_bounds.position.y + camera_bounds.shape.size.y/2.
 	limit_top = camera_bounds.position.y - camera_bounds.shape.size.y/2.

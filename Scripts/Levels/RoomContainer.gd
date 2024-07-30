@@ -5,9 +5,11 @@ class_name RoomContainer
 @export var camera: Camera2D
 @export var first_room: String
 @export var first_room_entrance: String = "TransitionPoints/Transition_1"
+@onready var transition_fader = $TransitionFadeout
 
 var can_transition: bool = true
 var transition_complete: bool = true
+var first_load: bool = true
 
 func _ready():
 	load_room(first_room, first_room_entrance)
@@ -22,10 +24,15 @@ func load_room(room_path: String, room_entrance: String):
 				child.queue_free() 	# This is so that when you Move to a new room
 									# if you've set down the lanturn, it returns
 									# to the place where it originally spawned
-				
-	call_deferred("_deferred_load_room", room_path, room_entrance)
 	
+	call_deferred("_deferred_load_room", room_path, room_entrance)
+
 func _deferred_load_room(room_path: String, room_entrance: String):
+	if !first_load:
+		transition_fader.fade_out()
+		await transition_fader.animation_player.animation_finished
+	first_load = false
+	
 	# Clear the current level
 	if get_child_count() > 0:
 		queue_free_children()
@@ -35,25 +42,29 @@ func _deferred_load_room(room_path: String, room_entrance: String):
 
 	# Add the new level to the LevelContainer
 	add_child(new_level)
-	
+
 	# Get the target door in the new scene
 	var target_entrances = new_level.get_node("TransitionPoints")
 	var target_entrance = target_entrances.get_node(room_entrance)
+
+
 
 	if target_entrance:
 		player.global_position = target_entrance.global_position
 		player.state = player.STATE_IDLE
 		
 	var camera_bounds = new_level.get_node("CameraBounds/CameraBoundsShape")
-	camera.set_camera_bounds(camera_bounds)
 	
-	await get_tree().create_timer(0.1).timeout
-
+	await camera.set_camera_bounds(camera_bounds)
+	await get_tree().create_timer(0.5).timeout
+	
+	transition_fader.fade_in()
 	can_transition = true
 
 
 # Helper function to clear children
 func queue_free_children():
 	for child in get_children():
-		child.queue_free()
+		if child != transition_fader:
+			child.queue_free()
 
