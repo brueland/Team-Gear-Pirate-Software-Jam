@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcqfneepgyxma"]
+[gd_scene load_steps=3 format=3 uid="uid://bcqfneepgyxma"]
 
 [ext_resource type="Texture2D" uid="uid://c7wh1x75j8vte" path="res://Assets/Sprites/BrokenTank.png" id="1_gi3qt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhyv"]
+size = Vector2(16, 16)
+
 [node name="BrokenTank" type="Sprite2D"]
-position = Vector2(192, 664)
 texture = ExtResource("1_gi3qt")
+
+[node name="HazardArea2D" type="Area2D" parent="."]
+collision_layer = 16
+metadata/DamageAmount = 1
+
+[node name="HazardCollisionShape2D" type="CollisionShape2D" parent="HazardArea2D"]
+shape = SubResource("RectangleShape2D_hyhyv")

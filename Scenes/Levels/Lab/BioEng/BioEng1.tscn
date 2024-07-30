@@ -3978,9 +3978,10 @@ shape = SubResource("RectangleShape2D_8tqfc")
 [node name="BrokenTanks" type="Node" parent="."]
 
 [node name="BrokenTank" parent="BrokenTanks" instance=ExtResource("4_auogh")]
+position = Vector2(240, 360)
 
 [node name="BrokenTank2" parent="BrokenTanks" instance=ExtResource("4_auogh")]
-position = Vector2(160, 664)
+position = Vector2(192, 216)
 
 [node name="BrokenTank3" parent="BrokenTanks" instance=ExtResource("4_auogh")]
 modulate = Color(0.764706, 0.862745, 0.905882, 1)
