@@ -1,11 +1,12 @@
 extends Node2D
 @export var connected_door: Node2D
 @export var one_shot: bool = false
+@export var click_sound: AudioStream
 
 var door_body: CollisionShape2D
 @onready var animations = $PressurePlateAnimatedSprite2D
 
-func _onready():
+func _ready():
 	door_body = connected_door.get_node("DoorStaticBody2D/DoorCollisionShape2D")
 
 func _on_pressure_plate_area_2d_body_entered(body):
@@ -13,6 +14,7 @@ func _on_pressure_plate_area_2d_body_entered(body):
 		connected_door.visible = false
 		connected_door.get_node("DoorStaticBody2D").collision_layer = 0
 		animations.play("press_down")
+		AudioManager.play_sound(click_sound)
 
 	# Play door unlocking sound
 	# switch door sprite to "open door"?
@@ -23,3 +25,4 @@ func _on_pressure_plate_area_2d_body_exited(body):
 			connected_door.visible = true
 			connected_door.get_node("DoorStaticBody2D").collision_layer = 1
 			animations.play("reset")
+			AudioManager.play_sound(click_sound)
