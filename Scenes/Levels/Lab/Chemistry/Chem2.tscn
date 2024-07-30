@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5hej3ftsyk3y"]
+[gd_scene load_steps=10 format=3 uid="uid://b5hej3ftsyk3y"]
 
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="3_ib673"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_nsiqq"]
-[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="4_5l7cu"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="4_d5iia"]
+[ext_resource type="PackedScene" uid="uid://d1cvrosmfldpp" path="res://Scenes/Enemies/Ghost/positive_ghost.tscn" id="5_lm140"]
 [ext_resource type="Texture2D" uid="uid://dl7pg5d7c5a7e" path="res://Assets/Sprites/NPCs/Ghosts/HatGhost.png" id="5_pbbwc"]
 [ext_resource type="Texture2D" uid="uid://dum5fv53fx5co" path="res://Assets/Sprites/Decorations/Mirror.png" id="7_c1pqg"]
 
@@ -4149,35 +4149,6 @@ sources/0 = SubResource("TileSetAtlasSource_o0k3c")
 resource_local_to_scene = true
 size = Vector2(763, 493)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rchce"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kfoq7"]
-noise = SubResource("FastNoiseLite_rchce")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pc3ek"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r1qit"]
-noise = SubResource("FastNoiseLite_pc3ek")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_47wxb"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t1gqq"]
-noise = SubResource("FastNoiseLite_47wxb")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2dku"]
-shader = ExtResource("4_5l7cu")
-shader_parameter/dissolve_percent = 0.0
-shader_parameter/distortion_strength = 0.02
-shader_parameter/offset1 = Vector2(0.1, 0.1)
-shader_parameter/offset2 = Vector2(0.2, 0.2)
-shader_parameter/alpha = 1.0
-shader_parameter/floatingSpeedX = 0.1
-shader_parameter/floatingSpeedY = 0.1
-shader_parameter/color = null
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_kfoq7")
-shader_parameter/dissolve_noise2 = SubResource("NoiseTexture2D_r1qit")
-shader_parameter/dissolve_noise3 = SubResource("NoiseTexture2D_t1gqq")
-
 [node name="Chem2" type="Node2D"]
 
 [node name="LabTiles" type="TileMap" parent="."]
@@ -4212,15 +4183,18 @@ target_room_entrance = "Transition_2"
 position = Vector2(354, 228)
 shape = SubResource("RectangleShape2D_8dmup")
 
-[node name="HatGhost" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_q2dku")
-position = Vector2(107, 159)
-texture = ExtResource("5_pbbwc")
-
 [node name="Mirror" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(88, 160)
 scale = Vector2(1.125, 1.08125)
 texture = ExtResource("7_c1pqg")
 
+[node name="PositiveGhost" parent="." instance=ExtResource("5_lm140")]
+position = Vector2(102, 158)
+
+[node name="GhostSprite" parent="PositiveGhost" index="0"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("5_pbbwc")
+
 [editable path="CameraBounds"]
+[editable path="PositiveGhost"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcqfneepgyxma"]
+
+[ext_resource type="Texture2D" uid="uid://c7wh1x75j8vte" path="res://Assets/Sprites/BrokenTank.png" id="1_gi3qt"]
+
+[node name="BrokenTank" type="Sprite2D"]
+position = Vector2(192, 664)
+texture = ExtResource("1_gi3qt")
