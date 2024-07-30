@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bis8puyxq2i8f"]
+[gd_scene load_steps=15 format=3 uid="uid://bis8puyxq2i8f"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Main_Menu.gd" id="1_pu854"]
 [ext_resource type="AudioStream" uid="uid://73klxfni2msm" path="res://Assets/Sounds/MenuAndUI/Game_Start.WAV" id="2_lg28v"]
@@ -11,11 +11,9 @@
 [ext_resource type="Theme" uid="uid://d1xkgll5q80wr" path="res://Textures/Slider_Theme.tres" id="7_ofpi3"]
 [ext_resource type="PackedScene" uid="uid://xbddjqb3wxm2" path="res://Scenes/UI/scenetransition.tscn" id="14_0kjxk"]
 [ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="14_xj555"]
-[ext_resource type="AudioStream" uid="uid://b3p8dpj7xgjsv" path="res://Assets/Sounds/Music/BlueRustTheme.wav" id="15_ywlu5"]
 [ext_resource type="Texture2D" uid="uid://dyte8fqt7m5c6" path="res://Assets/Sprites/UI/OptionsPanel.png" id="19_wa4pp"]
 [ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="20_123r4"]
 [ext_resource type="Script" path="res://Scripts/UI/Main_Menu_Options.gd" id="20_vd3jo"]
-
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("options", "menu")]
 layout_mode = 3
@@ -140,7 +138,6 @@ alignment = 0
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_ywlu5")
 autoplay = true
 bus = &"BGM"
 

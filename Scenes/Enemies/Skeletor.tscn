@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="3_27oi0"]
 [ext_resource type="Texture2D" uid="uid://57h0iqcmimdp" path="res://Assets/Sprites/Enemies/Skeletor2BG.png" id="4_6qlrb"]
 
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yyofv"]
 seed = 2
 frequency = 0.0182

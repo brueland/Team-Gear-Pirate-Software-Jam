@@ -6,9 +6,6 @@
 [ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="4_6a8or"]
 [ext_resource type="Texture2D" uid="uid://cu574hldsmg4f" path="res://Assets/Sprites/NPCs/Ghosts/ChemGhost.png" id="5_yccp2"]
 
-
-
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
 texture = ExtResource("3_xmwtq")
 1:0/0 = 0
@@ -4035,6 +4032,7 @@ shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/alpha = 1.0
 shader_parameter/floatingSpeedX = 0.1
 shader_parameter/floatingSpeedY = 0.1
+shader_parameter/color = null
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_bn0sl")
 
 [node name="Chem1" type="Node2D"]
