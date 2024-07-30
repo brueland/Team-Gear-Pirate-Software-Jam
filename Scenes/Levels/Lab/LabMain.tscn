@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwhhaipcwsipi"]
+[gd_scene load_steps=10 format=3 uid="uid://dwhhaipcwsipi"]
 
 [ext_resource type="PackedScene" uid="uid://c07q18q56d3jq" path="res://Scenes/Levels/room_container.tscn" id="1_b3l3q"]
 [ext_resource type="Script" path="res://Scripts/Levels/LabMain.gd" id="1_ldbns"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ded2ais0kx8ym" path="res://Assets/Music/Levels/Lab/Music_ShadowBoss_Theme.wav" id="4_mq6wf"]
 [ext_resource type="AudioStream" uid="uid://b4dhf7s3dge3a" path="res://Assets/Music/Levels/Lab/Music_MainTheme.wav" id="5_m8n3x"]
 [ext_resource type="AudioStream" uid="uid://dclvigecn8e3v" path="res://Assets/Music/Levels/BlueRustTheme.wav" id="6_upxff"]
+[ext_resource type="Texture2D" uid="uid://nmklh8neg836" path="res://Assets/Sprites/UI/Frames/DialogueBox.png" id="8_ykkhm"]
 
 [sub_resource type="Environment" id="Environment_hfp0s"]
 ambient_light_energy = 2.0
@@ -48,3 +49,27 @@ environment = SubResource("Environment_hfp0s")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="NinePatchRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.588235)
+z_index = 29
+offset_left = 373.0
+offset_top = 84.0
+offset_right = 688.0
+offset_bottom = 148.0
+pivot_offset = Vector2(252.575, 0)
+texture = ExtResource("8_ykkhm")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Label" type="Label" parent="CanvasLayer/DialogueBox"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 141.0
+offset_bottom = 30.0
+text = "Oh, shit my arm!"
