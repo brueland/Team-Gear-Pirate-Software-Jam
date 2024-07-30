@@ -25,7 +25,7 @@ first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]
 position = Vector2(90, -32)
-max_jumps = 5
+max_jumps = 1000
 dash_enabled = true
 mouseEnabled = true
 controllerEnabled = false
