@@ -1,7 +1,7 @@
-extends Node2D
+extends Node
 
 # Player Sprite
-@export var playerSprite : Animations
+@export var playerSprite : AnimatedSprite2D
 
 # Footsteps
 @export var concreteStepOne : AudioStream
@@ -23,6 +23,7 @@ extends Node2D
 @export var playerLanding : AudioStream
 @export var playerLanding_w_Grunt: AudioStream
 
+
 #preferabbly this is a list or an array so we can add more than two sounds
 func playrandom(r1:AudioStream, r2 :AudioStream):
 	var randomRange = RandomNumberGenerator.new()
@@ -34,8 +35,9 @@ func playrandom(r1:AudioStream, r2 :AudioStream):
 		AudioManager.play_sound(r2)
 
 func _on_player_sprite_frame_changed():
-	if "running" in playerSprite.get_animation(): 
+	var current_anim = playerSprite.get_animation()
+	if "running" in current_anim: 
 		if playerSprite.frame == 0:
-			AudioManager.play_sound(concreteStepOne)
+			AudioManager.play_sound(woodStepOne)
 		elif playerSprite.frame == 4:
-			AudioManager.play_sound(concreteStepTwo)  
+			AudioManager.play_sound(woodStepTwo)  
