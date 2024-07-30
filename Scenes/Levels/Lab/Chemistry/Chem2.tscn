@@ -4190,9 +4190,10 @@ scale = Vector2(1.125, 1.08125)
 texture = ExtResource("7_c1pqg")
 
 [node name="PositiveGhost" parent="." instance=ExtResource("5_lm140")]
-position = Vector2(102, 160)
+position = Vector2(102, 158)
 
 [node name="GhostSprite" parent="PositiveGhost" index="0"]
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("5_pbbwc")
 
 [editable path="CameraBounds"]

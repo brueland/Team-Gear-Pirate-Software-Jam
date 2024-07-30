@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2sicjdmkoq27"]
+[gd_scene load_steps=10 format=3 uid="uid://d2sicjdmkoq27"]
 
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="2_0qnsg"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="3_y8my6"]
 [ext_resource type="PackedScene" uid="uid://biyywu5rff2t8" path="res://Scenes/Levels/Lab/BioEng/medical_machine.tscn" id="4_7rbff"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="4_n1put"]
-[ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="5_swvys"]
+[ext_resource type="PackedScene" uid="uid://d1cvrosmfldpp" path="res://Scenes/Enemies/Ghost/positive_ghost.tscn" id="5_22qxr"]
 [ext_resource type="Texture2D" uid="uid://du3dsb4qrpe31" path="res://Assets/Sprites/NPCs/Ghosts/BioGhost.png" id="6_xk0nh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
@@ -3954,35 +3954,6 @@ sources/0 = SubResource("TileSetAtlasSource_o0k3c")
 resource_local_to_scene = true
 size = Vector2(750, 290)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ncdt6"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3pj3f"]
-noise = SubResource("FastNoiseLite_ncdt6")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3k0fm"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wc8qd"]
-noise = SubResource("FastNoiseLite_3k0fm")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tu78b"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r3611"]
-noise = SubResource("FastNoiseLite_tu78b")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sup3s"]
-shader = ExtResource("5_swvys")
-shader_parameter/dissolve_percent = 0.0
-shader_parameter/distortion_strength = 0.05
-shader_parameter/offset1 = Vector2(0.1, 0.1)
-shader_parameter/offset2 = Vector2(0.2, 0.2)
-shader_parameter/alpha = 0.954
-shader_parameter/floatingSpeedX = 0.1
-shader_parameter/floatingSpeedY = 0.1
-shader_parameter/color = null
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_3pj3f")
-shader_parameter/dissolve_noise2 = SubResource("NoiseTexture2D_wc8qd")
-shader_parameter/dissolve_noise3 = SubResource("NoiseTexture2D_r3611")
-
 [node name="BioEng2" type="Node2D"]
 
 [node name="LabTiles" type="TileMap" parent="."]
@@ -4034,11 +4005,14 @@ scale = Vector2(22.7941, 21.5257)
 [node name="PointLight2D2" parent="MedicalMachine" index="2"]
 color = Color(0.52549, 0.776471, 0.941176, 1)
 
-[node name="BioGhost" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_sup3s")
-position = Vector2(358, 221)
-scale = Vector2(1.2, 1.2)
+[node name="PositiveGhost" parent="." instance=ExtResource("5_22qxr")]
+position = Vector2(351, 223)
+
+[node name="GhostSprite" parent="PositiveGhost" index="0"]
+position = Vector2(5, 0)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("6_xk0nh")
 
 [editable path="CameraBounds"]
 [editable path="MedicalMachine"]
+[editable path="PositiveGhost"]

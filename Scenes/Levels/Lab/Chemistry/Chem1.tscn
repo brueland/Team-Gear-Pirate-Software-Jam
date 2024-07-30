@@ -4073,7 +4073,8 @@ shape = SubResource("RectangleShape2D_aana5")
 position = Vector2(796, 610)
 
 [node name="GhostSprite" parent="PositiveGhost" index="0"]
-position = Vector2(2, -2)
+position = Vector2(2, -3)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("5_yccp2")
 
 [editable path="TransitionPoints/Transition_3"]
