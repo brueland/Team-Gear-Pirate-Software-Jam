@@ -26,6 +26,8 @@ const SBX_SCENE_1_PATH: String = "res://Scenes/Levels/SBX/sbx_room_1.tscn"
 const SBX_SCENE_2_PATH: String = "res://Scenes/Levels/SBX/sbx_room_2.tscn"
 
 # SCENES/LEVELS/LAB
+const LAB_MAIN_PATH: String = "res://Scenes/Levels/Lab/LabMain.tscn"
+
 # SCENES/LEVELS/LAB/Archaeology
 const ARCH1_PATH: String = "res://Scenes/Levels/Lab/Archaeology/Arch1.tscn"
 const ARCH2_PATH: String = "res://Scenes/Levels/Lab/Archaeology/Arch2.tscn"

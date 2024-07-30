@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2sicjdmkoq27"]
+[gd_scene load_steps=11 format=3 uid="uid://d2sicjdmkoq27"]
 
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="2_0qnsg"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="3_y8my6"]
@@ -3955,9 +3955,6 @@ sources/0 = SubResource("TileSetAtlasSource_o0k3c")
 resource_local_to_scene = true
 size = Vector2(750, 290)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_swpf3"]
-size = Vector2(26, 184)
-
 [node name="BioEng2" type="Node2D"]
 
 [node name="LabTiles" type="TileMap" parent="."]
@@ -4021,9 +4018,9 @@ texture = ExtResource("6_xk0nh")
 collision_layer = 0
 script = ExtResource("7_mxuq1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(191, 83)
-shape = SubResource("RectangleShape2D_swpf3")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(4, 160)
+polygon = PackedVector2Array(-12, 15, -9, 28, 224, 26, 265, -157, 254, -157, 215, 15)
 
 [editable path="CameraBounds"]
 [editable path="MedicalMachine"]

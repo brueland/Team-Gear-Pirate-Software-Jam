@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dwhhaipcwsipi"]
 
 [ext_resource type="PackedScene" uid="uid://c07q18q56d3jq" path="res://Scenes/Levels/room_container.tscn" id="1_b3l3q"]
-[ext_resource type="Script" path="res://Scenes/Levels/Lab/LabMain.gd" id="1_ldbns"]
+[ext_resource type="Script" path="res://Scripts/Levels/LabMain.gd" id="1_ldbns"]
 [ext_resource type="PackedScene" uid="uid://bmrq4ow8mnkml" path="res://Scenes/Player/Player.tscn" id="2_7iffm"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_4pk38"]
 [ext_resource type="AudioStream" uid="uid://ded2ais0kx8ym" path="res://Assets/Music/Levels/Lab/Music_ShadowBoss_Theme.wav" id="4_mq6wf"]

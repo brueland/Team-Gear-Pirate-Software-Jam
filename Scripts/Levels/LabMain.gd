@@ -47,6 +47,7 @@ func check_room_flags():
 		elif BIO2_flag2:
 			AudioManager.play_music(bio2_music)
 			BIO2_flag2 = false
+			show_dialog("BlahBlahBlah")
 	
 	elif "SECRET2_PATH" in room_container.current_room:
 		if !SECRET2_flag1:
@@ -56,8 +57,9 @@ func check_room_flags():
 			AudioManager.play_music(boss_music)
 			SECRET2_flag2 = false
 		
+func show_dialog(dialogue: String):
+	pass
 	
-
 #func game_over():
 	#print('game over')
 	#player.current_health = player.max_health
