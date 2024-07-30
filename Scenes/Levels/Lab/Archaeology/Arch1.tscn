@@ -4353,34 +4353,6 @@ layer_4/tile_data = PackedInt32Array(1245211, 1376257, 14, 1310747, 1376257, 14,
 position = Vector2(566.75, 405.5)
 shape = SubResource("RectangleShape2D_eye5u")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(771, 719)
-rotation = 1.12748
-scale = Vector2(0.327991, 0.921241)
-texture = ExtResource("7_ixkvm")
-texture_scale = 1.6
-
-[node name="PointLight2D" type="PointLight2D" parent="PointLight2D"]
-position = Vector2(-101.992, -257.573)
-scale = Vector2(2.06821, 0.714988)
-color = Color(0.270588, 0.247059, 0.168627, 1)
-energy = 2.51
-texture = ExtResource("8_t5ou7")
-
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-position = Vector2(1132, 181)
-rotation = 1.46015
-scale = Vector2(0.327991, 0.337824)
-texture = ExtResource("7_ixkvm")
-texture_scale = 1.6
-
-[node name="PointLight2D" type="PointLight2D" parent="PointLight2D3"]
-position = Vector2(-101.992, -257.573)
-scale = Vector2(2.06821, 0.714988)
-color = Color(0.270588, 0.247059, 0.168627, 1)
-energy = 2.51
-texture = ExtResource("8_t5ou7")
-
 [node name="Decoration" type="Node" parent="."]
 
 [node name="WhaleSkeleton" type="Sprite2D" parent="Decoration"]
@@ -4412,13 +4384,22 @@ position = Vector2(-13, 470)
 [node name="Door2" parent="Decoration" instance=ExtResource("9_mbkan")]
 position = Vector2(335, 245)
 
+[node name="Sign" type="Sprite2D" parent="Decoration"]
+z_index = -2
+position = Vector2(163, 612)
+rotation = -0.70666
+scale = Vector2(1, 1)
+texture = ExtResource("10_yyb7w")
+
 [node name="PositiveGhost" parent="." instance=ExtResource("8_kwuu4")]
 
 [node name="GhostSprite" parent="PositiveGhost" index="0"]
 material = SubResource("ShaderMaterial_vyi30")
 position = Vector2(-1, 0)
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
+[node name="Lights" type="Node" parent="."]
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
 position = Vector2(-23, 704)
 rotation = -2.38472
 scale = Vector2(0.262322, 0.552349)
@@ -4426,17 +4407,39 @@ color = Color(0.945098, 0.752941, 0.45098, 1)
 energy = 0.62
 texture = ExtResource("9_h6ber")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lights/PointLight2D2"]
 libraries = {
 "": SubResource("AnimationLibrary_qwwvi")
 }
 autoplay = "Flicker"
 
-[node name="Sign" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(163, 612)
-rotation = -0.70666
-texture = ExtResource("10_yyb7w")
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+position = Vector2(771, 719)
+rotation = 1.12748
+scale = Vector2(0.327991, 0.921241)
+texture = ExtResource("7_ixkvm")
+texture_scale = 1.6
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights/PointLight2D"]
+position = Vector2(-101.992, -257.573)
+scale = Vector2(2.06821, 0.714988)
+color = Color(0.270588, 0.247059, 0.168627, 1)
+energy = 2.51
+texture = ExtResource("8_t5ou7")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
+position = Vector2(1132, 181)
+rotation = 1.46015
+scale = Vector2(0.327991, 0.337824)
+texture = ExtResource("7_ixkvm")
+texture_scale = 1.6
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights/PointLight2D3"]
+position = Vector2(-101.992, -257.573)
+scale = Vector2(2.06821, 0.714988)
+color = Color(0.270588, 0.247059, 0.168627, 1)
+energy = 2.51
+texture = ExtResource("8_t5ou7")
 
 [editable path="TransitionPoints/Transition_2"]
 [editable path="TransitionPoints/Transition_3"]

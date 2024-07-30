@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://bmrq4ow8mnkml"]
+[gd_scene load_steps=128 format=3 uid="uid://bmrq4ow8mnkml"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_bkal2"]
 [ext_resource type="Texture2D" uid="uid://bg5gbbn735ffl" path="res://Assets/Sprites/Player/Death.png" id="2_8t877"]
@@ -29,6 +29,19 @@
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/Environment/SmokeParticles2.png" id="27_wtluk"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/Environment/SmokeParticles3.png" id="28_viop3"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/Environment/SmokeParticles4.png" id="29_2l8sc"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAudios.gd" id="30_ejbkx"]
+[ext_resource type="AudioStream" uid="uid://dt1yrwlwaqi08" path="res://Assets/Sounds/Player/Concrete_Step_1.WAV" id="31_vtt72"]
+[ext_resource type="AudioStream" uid="uid://bao42aeupvp70" path="res://Assets/Sounds/Player/Concrete_Step_2.WAV" id="32_ck2br"]
+[ext_resource type="AudioStream" uid="uid://cqpqdhxkybftr" path="res://Assets/Sounds/Player/Wood_Step_1.WAV" id="33_upngx"]
+[ext_resource type="AudioStream" uid="uid://bxs1w07l2li6e" path="res://Assets/Sounds/Player/Wood_Step_2.WAV" id="34_1cma3"]
+[ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Player/Hurt.WAV" id="35_pgl4m"]
+[ext_resource type="AudioStream" uid="uid://clbjusvojuljx" path="res://Assets/Sounds/Player/Mantel.WAV" id="40_pkeol"]
+[ext_resource type="AudioStream" uid="uid://bxhuvsd75wfb0" path="res://Assets/Sounds/Player/Mantel_w_Grunt.WAV" id="41_bspu8"]
+[ext_resource type="AudioStream" uid="uid://c4hnxl3x4tc3g" path="res://Assets/Sounds/Player/Player_Dash.WAV" id="42_kwjl1"]
+[ext_resource type="AudioStream" uid="uid://xbmv731fk27d" path="res://Assets/Sounds/Player/Player_Jump.WAV" id="43_3ai5j"]
+[ext_resource type="AudioStream" uid="uid://cko2lma5ytfgj" path="res://Assets/Sounds/Player/Player_Jump_W_Grunt.WAV" id="44_gv2fd"]
+[ext_resource type="AudioStream" uid="uid://bheyw07i30xno" path="res://Assets/Sounds/Player/Player_Landing.WAV" id="45_55ifk"]
+[ext_resource type="AudioStream" uid="uid://d1nfc5gbp5own" path="res://Assets/Sounds/Player/Player_Landing_w_Grunt.WAV" id="46_yoncy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0waje"]
 atlas = ExtResource("2_8t877")
@@ -762,7 +775,7 @@ script = ExtResource("1_bkal2")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"left_damage"
+animation = &"right_damage"
 speed_scale = 2.0
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
@@ -869,5 +882,23 @@ collision_mask = 16
 [node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="HitboxArea2D"]
 shape = SubResource("CapsuleShape2D_ldxbc")
 
+[node name="PlayerAudio" type="Node" parent="." node_paths=PackedStringArray("playerSprite")]
+script = ExtResource("30_ejbkx")
+playerSprite = NodePath("../PlayerSprite")
+concreteStepOne = ExtResource("31_vtt72")
+concreteStepTwo = ExtResource("32_ck2br")
+woodStepOne = ExtResource("33_upngx")
+woodStepTwo = ExtResource("34_1cma3")
+hurt = ExtResource("35_pgl4m")
+mantle = ExtResource("40_pkeol")
+mantle_w_Grunt = ExtResource("41_bspu8")
+dash = ExtResource("42_kwjl1")
+playerJump = ExtResource("43_3ai5j")
+playerJump_w_Grunt = ExtResource("44_gv2fd")
+playerLanding = ExtResource("45_55ifk")
+playerLanding_w_Grunt = ExtResource("46_yoncy")
+
+[connection signal="animation_changed" from="PlayerSprite" to="PlayerAudio" method="_on_player_sprite_animation_changed"]
+[connection signal="frame_changed" from="PlayerSprite" to="PlayerAudio" method="_on_player_sprite_frame_changed"]
 [connection signal="area_entered" from="HookCollisionArea2D" to="." method="_on_hook_collision_area_2d_area_entered"]
 [connection signal="area_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_area_entered"]

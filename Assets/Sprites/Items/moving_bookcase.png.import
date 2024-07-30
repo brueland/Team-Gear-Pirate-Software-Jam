@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg2gtcdy6c6ye"
-path="res://.godot/imported/PressurePlate.png-f744520988e0022c1ccc0e78fb65830a.ctex"
+uid="uid://blcax6uqucoi8"
+path="res://.godot/imported/moving_bookcase.png-97caf592c9280fcf55d7e46e7d97c91d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PressurePlate.png"
-dest_files=["res://.godot/imported/PressurePlate.png-f744520988e0022c1ccc0e78fb65830a.ctex"]
+source_file="res://Assets/Sprites/Items/moving_bookcase.png"
+dest_files=["res://.godot/imported/moving_bookcase.png-97caf592c9280fcf55d7e46e7d97c91d.ctex"]
 
 [params]
 

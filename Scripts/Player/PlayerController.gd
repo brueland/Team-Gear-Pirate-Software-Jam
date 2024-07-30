@@ -344,6 +344,7 @@ func handle_state():
 				
 		STATE_DASHING:
 			if "dash" in playerSprite.get_animation() and playerSprite.get_frame_progress() < 1.0:
+				velocity.y = 0.0 # Added 7/30/24, needs playtesting
 				velocity.x = lerp(velocity.x, direction * dash_speed, 0.25) 
 				emit_dash_particles()
 			elif is_on_floor():

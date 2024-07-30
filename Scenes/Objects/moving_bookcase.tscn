@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://wovqb4eohwws"]
+
+[ext_resource type="Texture2D" uid="uid://blcax6uqucoi8" path="res://Assets/Sprites/Items/moving_bookcase.png" id="2_3k1vb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlk7n"]
+size = Vector2(32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7nfo"]
+atlas = ExtResource("2_3k1vb")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn3ny"]
+atlas = ExtResource("2_3k1vb")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu5vd"]
+atlas = ExtResource("2_3k1vb")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lluh"]
+atlas = ExtResource("2_3k1vb")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10e6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7nfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn3ny")
+}],
+"loop": false,
+"name": &"move_forward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu5vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lluh")
+}],
+"loop": false,
+"name": &"reset",
+"speed": 5.0
+}]
+
+[node name="MovingBookcase" type="Node2D"]
+z_index = -1
+
+[node name="MovingBookcaseStaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+metadata/DamageAmount = 1
+
+[node name="MovingBookcaseShape2D" type="CollisionShape2D" parent="MovingBookcaseStaticBody2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_dlk7n")
+
+[node name="MovingBookcaseAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_10e6u")
+animation = &"move_forward"

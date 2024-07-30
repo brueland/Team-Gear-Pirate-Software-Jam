@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1doq2agloele"]
+
+[ext_resource type="Texture2D" uid="uid://fqnd0krxrj1x" path="res://Assets/Sprites/Items/PressurePlate.png" id="1_jf73o"]
+[ext_resource type="Script" path="res://Scripts/Items/PressurePlate.gd" id="1_w84k5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlk7n"]
+size = Vector2(16, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xcju"]
+atlas = ExtResource("1_jf73o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olg4p"]
+atlas = ExtResource("1_jf73o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mabsh"]
+atlas = ExtResource("1_jf73o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbr83"]
+atlas = ExtResource("1_jf73o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10e6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xcju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olg4p")
+}],
+"loop": false,
+"name": &"press_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mabsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbr83")
+}],
+"loop": false,
+"name": &"reset",
+"speed": 5.0
+}]
+
+[node name="BookcasePressurePlate" type="Node2D"]
+script = ExtResource("1_w84k5")
+
+[node name="PressurePlateArea2D" type="Area2D" parent="."]
+collision_layer = 8
+metadata/DamageAmount = 1
+
+[node name="PressurePlateShape2D" type="CollisionShape2D" parent="PressurePlateArea2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_dlk7n")
+
+[node name="PressurePlateAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_10e6u")
+animation = &"press_down"
+
+[connection signal="body_entered" from="PressurePlateArea2D" to="." method="_on_pressure_plate_area_2d_body_entered"]
+[connection signal="body_exited" from="PressurePlateArea2D" to="." method="_on_pressure_plate_area_2d_body_exited"]
