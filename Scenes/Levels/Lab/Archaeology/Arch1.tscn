@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b32cfy50biu4c"]
+[gd_scene load_steps=16 format=3 uid="uid://b32cfy50biu4c"]
 
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="3_qamd6"]
 [ext_resource type="Texture2D" uid="uid://bit11sfop8sgu" path="res://Assets/Sprites/TileSets/Lab/WhaleSkeleton.png" id="5_hqsec"]
@@ -4255,6 +4255,44 @@ sources/1 = SubResource("TileSetAtlasSource_wuqic")
 resource_local_to_scene = true
 size = Vector2(1186.5, 487)
 
+[sub_resource type="Animation" id="Animation_r2tbx"]
+resource_name = "Flicker"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.62, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_pitxx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.62]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwwvi"]
+_data = {
+"Flicker": SubResource("Animation_r2tbx"),
+"RESET": SubResource("Animation_pitxx")
+}
+
 [node name="Arch1" type="Node2D"]
 
 [node name="TransitionPoints" type="Node" parent="."]
@@ -4326,6 +4364,20 @@ color = Color(0.270588, 0.247059, 0.168627, 1)
 energy = 2.51
 texture = ExtResource("8_t5ou7")
 
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(1132, 181)
+rotation = 1.46015
+scale = Vector2(0.327991, 0.337824)
+texture = ExtResource("7_ixkvm")
+texture_scale = 1.6
+
+[node name="PointLight2D" type="PointLight2D" parent="PointLight2D3"]
+position = Vector2(-101.992, -257.573)
+scale = Vector2(2.06821, 0.714988)
+color = Color(0.270588, 0.247059, 0.168627, 1)
+energy = 2.51
+texture = ExtResource("8_t5ou7")
+
 [node name="Decoration" type="Node" parent="."]
 
 [node name="WhaleSkeleton" type="Sprite2D" parent="Decoration"]
@@ -4363,7 +4415,15 @@ position = Vector2(335, 245)
 position = Vector2(-23, 704)
 rotation = -2.38472
 scale = Vector2(0.262322, 0.552349)
+color = Color(0.945098, 0.752941, 0.45098, 1)
+energy = 0.62
 texture = ExtResource("9_h6ber")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_qwwvi")
+}
+autoplay = "Flicker"
 
 [editable path="TransitionPoints/Transition_2"]
 [editable path="TransitionPoints/Transition_3"]
