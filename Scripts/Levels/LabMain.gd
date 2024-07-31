@@ -180,10 +180,14 @@ func check_room_flags():
 			show_dialogue("I can't grapple up to this ledge while holding this lantern!")
 			ARCH2_flag2 = true
 		
-		
 	elif "CHEM1_PATH" in room_container.current_room:
-		pass
-		
+		if !CHEM1_flag1 and !CHEM1_flag2:
+			show_dialogue("Wait... This is where I discovered the formula for Alium...")
+			CHEM1_flag2 = true
+		if CHEM1_flag3 and !CHEM1_flag4:
+			show_dialogue("Is that... ME?")
+			CHEM1_flag4 = true
+			
 	elif "CHEM2_PATH" in room_container.current_room:
 		pass
 		

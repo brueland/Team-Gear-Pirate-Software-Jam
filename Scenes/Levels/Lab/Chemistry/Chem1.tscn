@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1mqn50anqe7e"]
+[gd_scene load_steps=13 format=3 uid="uid://b1mqn50anqe7e"]
 
+[ext_resource type="Script" path="res://Scripts/Levels/Chem1/Chem1.gd" id="1_t6yjg"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_n8rek"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="3_xmwtq"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="4_4i26l"]
 [ext_resource type="PackedScene" uid="uid://d1cvrosmfldpp" path="res://Scenes/Enemies/Ghost/positive_ghost.tscn" id="4_o132b"]
 [ext_resource type="Texture2D" uid="uid://cu574hldsmg4f" path="res://Assets/Sprites/NPCs/Ghosts/ChemGhost.png" id="5_yccp2"]
+[ext_resource type="PackedScene" uid="uid://bsnxb3d7pqb4a" path="res://Scenes/Enemies/Ghost/ghost_spawner.tscn" id="8_wgshr"]
+[ext_resource type="Script" path="res://Scripts/Levels/Chem1/C1Dialogue2.gd" id="9_x1r25"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
 texture = ExtResource("3_xmwtq")
@@ -4018,7 +4021,13 @@ sources/0 = SubResource("TileSetAtlasSource_o0k3c")
 resource_local_to_scene = true
 size = Vector2(1188, 626)
 
-[node name="Chem1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1aa8"]
+size = Vector2(84, 48)
+
+[node name="Chem1" type="Node2D" node_paths=PackedStringArray("chem1_positive_ghost", "ghost_spawner")]
+script = ExtResource("1_t6yjg")
+chem1_positive_ghost = NodePath("PositiveGhost")
+ghost_spawner = NodePath("GhostSpawner")
 
 [node name="LabTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_trbi7")
@@ -4076,6 +4085,21 @@ position = Vector2(796, 610)
 position = Vector2(2, -3)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("5_yccp2")
+
+[node name="GhostSpawner" parent="." instance=ExtResource("8_wgshr")]
+enabled = false
+
+[node name="Dialogue" type="Node" parent="."]
+
+[node name="Dialogue2" type="Area2D" parent="Dialogue"]
+position = Vector2(744, 607)
+scale = Vector2(3.4, 2.92)
+collision_layer = 0
+script = ExtResource("9_x1r25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Dialogue2"]
+position = Vector2(16, -14)
+shape = SubResource("RectangleShape2D_w1aa8")
 
 [editable path="TransitionPoints/Transition_3"]
 [editable path="CameraBounds"]
