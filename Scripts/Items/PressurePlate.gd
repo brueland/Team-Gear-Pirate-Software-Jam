@@ -1,4 +1,5 @@
 extends Node2D
+
 @export var connected_door: Node2D
 @export var one_shot: bool = false
 @export var click_sound: AudioStream
@@ -15,9 +16,6 @@ func _on_pressure_plate_area_2d_body_entered(body):
 		connected_door.get_node("DoorStaticBody2D").collision_layer = 0
 		animations.play("press_down")
 		AudioManager.play_sound(click_sound)
-
-	# Play door unlocking sound
-	# switch door sprite to "open door"?
 
 func _on_pressure_plate_area_2d_body_exited(body):
 	if body is Player:

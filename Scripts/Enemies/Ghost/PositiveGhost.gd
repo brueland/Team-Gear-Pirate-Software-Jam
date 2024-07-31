@@ -14,6 +14,8 @@ var in_light: bool = false
 var direction: int = 1
 var sprite_direction: String = "right_"
 var dying: bool = false
+var phasing_in: bool = false
+var phasing_out: bool = false
 
 @onready var sprite = $GhostSprite
 @onready var collider = $GhostCollider
@@ -38,6 +40,12 @@ func  _physics_process(delta):
 	if !dying:
 		handle_animation()
 		heal(delta)
+		if phasing_in:
+			set_collision_layer_value(5, false)
+			phase_in(delta)
+		if phasing_out:
+			set_collision_layer_value(5, false)
+			phase_out(delta)
 	else:
 		dying_sequence(delta)
 	move_and_slide()
@@ -50,7 +58,17 @@ func handle_animation():
 		sprite_direction = "left_"
 		sprite.flip_h = false
 
-
+func phase_out(delta):
+	var alpha_strength = sprite.material.get_shader_parameter("alpha")
+	if alpha_strength > 0:
+		sprite.material.set_shader_parameter("alpha", alpha_strength - (delta))
+	
+func phase_in(delta):
+	var alpha_strength = sprite.material.get_shader_parameter("alpha")
+	set_collision_layer_value(5, false)
+	if alpha_strength < 1:
+		sprite.material.set_shader_parameter("alpha",  alpha_strength + (delta/2.0))
+	
 func take_damage(damage_amount):
 	current_health -= damage_amount
 	current_health = max(current_health, 0)

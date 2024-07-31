@@ -5,6 +5,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body is Player:
-		get_tree().root.get_node("LabMain").BIO2_flag2 = true
+		get_tree().root.get_node("LabMain").FOREST2_flag1 = true
 		queue_free()
-

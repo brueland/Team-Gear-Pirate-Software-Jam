@@ -1,6 +1,8 @@
 extends Node
+class_name GhostSpawner
 
 @export var max_ghosts: int = 5
+@export var enabled: bool = true
 var current_ghosts: Array
 var spawn_timer_ready: bool = true
 
@@ -13,8 +15,9 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if current_ghosts.size() < max_ghosts and spawn_timer_ready:
-		spawn_ghost()
+	if enabled:
+		if current_ghosts.size() < max_ghosts and spawn_timer_ready:
+			spawn_ghost()
 		
 func spawn_ghost():
 	var ghost = ghostScene.instantiate()

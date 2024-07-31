@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn0n37ud66irg"]
+[gd_scene load_steps=19 format=3 uid="uid://bn0n37ud66irg"]
 
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="2_kx146"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="3_ujhr4"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bg0c6nkar73c1" path="res://Assets/Sprites/Lighting/LightTexture.png" id="7_yoq41"]
 [ext_resource type="Texture2D" uid="uid://dqsbkov5tgn5m" path="res://Assets/Sprites/Hook Forest.png" id="8_by14u"]
 [ext_resource type="Script" path="res://Scripts/Objects/GrappleObject.gd" id="9_02qwv"]
+[ext_resource type="Script" path="res://Scripts/Levels/Forest/F2Dialogue1.gd" id="9_rp304"]
+[ext_resource type="Script" path="res://Scripts/Levels/Forest/F2Dialogue2.gd" id="10_4dkhf"]
+[ext_resource type="Script" path="res://Scripts/Levels/Forest/F2Dialogue3.gd" id="11_40dit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jday2"]
 resource_local_to_scene = true
@@ -8061,6 +8064,9 @@ sources/0 = SubResource("TileSetAtlasSource_o0k3c")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohcc0"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyggq"]
+size = Vector2(84, 48)
+
 [node name="Forest2" type="Node2D"]
 
 [node name="CameraBounds" parent="." instance=ExtResource("2_kx146")]
@@ -8114,32 +8120,6 @@ layer_5/name = "FG2"
 layer_5/z_index = 1
 layer_5/tile_data = PackedInt32Array(327677, 131072, 12, 327678, 65536, 8, 262141, 0, 8, 262142, 65536, 8, 196606, 65536, 7, 262143, 65536, 8, 196607, 131072, 12, 327679, 65536, 8, 393215, 65536, 11, 393214, 65536, 8, 393213, 65536, 8, 393212, 0, 8, 327676, 458752, 8, 458749, 65536, 9, 458748, 0, 9, 458750, 65536, 9, 458751, 131072, 9, 262144, 131072, 8, 196608, 65536, 11, 327680, 524288, 9, 131072, 65536, 8, 65536, 65536, 8, 196605, 0, 7, 0, 65536, 8, 131071, 0, 8, 131073, 65536, 11, 65537, 65536, 12, 131074, 131072, 9, 65538, 196608, 12, 2, 196608, 7, 196609, 524288, 9, 1, 131072, 8, -65535, 65536, 10, 65535, 0, 8, -1, 0, 12, -65537, 196608, 7, -65536, 65536, 7, -65534, 196608, 13, -131070, 196608, 7, 4, 0, 12, 5, 65536, 7, -65532, 196608, 7, 65541, 65536, 8, 65540, 0, 8, 65542, 65536, 8, 6, 524288, 12, -65530, 196608, 8, -131066, 196608, 7, 131076, 589824, 13, 131075, 262144, 8, 131077, 65536, 11, 131078, 65536, 9, 131079, 524288, 9, 65543, 131072, 8, 7, 65536, 10, 8, 196608, 13, -65528, 196608, 8, -131064, 196608, 7, 196613, 524288, 9, 196612, 458752, 9)
 
-[node name="Label" type="Label" parent="ForestTiles"]
-offset_left = 447.0
-offset_top = 384.0
-offset_right = 487.0
-offset_bottom = 407.0
-text = "Hazards
-"
-
-[node name="Label2" type="Label" parent="ForestTiles"]
-offset_left = 721.0
-offset_top = 191.0
-offset_right = 784.0
-offset_bottom = 240.0
-text = "Dash
-
-"
-
-[node name="Label3" type="Label" parent="ForestTiles"]
-offset_left = 397.0
-offset_top = 108.0
-offset_right = 460.0
-offset_bottom = 157.0
-text = "Dash
-
-"
-
 [node name="LabTiles" type="TileMap" parent="."]
 z_index = -1
 tile_set = SubResource("TileSet_w7ldh")
@@ -8160,16 +8140,18 @@ layer_4/name = "Forground"
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array(1376252, 655360, 0, 1376253, 655360, 0, 1376254, 655360, 0, 1376255, 655360, 0, 1310720, 655360, 0, 1310721, 131072, 4, 1310722, 131072, 4, 1376258, 720896, 0, 1441795, 720896, 0, 1507332, 720896, 0, 1572869, 720896, 0, 1638406, 720896, 0, 1703943, 720896, 0, 1769480, 720896, 0, 1310723, 983040, 4, 1376259, 983040, 5, 1376260, 983040, 4, 1441796, 983040, 5, 1441797, 983040, 4, 1507333, 983040, 5, 1507334, 983040, 4, 1572870, 983040, 5, 1572871, 983040, 4, 1638407, 983040, 5, 1638408, 983040, 4, 1703944, 983040, 5, 1703945, 983040, 4, 1769481, 983040, 5, 1769482, 983040, 4, 1441788, 655360, 1, 1507324, 655360, 1, 1572860, 655360, 1, 1638396, 655360, 1, 1703932, 655360, 1, 1769468, 655360, 1, 1835004, 655360, 1, 1441789, 655360, 1, 1507325, 655360, 1, 1572861, 655360, 1, 1638397, 655360, 1, 1703933, 655360, 1, 1769469, 655360, 1, 1835005, 655360, 1, 1441790, 655360, 1, 1507326, 655360, 1, 1572862, 655360, 1, 1638398, 655360, 1, 1703934, 655360, 1, 1769470, 655360, 1, 1835006, 655360, 1, 1441791, 655360, 1, 1507327, 655360, 1, 1572863, 655360, 1, 1638399, 655360, 1, 1703935, 655360, 1, 1376256, 655360, 1, 1441792, 655360, 1, 1507328, 655360, 1, 1572864, 655360, 1, 1638400, 655360, 1, 1376257, 917504, 2, 1441793, 655360, 1, 1507329, 655360, 1, 1572865, 655360, 1, 1638401, 655360, 1, 1703937, 655360, 1, 1441794, 917504, 2, 1507330, 655360, 1, 1572866, 655360, 1, 1638402, 655360, 1, 1703938, 655360, 1, 1507331, 917504, 2, 1572867, 655360, 1, 1638403, 655360, 1, 1703939, 655360, 1, 1769475, 655360, 1, 1572868, 917504, 2, 1638404, 655360, 1, 1703940, 655360, 1, 1769476, 655360, 1, 1638405, 917504, 2, 1703941, 655360, 1, 1769477, 655360, 1, 1703942, 917504, 2, 1769478, 655360, 1, 1769479, 917504, 2, 1703956, 786432, 0, 1703957, 786432, 0, 1769494, 917504, 8, 1769495, 917504, 8, 1835032, 917504, 8, 1507353, 589824, 0, 1572889, 589824, 1, 1638425, 589824, 1, 1703961, 589824, 1, 1769497, 589824, 1, 1507354, 720896, 0, 1572890, 720896, 1, 1638426, 720896, 1, 1703962, 720896, 1, 1769498, 720896, 1, 1835035, 917504, 8, 1769500, 917504, 8, 1835037, 917504, 8, 1835038, 917504, 8, 1900575, 917504, 8)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="Lights" type="Node" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
 position = Vector2(430, 290)
-rotation = -5.2332
+rotation = 1.04999
 scale = Vector2(0.737574, 1.03393)
 color = Color(0.788235, 0.760784, 0.65098, 1)
 energy = 4.86
 blend_mode = 2
 texture = ExtResource("6_133pv")
 
-[node name="PointLight2D3" type="PointLight2D" parent="PointLight2D"]
+[node name="PointLight2D3" type="PointLight2D" parent="Lights/PointLight2D"]
 position = Vector2(-167.245, -178.826)
 rotation = -0.522299
 scale = Vector2(1.21746, 0.730429)
@@ -8179,16 +8161,16 @@ blend_mode = 2
 texture = ExtResource("7_yoq41")
 texture_scale = 0.75
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
 position = Vector2(959, 251)
-rotation = -5.2332
+rotation = 1.04999
 scale = Vector2(0.737574, 1.03393)
 color = Color(0.788235, 0.760784, 0.65098, 1)
 energy = 4.86
 blend_mode = 2
 texture = ExtResource("6_133pv")
 
-[node name="PointLight2D3" type="PointLight2D" parent="PointLight2D2"]
+[node name="PointLight2D3" type="PointLight2D" parent="Lights/PointLight2D2"]
 position = Vector2(-167.245, -178.826)
 rotation = -0.522299
 scale = Vector2(1.21746, 0.730429)
@@ -8198,16 +8180,16 @@ blend_mode = 2
 texture = ExtResource("7_yoq41")
 texture_scale = 0.75
 
-[node name="PointLight2D3" type="PointLight2D" parent="."]
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
 position = Vector2(254, 51)
-rotation = -5.2332
+rotation = 1.04999
 scale = Vector2(0.737574, 1.03393)
 color = Color(0.788235, 0.760784, 0.65098, 1)
 energy = 4.86
 blend_mode = 2
 texture = ExtResource("6_133pv")
 
-[node name="PointLight2D3" type="PointLight2D" parent="PointLight2D3"]
+[node name="PointLight2D3" type="PointLight2D" parent="Lights/PointLight2D3"]
 position = Vector2(-167.245, -178.826)
 rotation = -0.522299
 scale = Vector2(1.21746, 0.730429)
@@ -8217,7 +8199,9 @@ blend_mode = 2
 texture = ExtResource("7_yoq41")
 texture_scale = 0.75
 
-[node name="GrappleObject" type="Sprite2D" parent="."]
+[node name="GrapplePoints" type="Node" parent="."]
+
+[node name="GrappleObject" type="Sprite2D" parent="GrapplePoints"]
 position = Vector2(797, 299)
 texture = ExtResource("8_by14u")
 flip_h = true
@@ -8225,48 +8209,77 @@ hframes = 2
 frame = 1
 script = ExtResource("9_02qwv")
 
-[node name="GrappleObjectArea2D" type="Area2D" parent="GrappleObject"]
+[node name="GrappleObjectArea2D" type="Area2D" parent="GrapplePoints/GrappleObject"]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleObject/GrappleObjectArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrapplePoints/GrappleObject/GrappleObjectArea2D"]
 shape = SubResource("RectangleShape2D_ohcc0")
 
-[node name="HangPoint" type="Node2D" parent="GrappleObject/GrappleObjectArea2D"]
-position = Vector2(0, 8)
+[node name="HangPoint" type="Node2D" parent="GrapplePoints/GrappleObject/GrappleObjectArea2D"]
+position = Vector2(-8, 0)
 
-[node name="GrappleObject2" type="Sprite2D" parent="."]
+[node name="GrappleObject2" type="Sprite2D" parent="GrapplePoints"]
 position = Vector2(394, 264)
 texture = ExtResource("8_by14u")
 hframes = 2
 script = ExtResource("9_02qwv")
 
-[node name="GrappleObjectArea2D" type="Area2D" parent="GrappleObject2"]
+[node name="GrappleObjectArea2D" type="Area2D" parent="GrapplePoints/GrappleObject2"]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleObject2/GrappleObjectArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrapplePoints/GrappleObject2/GrappleObjectArea2D"]
 shape = SubResource("RectangleShape2D_ohcc0")
 
-[node name="HangPoint" type="Node2D" parent="GrappleObject2/GrappleObjectArea2D"]
+[node name="HangPoint" type="Node2D" parent="GrapplePoints/GrappleObject2/GrappleObjectArea2D"]
 position = Vector2(0, 8)
 
-[node name="GrappleObject3" type="Sprite2D" parent="."]
+[node name="GrappleObject3" type="Sprite2D" parent="GrapplePoints"]
 position = Vector2(168, 20)
 texture = ExtResource("8_by14u")
 flip_h = true
 hframes = 2
 script = ExtResource("9_02qwv")
 
-[node name="GrappleObjectArea2D" type="Area2D" parent="GrappleObject3"]
+[node name="GrappleObjectArea2D" type="Area2D" parent="GrapplePoints/GrappleObject3"]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleObject3/GrappleObjectArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrapplePoints/GrappleObject3/GrappleObjectArea2D"]
 shape = SubResource("RectangleShape2D_ohcc0")
 
-[node name="HangPoint" type="Node2D" parent="GrappleObject3/GrappleObjectArea2D"]
+[node name="HangPoint" type="Node2D" parent="GrapplePoints/GrappleObject3/GrappleObjectArea2D"]
 position = Vector2(0, 8)
+
+[node name="Dialogue" type="Node" parent="."]
+
+[node name="Dialogue1" type="Area2D" parent="Dialogue"]
+position = Vector2(802, 218)
+collision_layer = 0
+script = ExtResource("9_rp304")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Dialogue1"]
+position = Vector2(16, -14)
+shape = SubResource("RectangleShape2D_wyggq")
+
+[node name="Dialogue2" type="Area2D" parent="Dialogue"]
+position = Vector2(515, 199)
+collision_layer = 0
+script = ExtResource("10_4dkhf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Dialogue2"]
+position = Vector2(16, -14)
+shape = SubResource("RectangleShape2D_wyggq")
+
+[node name="Dialogue3" type="Area2D" parent="Dialogue"]
+position = Vector2(176, 213)
+collision_layer = 0
+script = ExtResource("11_40dit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Dialogue3"]
+position = Vector2(16, -14)
+shape = SubResource("RectangleShape2D_wyggq")
 
 [editable path="CameraBounds"]
 [editable path="TransitionPoints/Transition_1"]

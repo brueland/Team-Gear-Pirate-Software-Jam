@@ -141,6 +141,7 @@ position = Vector2(-27, -5)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_1fhny")
+speed = 80.0
 is_Chasing = true
 shader_resource = ExtResource("2_88868")
 shader_noise_texture = ExtResource("3_vq6k3")

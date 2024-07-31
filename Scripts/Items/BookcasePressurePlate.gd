@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var animations = $PressurePlateAnimatedSprite2D
 
-func _onready():
+func _ready():
 	connected_bookcase.get_node("MovingBookcaseStaticBody2D").collision_layer = 0
 	connected_bookcase.get_node("MovingBookcaseStaticBody2D").collision_mask = 0
 
