@@ -28,4 +28,8 @@ func _on_lantern_area_body_entered(body):
 		lantern.global_position = global_position
 		get_tree().root.call_deferred("add_child", lantern)
 
+		if !get_tree().root.get_node("LabMain").LANTERN_flag:
+			get_tree().root.get_node("LabMain").LANTERN_flag = true
+			get_tree().root.get_node("LabMain").SECRET2_flag3 = true
+
 		queue_free()
