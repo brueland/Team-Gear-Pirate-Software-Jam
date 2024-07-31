@@ -9,6 +9,7 @@ var player: CharacterBody2D
 
 @export var shader_resource: Shader
 @export var shader_noise_texture: Texture
+@export var ghost_noise: AudioStream
 
 var in_light: bool = false
 var direction: int = 1
@@ -33,6 +34,7 @@ func _ready():
 	sprite.material.set_shader_parameter("dissolve_noise", shader_noise_texture)
 	sprite.material.set_shader_parameter("dissolve_noise2", shader_noise_texture)
 	sprite.material.set_shader_parameter("dissolve_noise3", shader_noise_texture)
+	AudioManager.play_sound(ghost_noise)
 
 func  _physics_process(delta):
 	velocity = lerp(velocity, Vector2.ZERO, delta*40)
@@ -47,6 +49,7 @@ func  _physics_process(delta):
 			set_collision_layer_value(5, false)
 			phase_out(delta)
 	else:
+		
 		dying_sequence(delta)
 	move_and_slide()
 

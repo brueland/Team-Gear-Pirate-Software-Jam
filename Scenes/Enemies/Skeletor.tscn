@@ -1,10 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://ceccic3fq3gbc"]
+[gd_scene load_steps=31 format=3 uid="uid://ceccic3fq3gbc"]
 
 [ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="1_53lmx"]
+[ext_resource type="Script" path="res://Scripts/Enemies/SKELETOR.gd" id="1_umh1b"]
 [ext_resource type="Texture2D" uid="uid://3eh0ri6n0kl0" path="res://Assets/Sprites/Enemies/Skeletor2-Sheet.png" id="2_70sbn"]
+[ext_resource type="AudioStream" uid="uid://cv665uyxhi2u" path="res://Assets/Sounds/Levels/Lab/SFX_Shadow_Negative.wav" id="2_stgp5"]
 [ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="3_27oi0"]
+[ext_resource type="AudioStream" uid="uid://bjothif8x5mgy" path="res://Assets/Sounds/Levels/Lab/AMB_BuildingCollapse.wav" id="3_67ruq"]
+[ext_resource type="AudioStream" uid="uid://cmfgb2ue3s1pt" path="res://Assets/Sounds/Levels/Lab/SFX_Glass_Shatter_1.wav" id="3_sqwpy"]
 [ext_resource type="Texture2D" uid="uid://57h0iqcmimdp" path="res://Assets/Sprites/Enemies/Skeletor2BG.png" id="4_6qlrb"]
 [ext_resource type="Texture2D" uid="uid://bg0c6nkar73c1" path="res://Assets/Sprites/Lighting/LightTexture.png" id="5_5ueix"]
+[ext_resource type="AudioStream" uid="uid://dqacgepjme15" path="res://Assets/Sounds/Levels/Lab/SFX_Bones_Break.wav" id="5_ptoqq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yyofv"]
 seed = 2
@@ -141,26 +146,33 @@ turbulence_influence_min = 0.35
 turbulence_influence_max = 0.403
 turbulence_initial_displacement_min = -1.0
 
-[node name="Skeletor" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_380jp"]
+radius = 44.0114
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Skeletor" type="CharacterBody2D"]
+script = ExtResource("1_umh1b")
+skeletor_scream = ExtResource("2_stgp5")
+glass_break = ExtResource("3_sqwpy")
+building_collapse = ExtResource("3_67ruq")
+bone_break = ExtResource("5_ptoqq")
+
+[node name="SkeletorAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_2hpr1")
-position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_an54u")
-frame_progress = 0.996264
+frame_progress = 0.335465
 
-[node name="StaticSmokeParticles" type="GPUParticles2D" parent="AnimatedSprite2D"]
+[node name="StaticSmokeParticles" type="GPUParticles2D" parent="SkeletorAnimatedSprite2D"]
 z_index = -1
 material = SubResource("CanvasItemMaterial_y6gda")
 position = Vector2(8, -2)
-amount = 1000
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_aye17")
 texture = ExtResource("3_27oi0")
 randomness = 1.0
 trail_lifetime = 10.0
 trail_section_subdivisions = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+[node name="SkeletorSprite2D" type="Sprite2D" parent="SkeletorAnimatedSprite2D"]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 position = Vector2(7, 1)
@@ -169,7 +181,7 @@ texture = ExtResource("4_6qlrb")
 [node name="SpawnParticles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_y6gda")
 position = Vector2(15, -4)
-amount = 1000
+amount = 500
 process_material = SubResource("ParticleProcessMaterial_flbw8")
 texture = ExtResource("3_27oi0")
 randomness = 1.0
@@ -177,6 +189,11 @@ trail_lifetime = 10.0
 trail_section_subdivisions = 1
 
 [node name="SpawnLight" type="PointLight2D" parent="."]
+energy = 2.5
 blend_mode = 1
 texture = ExtResource("5_5ueix")
 texture_scale = 0.3
+
+[node name="SkeletorCollider" type="CollisionShape2D" parent="."]
+position = Vector2(6, -4)
+shape = SubResource("CircleShape2D_380jp")

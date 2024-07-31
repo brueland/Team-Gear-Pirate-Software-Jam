@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgjhrwp2j37yi"]
+[gd_scene load_steps=4 format=3 uid="uid://c8w5m21gprsfv"]
 
-[ext_resource type="Texture2D" uid="uid://cqsed2krug52e" path="res://Assets/Sprites/Grapple/grapple_point.png" id="1_0bk5c"]
-[ext_resource type="Script" path="res://Scripts/Objects/GrappleObject.gd" id="2_43gwo"]
+[ext_resource type="Texture2D" uid="uid://cqsed2krug52e" path="res://Assets/Sprites/Grapple/grapple_point.png" id="1_yiofd"]
+[ext_resource type="Script" path="res://Scripts/Objects/GrappleObject.gd" id="2_lodkk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohcc0"]
 size = Vector2(16, 16)
 
 [node name="GrappleObject" type="Sprite2D"]
-texture = ExtResource("1_0bk5c")
-script = ExtResource("2_43gwo")
+rotation = 1.5708
+texture = ExtResource("1_yiofd")
+script = ExtResource("2_lodkk")
 
 [node name="GrappleObjectArea2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -18,4 +19,4 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_ohcc0")
 
 [node name="HangPoint" type="Node2D" parent="GrappleObjectArea2D"]
-position = Vector2(0, 8)
+position = Vector2(5, 4)

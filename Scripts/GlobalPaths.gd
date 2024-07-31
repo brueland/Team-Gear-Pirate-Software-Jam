@@ -6,6 +6,8 @@ extends Node
 const GRAPPLING_HOOK_PATH: String = "res://Scenes/Player/GrapplingHook.tscn"
 # SCENES/ENEMIES/GHOST
 const GHOST_PATH: String = "res://Scenes/Enemies/Ghost/Ghost.tscn"
+# SCENES/ENEMIES
+const SKELETOR_PATH: String = "res://Scenes/Enemies/Skeletor.tscn"
 # SCENES/ITEMS/LANTERN
 const LANTERN_PATH: String = "res://Scenes/Items/Lantern/Lantern.tscn"
 

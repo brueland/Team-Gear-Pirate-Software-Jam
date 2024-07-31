@@ -24,12 +24,11 @@ script = ExtResource("1_pu854")
 startGameSFX = ExtResource("2_lg28v")
 buttonClickSFX = ExtResource("3_s886s")
 buttonSelectSFX = ExtResource("4_jp4gn")
-options = NodePath("")
+options = NodePath("Options")
 menu = NodePath("Menu")
 
 [node name="Menu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="TitleWords" type="Sprite2D" parent="Menu"]
 z_index = 18
@@ -64,6 +63,7 @@ flat = true
 script = ExtResource("6_55xu1")
 
 [node name="Options" type="Button" parent="Menu"]
+visible = false
 offset_left = 914.0
 offset_top = 515.0
 offset_right = 1271.0
@@ -113,15 +113,16 @@ stream = ExtResource("12_xwvdt")
 autoplay = true
 bus = &"BGM"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Options" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+[node name="Background" type="Sprite2D" parent="Options"]
 z_index = -1
 position = Vector2(580, 326)
 scale = Vector2(3.06019, 3.06019)
 texture = ExtResource("6_x2wy8")
 
-[node name="BackButton" type="Button" parent="CanvasLayer"]
+[node name="BackButton" type="Button" parent="Options"]
 modulate = Color(0.517647, 0.611765, 0.647059, 1)
 offset_left = 997.0
 offset_top = 564.0
@@ -132,7 +133,7 @@ theme_override_font_sizes/font_size = 48
 text = "Back"
 flat = true
 
-[node name="Master" type="Label" parent="CanvasLayer"]
+[node name="Master" type="Label" parent="Options"]
 modulate = Color(0.45098, 0.533333, 0.564706, 1)
 offset_left = 391.0
 offset_top = 248.0
@@ -142,7 +143,7 @@ theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 32
 text = "Master"
 
-[node name="BGM" type="Label" parent="CanvasLayer"]
+[node name="BGM" type="Label" parent="Options"]
 modulate = Color(0.45098, 0.533333, 0.564706, 1)
 offset_left = 391.0
 offset_top = 282.0
@@ -152,7 +153,7 @@ theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 32
 text = "BGM"
 
-[node name="SFX" type="Label" parent="CanvasLayer"]
+[node name="SFX" type="Label" parent="Options"]
 modulate = Color(0.45098, 0.533333, 0.564706, 1)
 offset_left = 391.0
 offset_top = 315.0
@@ -162,7 +163,7 @@ theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 32
 text = "SFX"
 
-[node name="FullScreen" type="Label" parent="CanvasLayer"]
+[node name="FullScreen" type="Label" parent="Options"]
 modulate = Color(0.45098, 0.533333, 0.564706, 1)
 offset_left = 391.0
 offset_top = 362.0
@@ -172,14 +173,14 @@ theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 32
 text = "FullScreen"
 
-[node name="FullscreenButton" type="CheckButton" parent="CanvasLayer"]
+[node name="FullscreenButton" type="CheckButton" parent="Options"]
 offset_left = 604.0
 offset_top = 365.0
 offset_right = 648.0
 offset_bottom = 389.0
 theme = ExtResource("7_ofpi3")
 
-[node name="Master2" type="HSlider" parent="CanvasLayer"]
+[node name="Master2" type="HSlider" parent="Options"]
 offset_left = 520.0
 offset_top = 257.0
 offset_right = 765.0
@@ -190,7 +191,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MusicSlider" type="HSlider" parent="CanvasLayer"]
+[node name="MusicSlider" type="HSlider" parent="Options"]
 offset_left = 520.0
 offset_top = 292.556
 offset_right = 765.0
@@ -201,7 +202,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="SFXSlider" type="HSlider" parent="CanvasLayer"]
+[node name="SFXSlider" type="HSlider" parent="Options"]
 offset_left = 520.0
 offset_top = 328.111
 offset_right = 765.0
@@ -218,7 +219,7 @@ value = 1.0
 [connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="Menu/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/BackButton" to="." method="_on_back_button_mouse_entered"]
-[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="toggled" from="CanvasLayer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
+[connection signal="mouse_entered" from="Options/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="Options/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="Options/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
+[connection signal="toggled" from="Options/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]

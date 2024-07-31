@@ -8,4 +8,3 @@ script = ExtResource("1_wa084")
 first_room = "SBX_SCENE_1_PATH"
 
 [node name="TransitionFadeout" parent="." instance=ExtResource("2_64s7r")]
-visible = false

@@ -12,7 +12,7 @@ class_name MainScene
 @export_category("Enemies")
 @export var SKELTOR_flag: bool = false
 
-@export_category("Rooms")
+@export_category("Room Bools")
 @export var FOREST1_flag1: bool = false
 @export var FOREST1_flag2: bool = false
 @export var FOREST1_flag3: bool = false
@@ -75,6 +75,11 @@ class_name MainScene
 @export var SECRET2_flag8: bool = false
 @export var SECRET2_flag9: bool = false
 @export var SECRET2_flag10: bool = false
+@export var SECRET2_flag11: bool = false
+@export var SECRET2_flag12: bool = false
+@export var SECRET2_flag13: bool = false
+
+@export var finished_flag: bool = false
 
 @export_category("Menus")
 
@@ -112,14 +117,26 @@ func check_room_flags():
 			show_dialogue("I'm going to have to time this JUMP GRAPPLE just right.")
 	
 	elif "FOREST2_PATH" in room_container.current_room:
-		if FOREST2_flag1:
+		if FOREST2_flag1 and !SECRET2_flag13:
 			show_dialogue("A good JUMP DASH will get me across that gap.")
 			
-		if FOREST2_flag2:
+		if FOREST2_flag2 and !SECRET2_flag13:
 			show_dialogue("That damn fence, I don't want to fall down there...")
 			
-		if FOREST2_flag3:
+		if FOREST2_flag3 and !SECRET2_flag13:
 			show_dialogue("Well at least it's still standing. Guess I'll see if anyone is home.")
+		
+		if SECRET2_flag13:
+			AudioManager.play_music(bio2_music)
+			show_dialogue("Am I... safe?")
+			room_container.transition_fader.fade_out()
+			finished_flag = true
+			await get_tree().create_timer(10).timeout
+
+		
+		if finished_flag:
+			get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
+			
 			
 	elif "ARCH1_PATH" in room_container.current_room:
 		if ARCH1_flag1 and !ARCH1_flag2:
@@ -159,6 +176,7 @@ func check_room_flags():
 		if SECRET2_flag3 and !SECRET2_flag4:
 			AudioManager.play_music(lab_music)
 			SECRET2_flag4 = true
+			SECRET2_flag5 = true
 			show_dialogue("This lantern is so hot, I can only hold it with my metal hand.")
 	
 		if SECRET2_flag5 and !SECRET2_flag6:
@@ -167,25 +185,47 @@ func check_room_flags():
 							
 		if SECRET2_flag7 and !SECRET2_flag8:
 			AudioManager.stop_music()
+			show_dialogue("A perfect circle...")
 			SECRET2_flag8 = true
 			
 		if SECRET2_flag9 and !SECRET2_flag10:
 			AudioManager.play_music(boss_music)
-			show_dialogue("What is that monstrosity?!")
+			show_dialogue("Huh?!")
 			SECRET2_flag10 = true
 			SKELTOR_flag = true
+			
+		if SECRET2_flag11 and !SECRET2_flag12:
+			show_dialogue("What is that monstrosity?!")
+			SECRET2_flag12 = true
 	
 	elif "ARCH2_PATH" in room_container.current_room:	
-		pass
+		if ARCH2_flag1 and !ARCH2_flag2:
+			show_dialogue("I can't grapple up to this ledge while holding this lantern!")
+			ARCH2_flag2 = true
 		
 	elif "CHEM1_PATH" in room_container.current_room:
-		pass
-		
+		if !CHEM1_flag1 and !CHEM1_flag2:
+			show_dialogue("Wait... This is where I discovered the formula for Alium...")
+			CHEM1_flag1 = true
+			CHEM1_flag2 = true
+		if CHEM1_flag3 and !CHEM1_flag4:
+			show_dialogue("Is that... ME?")
+			CHEM1_flag4 = true
+			
 	elif "CHEM2_PATH" in room_container.current_room:
-		pass
-		
+		if !CHEM2_flag1 and !CHEM2_flag2:
+			show_dialogue("My study, I'd never forget the smell!")
+			CHEM2_flag1 = true
+			CHEM2_flag2 = true
+		if CHEM2_flag3 and !CHEM2_flag4:
+			show_dialogue("Heh, I always did love those damn hats.")
+			CHEM2_flag4 = true
+			
 	elif "BIO1_PATH" in room_container.current_room:
-		pass
+		if !BIO1_flag1 and !BIO1_flag2:
+			show_dialogue("I hope this doesn't lead to where I think it does, better be careful of broken glass.")
+			BIO1_flag1 = true
+			BIO1_flag2 = true
 		
 	elif "BIO2_PATH" in room_container.current_room:
 		if !BIO2_flag1:
@@ -193,9 +233,12 @@ func check_room_flags():
 			BIO2_flag1 = true
 		elif BIO2_flag2 and !BIO2_flag3:
 			AudioManager.play_music(bio2_music)
-			show_dialogue("What the hell u doin wit my arm, brah?")
+			show_dialogue("No. NO! STOP!")
 			BIO2_flag3 = true
-					
+		
+		if BIO2_flag4 and !BIO2_flag5:
+			show_dialogue("It's too late, I can't go back and stop myself...")
+			BIO2_flag5 = true		
 
 		
 func show_dialogue(dialogue: String):

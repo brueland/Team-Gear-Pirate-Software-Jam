@@ -15,12 +15,20 @@ func remove_node(instance : AudioStreamPlayer):
 	instance.queue_free()
 
 func play_music(stream: AudioStream):
-	print('here')
 	background_music = AudioStreamPlayer2D.new()
 	background_music.stream = stream
 	background_music.bus = GlobalPaths.BGM_BUS
 	add_child(background_music)
-	background_music.play()
+
+	background_music.finished.connect(_on_music_finished)
 	
+	background_music.play()
+
+func _on_music_finished():
+	# Restart the music from the beginning
+	background_music.play()
+
 func stop_music():
-	background_music.stop()
+	if background_music:
+		background_music.stop()
+		background_music.finished.disconnect(_on_music_finished)

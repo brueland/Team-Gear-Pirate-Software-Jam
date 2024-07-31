@@ -1,12 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn04txb6xvlxl"]
+[gd_scene load_steps=16 format=3 uid="uid://bn04txb6xvlxl"]
 
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="1_egewb"]
+[ext_resource type="Script" path="res://Scripts/Levels/Arch2/Arch2.gd" id="1_ykp0i"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="2_k0k5l"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="3_8g6mq"]
 [ext_resource type="PackedScene" uid="uid://dgjhrwp2j37yi" path="res://Scenes/Objects/GrappleObject.tscn" id="4_8cg6d"]
 [ext_resource type="PackedScene" uid="uid://cvwxn6dcfe065" path="res://Scenes/Objects/door.tscn" id="5_yey68"]
 [ext_resource type="PackedScene" uid="uid://c1doq2agloele" path="res://Scenes/Objects/pressure_plate.tscn" id="6_hq6ts"]
 [ext_resource type="AudioStream" uid="uid://c5a8nxfaih41w" path="res://Assets/Sounds/Levels/Lab/SFX_Door_Unlock.wav" id="7_ug26u"]
+[ext_resource type="Script" path="res://Scripts/Levels/Arch2/A2Dialogue1.gd" id="9_7grmu"]
+[ext_resource type="PackedScene" uid="uid://bsnxb3d7pqb4a" path="res://Scenes/Enemies/Ghost/ghost_spawner.tscn" id="10_4kmbk"]
+[ext_resource type="PackedScene" uid="uid://c8w5m21gprsfv" path="res://Scenes/Objects/GrappleObjectSideways.tscn" id="11_2pi28"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wuqic"]
 texture = ExtResource("1_egewb")
@@ -4235,7 +4239,14 @@ sources/1 = SubResource("TileSetAtlasSource_wuqic")
 resource_local_to_scene = true
 size = Vector2(1110, 312)
 
-[node name="Arch2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhirj"]
+size = Vector2(84, 48)
+
+[node name="Arch2" type="Node2D" node_paths=PackedStringArray("pressure_plate", "door", "ghost_spawner")]
+script = ExtResource("1_ykp0i")
+pressure_plate = NodePath("Decorations/PressurePlate")
+door = NodePath("Decorations/Door")
+ghost_spawner = NodePath("GhostSpawner")
 
 [node name="LabTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_trbi7")
@@ -4277,20 +4288,41 @@ position = Vector2(-33, 0)
 position = Vector2(580, 163)
 shape = SubResource("RectangleShape2D_higi7")
 
-[node name="GrappleObject" parent="." instance=ExtResource("4_8cg6d")]
-position = Vector2(360, 40)
+[node name="Dialogue" type="Node" parent="."]
 
-[node name="GrappleObject2" parent="." instance=ExtResource("4_8cg6d")]
-position = Vector2(157, 40)
+[node name="Dialogue1" type="Area2D" parent="Dialogue"]
+position = Vector2(153, 142)
+collision_layer = 0
+script = ExtResource("9_7grmu")
 
-[node name="Door" parent="." instance=ExtResource("5_yey68")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Dialogue1"]
+position = Vector2(16, -14)
+shape = SubResource("RectangleShape2D_yhirj")
+
+[node name="Decorations" type="Node" parent="."]
+
+[node name="Door" parent="Decorations" instance=ExtResource("5_yey68")]
 position = Vector2(35, 261)
 
-[node name="BookcasePressurePlate" parent="." node_paths=PackedStringArray("connected_door") instance=ExtResource("6_hq6ts")]
+[node name="PressurePlate" parent="Decorations" node_paths=PackedStringArray("connected_door") instance=ExtResource("6_hq6ts")]
 position = Vector2(69, 96)
 connected_door = NodePath("../Door")
 one_shot = true
 click_sound = ExtResource("7_ug26u")
+
+[node name="GrapplePoints" type="Node" parent="."]
+
+[node name="GrappleObject" parent="GrapplePoints" instance=ExtResource("4_8cg6d")]
+position = Vector2(360, 40)
+
+[node name="GrappleObject2" parent="GrapplePoints" instance=ExtResource("4_8cg6d")]
+position = Vector2(157, 40)
+
+[node name="GhostSpawner" parent="." instance=ExtResource("10_4kmbk")]
+
+[node name="GrappleObject" parent="." instance=ExtResource("11_2pi28")]
+position = Vector2(135, 136)
+flip_v = true
 
 [editable path="TransitionPoints/Transition_2"]
 [editable path="CameraBounds"]
