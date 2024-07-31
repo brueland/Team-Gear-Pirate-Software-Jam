@@ -4046,7 +4046,6 @@ z_index = -1
 position = Vector2(341, 1144)
 
 [node name="GhostSpawner" parent="." instance=ExtResource("6_rl1dq")]
-max_ghosts = 10
 
 [node name="GrapplePoints" type="Node" parent="."]
 
