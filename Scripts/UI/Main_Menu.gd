@@ -3,7 +3,7 @@ extends Control
 @export var startGameSFX:AudioStream
 @export var buttonClickSFX:AudioStream
 @export var buttonSelectSFX:AudioStream
-@export var options : Sprite2D
+@export var options : CanvasLayer
 @export var menu : CanvasLayer = get_parent()
 var optionsScene = preload(GlobalPaths.OPTIONS_SCREEN_PATH)
 

@@ -12,7 +12,7 @@ class_name MainScene
 @export_category("Enemies")
 @export var SKELTOR_flag: bool = false
 
-@export_category("Rooms")
+@export_category("Room Bools")
 @export var FOREST1_flag1: bool = false
 @export var FOREST1_flag2: bool = false
 @export var FOREST1_flag3: bool = false
@@ -79,6 +79,8 @@ class_name MainScene
 @export var SECRET2_flag12: bool = false
 @export var SECRET2_flag13: bool = false
 
+@export var finished_flag: bool = false
+
 @export_category("Menus")
 
 @onready var player = $Player
@@ -125,10 +127,15 @@ func check_room_flags():
 			show_dialogue("Well at least it's still standing. Guess I'll see if anyone is home.")
 		
 		if SECRET2_flag13:
-			GlobalReferences.skeletor.queue_free()
 			AudioManager.play_music(bio2_music)
 			show_dialogue("Am I... safe?")
-			
+			room_container.transition_fader.fade_out()
+			finished_flag = true
+			await get_tree().create_timer(10).timeout
+
+		
+		if finished_flag:
+			get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
 			
 			
 	elif "ARCH1_PATH" in room_container.current_room:
@@ -169,6 +176,7 @@ func check_room_flags():
 		if SECRET2_flag3 and !SECRET2_flag4:
 			AudioManager.play_music(lab_music)
 			SECRET2_flag4 = true
+			SECRET2_flag5 = true
 			show_dialogue("This lantern is so hot, I can only hold it with my metal hand.")
 	
 		if SECRET2_flag5 and !SECRET2_flag6:

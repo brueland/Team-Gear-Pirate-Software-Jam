@@ -36,6 +36,8 @@ func _process(_delta):
 		AudioManager.play_sound(building_collapse)
 	elif i == 30:
 		AudioManager.play_sound(bone_break)
+	if get_tree().root.get_node("LabMain").finished_flag:
+		queue_free()
 		
 func chase_player(delta):
 	var target_position_noise = randf_range(0.90, 1.10)

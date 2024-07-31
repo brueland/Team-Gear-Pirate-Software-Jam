@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn04txb6xvlxl"]
+[gd_scene load_steps=16 format=3 uid="uid://bn04txb6xvlxl"]
 
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="1_egewb"]
 [ext_resource type="Script" path="res://Scripts/Levels/Arch2/Arch2.gd" id="1_ykp0i"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://c5a8nxfaih41w" path="res://Assets/Sounds/Levels/Lab/SFX_Door_Unlock.wav" id="7_ug26u"]
 [ext_resource type="Script" path="res://Scripts/Levels/Arch2/A2Dialogue1.gd" id="9_7grmu"]
 [ext_resource type="PackedScene" uid="uid://bsnxb3d7pqb4a" path="res://Scenes/Enemies/Ghost/ghost_spawner.tscn" id="10_4kmbk"]
+[ext_resource type="PackedScene" uid="uid://c8w5m21gprsfv" path="res://Scenes/Objects/GrappleObjectSideways.tscn" id="11_2pi28"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wuqic"]
 texture = ExtResource("1_egewb")
@@ -4318,6 +4319,10 @@ position = Vector2(360, 40)
 position = Vector2(157, 40)
 
 [node name="GhostSpawner" parent="." instance=ExtResource("10_4kmbk")]
+
+[node name="GrappleObject" parent="." instance=ExtResource("11_2pi28")]
+position = Vector2(135, 136)
+flip_v = true
 
 [editable path="TransitionPoints/Transition_2"]
 [editable path="CameraBounds"]

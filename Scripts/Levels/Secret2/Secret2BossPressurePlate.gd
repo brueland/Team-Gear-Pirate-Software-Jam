@@ -6,7 +6,7 @@ extends Node2D
 
 @onready var animations = $PressurePlateAnimatedSprite2D
 
-
+		
 func _on_pressure_plate_area_2d_body_entered(body):
 	if body is Player and get_tree().root.get_node("LabMain").SECRET2_flag7:
 		connected_door1.visible = true
