@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2sicjdmkoq27"]
+[gd_scene load_steps=11 format=3 uid="uid://d2sicjdmkoq27"]
 
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/transition_point.tscn" id="2_0qnsg"]
 [ext_resource type="PackedScene" uid="uid://ofaphgm1wmg8" path="res://Scenes/Levels/camera_bounds.tscn" id="3_y8my6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="4_n1put"]
 [ext_resource type="PackedScene" uid="uid://d1cvrosmfldpp" path="res://Scenes/Enemies/Ghost/positive_ghost.tscn" id="5_22qxr"]
 [ext_resource type="Texture2D" uid="uid://du3dsb4qrpe31" path="res://Assets/Sprites/NPCs/Ghosts/BioGhost.png" id="6_xk0nh"]
+[ext_resource type="Script" path="res://Scripts/Levels/BIO/Bio2_Area2D.gd" id="7_mxuq1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0k3c"]
 texture = ExtResource("4_n1put")
@@ -4012,6 +4013,14 @@ position = Vector2(351, 223)
 position = Vector2(5, 0)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("6_xk0nh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("7_mxuq1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(4, 160)
+polygon = PackedVector2Array(-12, 15, -9, 28, 224, 26, 265, -157, 254, -157, 215, 15)
 
 [editable path="CameraBounds"]
 [editable path="MedicalMachine"]

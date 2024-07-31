@@ -11,11 +11,17 @@ var can_transition: bool = true
 var transition_complete: bool = true
 var first_load: bool = true
 
+var current_room: String
+var current_entrance: String 
+
 func _ready():
 	load_room(first_room, first_room_entrance)
 
 # Function to load a level
 func load_room(room_path: String, room_entrance: String):
+	current_room = room_path
+	current_entrance = room_entrance
+	
 	# Defer the entire process to avoid modification during physics processing
 	can_transition = false
 	for child in get_tree().root.get_children():
@@ -46,8 +52,6 @@ func _deferred_load_room(room_path: String, room_entrance: String):
 	# Get the target door in the new scene
 	var target_entrances = new_level.get_node("TransitionPoints")
 	var target_entrance = target_entrances.get_node(room_entrance)
-
-
 
 	if target_entrance:
 		player.global_position = target_entrance.global_position

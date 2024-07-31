@@ -5,11 +5,9 @@ extends TextureRect
 	#fade_in()
 
 func fade_in():
-	print("fading in")
 	animation_player.play("FadeIn")
 
 func fade_out():
-	print("fading out")
 	animation_player.play("FadeOut")
 
 func reset():
