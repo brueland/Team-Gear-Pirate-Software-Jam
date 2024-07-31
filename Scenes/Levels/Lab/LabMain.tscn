@@ -17,20 +17,23 @@ fog_enabled = true
 fog_light_energy = 1.85
 adjustment_brightness = 0.01
 
-[node name="LabMain" type="Node2D"]
+[node name="LabMain" type="Node2D" node_paths=PackedStringArray("dialogue_box", "dialogue_text")]
 script = ExtResource("1_ldbns")
 lab_music = ExtResource("5_m8n3x")
 bio2_music = ExtResource("6_upxff")
 boss_music = ExtResource("4_mq6wf")
+dialogue_box = NodePath("CanvasLayer/DialogueBox")
+dialogue_text = NodePath("CanvasLayer/DialogueBox/Label")
 
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_b3l3q")]
 player = NodePath("../Player")
 camera = NodePath("../Player/Camera")
-first_room = "BIO2_PATH"
+first_room = "FOREST2_PATH"
 first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]
 position = Vector2(90, -32)
+max_jumps = 5
 dash_enabled = true
 max_health = 10
 mouseEnabled = true
@@ -55,9 +58,9 @@ color = Color(0.109804, 0.109804, 0.109804, 1)
 [node name="DialogueBox" type="NinePatchRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.588235)
 z_index = 29
-offset_left = 373.0
+offset_left = 218.0
 offset_top = 84.0
-offset_right = 688.0
+offset_right = 833.0
 offset_bottom = 148.0
 pivot_offset = Vector2(252.575, 0)
 texture = ExtResource("8_ykkhm")
@@ -73,3 +76,7 @@ offset_top = 7.0
 offset_right = 141.0
 offset_bottom = 30.0
 text = "Oh, shit my arm!"
+
+[node name="DialogueTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

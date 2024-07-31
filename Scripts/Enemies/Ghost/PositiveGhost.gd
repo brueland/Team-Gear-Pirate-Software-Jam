@@ -68,6 +68,7 @@ func dying_sequence(delta):
 	elif dissolve_percent < 1:
 		sprite.material.set_shader_parameter("dissolve_percent", clamp(dissolve_percent + delta, 0, 1))
 	else:
+		
 		queue_free()
 
 func heal(delta):

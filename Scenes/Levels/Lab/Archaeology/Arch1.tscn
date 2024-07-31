@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://b32cfy50biu4c"]
+[gd_scene load_steps=19 format=3 uid="uid://b32cfy50biu4c"]
 
+[ext_resource type="Script" path="res://Scripts/Levels/Arch/Arch1.gd" id="1_psecy"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="3_qamd6"]
 [ext_resource type="Texture2D" uid="uid://bit11sfop8sgu" path="res://Assets/Sprites/TileSets/Lab/WhaleSkeleton.png" id="5_hqsec"]
 [ext_resource type="Texture2D" uid="uid://v3m8jfcwewkj" path="res://Assets/Sprites/Lighting/SunLightTexture.png" id="7_ixkvm"]
@@ -4296,7 +4297,9 @@ _data = {
 "RESET": SubResource("Animation_pitxx")
 }
 
-[node name="Arch1" type="Node2D"]
+[node name="Arch1" type="Node2D" node_paths=PackedStringArray("arch_positive_ghost")]
+script = ExtResource("1_psecy")
+arch_positive_ghost = NodePath("PositiveGhost")
 
 [node name="TransitionPoints" type="Node" parent="."]
 
@@ -4388,7 +4391,6 @@ position = Vector2(335, 245)
 z_index = -2
 position = Vector2(163, 612)
 rotation = -0.70666
-scale = Vector2(1, 1)
 texture = ExtResource("10_yyb7w")
 
 [node name="PositiveGhost" parent="." instance=ExtResource("8_kwuu4")]
