@@ -7,7 +7,7 @@ class_name MainScene
 @export var boss_music: AudioStream
 
 @export_category("Player")
-@export var LANTURN_flag: bool = false
+@export var LANTERN_flag: bool = false
 
 @export_category("Enemies")
 @export var SKELTOR_flag: bool = false
@@ -27,6 +27,8 @@ class_name MainScene
 @export var ARCH1_flag2: bool = false
 @export var ARCH1_flag3: bool = false
 @export var ARCH1_flag4: bool = false
+@export var ARCH1_flag5: bool = false
+@export var ARCH1_flag6: bool = false
 
 @export var ARCH2_flag1: bool = false
 @export var ARCH2_flag2: bool = false
@@ -75,7 +77,7 @@ var is_dialogue_visible: bool = false
 func _ready():
 	AudioManager.play_music(lab_music)
 	#connect("game_over", game_over)
-	dialogue_timer.connect("timeout", _on_dialogue_timer_timeout)
+	dialogue_timer.timeout.connect(_on_dialogue_timer_timeout)
 	
 func _process(_delta):
 	check_room_flags()
@@ -98,24 +100,23 @@ func check_room_flags():
 	elif "FOREST2_PATH" in room_container.current_room:
 		if FOREST2_flag1:
 			show_dialogue("A good JUMP DASH will get me across that gap.")
-			FOREST2_flag1 = true
 			
 		if FOREST2_flag2:
 			show_dialogue("That damn fence, I don't want to fall down there...")
-			FOREST2_flag2 = true
 			
 		if FOREST2_flag3:
 			show_dialogue("Well at least it's still standing. Guess I'll see if anyone is home.")
-			FOREST2_flag3 = true
 			
 	elif "ARCH1_PATH" in room_container.current_room:
-		if !ARCH1_flag1:
-			show_dialogue("Is anybody here?")
-			ARCH1_flag1 = true
-		
-		if !ARCH1_flag2:
-			show_dialogue("I could have sworn I saw someone...")
+		if ARCH1_flag1 and !ARCH1_flag2:
+			show_dialogue("Oh hi! I didn't know anyb...?")
 			ARCH1_flag2 = true
+		if ARCH1_flag3 and !ARCH1_flag4:
+			show_dialogue("I could have sworn I saw someone...")
+			ARCH1_flag4 = true
+		if ARCH1_flag5 and !ARCH1_flag6:
+			show_dialogue("Looks like the best way is down.")
+			ARCH1_flag6 = true
 			
 	elif "ARCH2_PATH" in room_container.current_room:	
 		pass
@@ -160,4 +161,5 @@ func hide_dialogue():
 	is_dialogue_visible = false
 	
 func _on_dialogue_timer_timeout():
+	print('there')
 	hide_dialogue()

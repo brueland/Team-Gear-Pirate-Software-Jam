@@ -28,7 +28,7 @@ dialogue_text = NodePath("CanvasLayer/DialogueBox/Label")
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_b3l3q")]
 player = NodePath("../Player")
 camera = NodePath("../Player/Camera")
-first_room = "FOREST2_PATH"
+first_room = "ARCH1_PATH"
 first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]
@@ -56,6 +56,7 @@ color = Color(0.109804, 0.109804, 0.109804, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueBox" type="NinePatchRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0.588235)
 z_index = 29
 offset_left = 218.0
@@ -78,5 +79,5 @@ offset_bottom = 30.0
 text = "Oh, shit my arm!"
 
 [node name="DialogueTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
