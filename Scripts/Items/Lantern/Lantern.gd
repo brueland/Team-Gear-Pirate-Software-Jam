@@ -5,6 +5,9 @@ class_name Lantern
 @export var bounce_height: float = 4.0
 @export var bounce_duration: float = 2.0 
 @export var intensity: float = 10.0 # How strong the light kills ghosts
+@export var lantern_set_noise: AudioStream
+@export var lantern_light_a: AudioStream
+@export var lantern_light_b: AudioStream
 
 var bodies_in_area = []
 var held: bool = false
@@ -36,6 +39,8 @@ func _on_lantern_area_body_entered(body):
 		if body not in bodies_in_area:
 			bodies_in_area.append(body)
 	if body is Player:
+		AudioManager.play_sound(lantern_light_a)
+		AudioManager.play_sound(lantern_light_b)
 		stop_floating()
 		body.held_lantern = self
 		held = true
@@ -47,3 +52,4 @@ func _on_lantern_area_body_exited(body):
 	if body is Player:
 		held = false
 		start_floating()
+		AudioManager.play_sound(lantern_set_noise)

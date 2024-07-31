@@ -75,6 +75,9 @@ class_name MainScene
 @export var SECRET2_flag8: bool = false
 @export var SECRET2_flag9: bool = false
 @export var SECRET2_flag10: bool = false
+@export var SECRET2_flag11: bool = false
+@export var SECRET2_flag12: bool = false
+@export var SECRET2_flag13: bool = false
 
 @export_category("Menus")
 
@@ -112,14 +115,21 @@ func check_room_flags():
 			show_dialogue("I'm going to have to time this JUMP GRAPPLE just right.")
 	
 	elif "FOREST2_PATH" in room_container.current_room:
-		if FOREST2_flag1:
+		if FOREST2_flag1 and !SECRET2_flag13:
 			show_dialogue("A good JUMP DASH will get me across that gap.")
 			
-		if FOREST2_flag2:
+		if FOREST2_flag2 and !SECRET2_flag13:
 			show_dialogue("That damn fence, I don't want to fall down there...")
 			
-		if FOREST2_flag3:
+		if FOREST2_flag3 and !SECRET2_flag13:
 			show_dialogue("Well at least it's still standing. Guess I'll see if anyone is home.")
+		
+		if SECRET2_flag13:
+			GlobalReferences.skeletor.queue_free()
+			AudioManager.play_music(bio2_music)
+			show_dialogue("Am I... safe?")
+			
+			
 			
 	elif "ARCH1_PATH" in room_container.current_room:
 		if ARCH1_flag1 and !ARCH1_flag2:
@@ -167,13 +177,18 @@ func check_room_flags():
 							
 		if SECRET2_flag7 and !SECRET2_flag8:
 			AudioManager.stop_music()
+			show_dialogue("A perfect circle...")
 			SECRET2_flag8 = true
 			
 		if SECRET2_flag9 and !SECRET2_flag10:
 			AudioManager.play_music(boss_music)
-			show_dialogue("What is that monstrosity?!")
+			show_dialogue("Huh?!")
 			SECRET2_flag10 = true
 			SKELTOR_flag = true
+			
+		if SECRET2_flag11 and !SECRET2_flag12:
+			show_dialogue("What is that monstrosity?!")
+			SECRET2_flag12 = true
 	
 	elif "ARCH2_PATH" in room_container.current_room:	
 		if ARCH2_flag1 and !ARCH2_flag2:

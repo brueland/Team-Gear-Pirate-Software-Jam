@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt142sob7ui0m"]
+[gd_scene load_steps=8 format=3 uid="uid://bt142sob7ui0m"]
 
 [ext_resource type="Texture2D" uid="uid://cf640thpcrog" path="res://Assets/Sprites/Items/Lantern/lantern.png" id="1_dmbra"]
 [ext_resource type="Script" path="res://Scripts/Items/Lantern/Lantern.gd" id="2_14b5k"]
 [ext_resource type="Texture2D" uid="uid://bg0c6nkar73c1" path="res://Assets/Sprites/Lighting/LightTexture.png" id="2_cu8pd"]
+[ext_resource type="AudioStream" uid="uid://tsq0iim8d3ch" path="res://Assets/Sounds/SFX_Lantern_Set.wav" id="3_fjhbi"]
+[ext_resource type="AudioStream" uid="uid://brq45cer64afl" path="res://Assets/Sounds/Levels/Lab/SFX_Lantern_on_a.wav" id="4_mcqvd"]
+[ext_resource type="AudioStream" uid="uid://roxd5u0kaw4y" path="res://Assets/Sounds/Levels/Lab/SFX_Lantern_on_b.wav" id="5_2ttms"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0k2t"]
 radius = 50.0038
@@ -13,6 +16,9 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_dmbra")
 offset = Vector2(1.5, -1.5)
 script = ExtResource("2_14b5k")
+lantern_set_noise = ExtResource("3_fjhbi")
+lantern_light_a = ExtResource("4_mcqvd")
+lantern_light_b = ExtResource("5_2ttms")
 
 [node name="LanternLight" type="PointLight2D" parent="."]
 energy = 2.43

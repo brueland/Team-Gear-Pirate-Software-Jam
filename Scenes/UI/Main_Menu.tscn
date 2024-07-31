@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="14_xj555"]
 [ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="20_123r4"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("options", "menu")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,6 @@ script = ExtResource("1_pu854")
 startGameSFX = ExtResource("2_lg28v")
 buttonClickSFX = ExtResource("3_s886s")
 buttonSelectSFX = ExtResource("4_jp4gn")
-options = NodePath("")
 menu = NodePath("Menu")
 
 [node name="Menu" type="CanvasLayer" parent="."]
@@ -220,5 +219,5 @@ value = 1.0
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="toggled" from="CanvasLayer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]

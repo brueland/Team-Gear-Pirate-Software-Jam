@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dac54w6hyd25f"]
+[gd_scene load_steps=24 format=3 uid="uid://dac54w6hyd25f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Ghost/Ghost.gd" id="1_1fhny"]
 [ext_resource type="Shader" path="res://Materials/Shaders/PositiveGhostDistortionTexture.gdshader" id="2_88868"]
 [ext_resource type="Texture2D" uid="uid://c7v8qoc7gylk4" path="res://Assets/Sprites/Enemies/Ghost/Ghost.png" id="3_ely6n"]
 [ext_resource type="Texture2D" uid="uid://bgnwfhclq11ba" path="res://Textures/PositiveGhost.tres" id="3_vq6k3"]
+[ext_resource type="AudioStream" uid="uid://cv665uyxhi2u" path="res://Assets/Sounds/Levels/Lab/SFX_Shadow_Negative.wav" id="4_21o5t"]
 [ext_resource type="Texture2D" uid="uid://cfpnyyy7rmf37" path="res://Assets/Sprites/Enemies/Ghost/SmokeParticles.png" id="4_pkxyj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5rtt"]
@@ -145,6 +146,7 @@ speed = 80.0
 is_Chasing = true
 shader_resource = ExtResource("2_88868")
 shader_noise_texture = ExtResource("3_vq6k3")
+ghost_noise = ExtResource("4_21o5t")
 
 [node name="GhostSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jlbt8")

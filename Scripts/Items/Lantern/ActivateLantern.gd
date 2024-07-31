@@ -9,7 +9,8 @@ func _ready():
 	for child in get_tree().root.get_children():
 		if child is Lantern:
 			queue_free()
-	start_floating()
+	if !get_tree().root.get_node("LabMain").LANTERN_flag:
+		start_floating()
 
 func start_floating():
 	floating_tween = create_tween().set_loops()

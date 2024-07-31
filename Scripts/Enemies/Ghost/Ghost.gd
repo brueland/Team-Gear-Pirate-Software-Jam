@@ -10,6 +10,7 @@ var player: CharacterBody2D
 
 @export var shader_resource: Shader
 @export var shader_noise_texture: Texture
+@export var ghost_noise: AudioStream
 
 var in_light: bool = false
 var direction: int = 1
@@ -104,3 +105,8 @@ func heal(delta):
 	if !dying and !in_light and current_health < max_health:
 		current_health += delta
 	current_health = min(current_health, max_health)
+
+func play_random_sound():
+	var i = randi_range(0,50)
+	if i == 25:
+		AudioManager.play_sound(ghost_noise)

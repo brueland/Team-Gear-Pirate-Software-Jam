@@ -8094,6 +8094,14 @@ target_room_entrance = "Transition_1"
 [node name="TransitionCollider" parent="TransitionPoints/Transition_2" index="0"]
 position = Vector2(-40, -47)
 
+[node name="Transition_3" parent="TransitionPoints" instance=ExtResource("3_ujhr4")]
+position = Vector2(25, 104)
+target_room = "ARCH1_PATH"
+target_room_entrance = "Transition_4"
+
+[node name="TransitionCollider" parent="TransitionPoints/Transition_3" index="0"]
+position = Vector2(-40, -47)
+
 [node name="Decorations" type="Node" parent="."]
 
 [node name="ForestTiles" type="TileMap" parent="."]
@@ -8284,3 +8292,4 @@ shape = SubResource("RectangleShape2D_wyggq")
 [editable path="CameraBounds"]
 [editable path="TransitionPoints/Transition_1"]
 [editable path="TransitionPoints/Transition_2"]
+[editable path="TransitionPoints/Transition_3"]

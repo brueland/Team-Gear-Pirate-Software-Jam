@@ -4345,7 +4345,7 @@ position = Vector2(-43, 0)
 position = Vector2(1098, 240)
 rotation = 3.14159
 target_room = "FOREST2_PATH"
-target_room_entrance = "Transition_2"
+target_room_entrance = "Transition_3"
 
 [node name="LabTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_trbi7")
