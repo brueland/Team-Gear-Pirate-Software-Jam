@@ -4318,11 +4318,15 @@ position = Vector2(360, 40)
 [node name="GrappleObject2" parent="GrapplePoints" instance=ExtResource("4_8cg6d")]
 position = Vector2(157, 40)
 
-[node name="GhostSpawner" parent="." instance=ExtResource("10_4kmbk")]
-
-[node name="GrappleObject" parent="." instance=ExtResource("11_2pi28")]
+[node name="GrappleObject3" parent="GrapplePoints" instance=ExtResource("11_2pi28")]
 position = Vector2(135, 136)
 flip_v = true
 
+[node name="HangPoint" parent="GrapplePoints/GrappleObject3/GrappleObjectArea2D" index="1"]
+position = Vector2(0.999975, -7)
+
+[node name="GhostSpawner" parent="." instance=ExtResource("10_4kmbk")]
+
 [editable path="TransitionPoints/Transition_2"]
 [editable path="CameraBounds"]
+[editable path="GrapplePoints/GrappleObject3"]

@@ -221,5 +221,5 @@ value = 1.0
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="Options/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="Options/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="toggled" from="Options/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
 [connection signal="toggled" from="Options/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="Options/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
