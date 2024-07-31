@@ -183,14 +183,21 @@ func check_room_flags():
 	elif "CHEM1_PATH" in room_container.current_room:
 		if !CHEM1_flag1 and !CHEM1_flag2:
 			show_dialogue("Wait... This is where I discovered the formula for Alium...")
+			CHEM1_flag1 = true
 			CHEM1_flag2 = true
 		if CHEM1_flag3 and !CHEM1_flag4:
 			show_dialogue("Is that... ME?")
 			CHEM1_flag4 = true
 			
 	elif "CHEM2_PATH" in room_container.current_room:
-		pass
-		
+		if !CHEM2_flag1 and !CHEM2_flag2:
+			show_dialogue("My study, I'd never forget the smell!")
+			CHEM2_flag1 = true
+			CHEM2_flag2 = true
+		if CHEM2_flag3 and !CHEM2_flag4:
+			show_dialogue("Heh, I always did love those damn hats.")
+			CHEM2_flag4 = true
+			
 	elif "BIO1_PATH" in room_container.current_room:
 		pass
 		

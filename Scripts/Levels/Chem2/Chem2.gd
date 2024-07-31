@@ -1,11 +1,7 @@
 extends Node2D
 
+@export var chem2_positive_ghost: PositiveGhost
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _ready():	
+	if get_tree().root.get_node("LabMain").CHEM2_flag4:
+		chem2_positive_ghost.queue_free()
