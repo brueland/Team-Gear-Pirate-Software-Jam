@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bis8puyxq2i8f"]
+[gd_scene load_steps=13 format=3 uid="uid://bis8puyxq2i8f"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Main_Menu.gd" id="1_pu854"]
 [ext_resource type="AudioStream" uid="uid://73klxfni2msm" path="res://Assets/Sounds/MenuAndUI/Game_Start.WAV" id="2_lg28v"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://xbddjqb3wxm2" path="res://Scenes/UI/scenetransition.tscn" id="14_0kjxk"]
 [ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="14_xj555"]
 [ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="20_123r4"]
-[ext_resource type="Script" path="res://Scripts/UI/Main_Menu_Options.gd" id="20_vd3jo"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("options", "menu")]
 layout_mode = 3
@@ -25,7 +24,7 @@ script = ExtResource("1_pu854")
 startGameSFX = ExtResource("2_lg28v")
 buttonClickSFX = ExtResource("3_s886s")
 buttonSelectSFX = ExtResource("4_jp4gn")
-options = NodePath("Background/OptionsPanel")
+options = NodePath("")
 menu = NodePath("Menu")
 
 [node name="Menu" type="CanvasLayer" parent="."]
@@ -114,104 +113,103 @@ stream = ExtResource("12_xwvdt")
 autoplay = true
 bus = &"BGM"
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
 z_index = -1
 position = Vector2(580, 326)
 scale = Vector2(3.06019, 3.06019)
 texture = ExtResource("6_x2wy8")
 
-[node name="OptionsPanel" type="Sprite2D" parent="Background"]
-position = Vector2(-1.30713, -1.96067)
-scale = Vector2(0.578684, 0.580937)
-script = ExtResource("20_vd3jo")
-
-[node name="Configs" type="VBoxContainer" parent="Background/OptionsPanel"]
-offset_left = -126.0
-offset_top = -48.0
-offset_right = 126.0
-offset_bottom = 36.0
-
-[node name="Sounds" type="HBoxContainer" parent="Background/OptionsPanel/Configs"]
-layout_mode = 2
-theme_override_constants/separation = 7
-alignment = 1
-
-[node name="Names" type="VBoxContainer" parent="Background/OptionsPanel/Configs/Sounds"]
-layout_mode = 2
-
-[node name="Master" type="Label" parent="Background/OptionsPanel/Configs/Sounds/Names"]
-modulate = Color(0.45098, 0.533333, 0.564706, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("20_123r4")
-theme_override_font_sizes/font_size = 15
-text = "Master"
-
-[node name="BGM" type="Label" parent="Background/OptionsPanel/Configs/Sounds/Names"]
-modulate = Color(0.45098, 0.533333, 0.564706, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("20_123r4")
-theme_override_font_sizes/font_size = 15
-text = "BGM"
-
-[node name="SFX" type="Label" parent="Background/OptionsPanel/Configs/Sounds/Names"]
-modulate = Color(0.45098, 0.533333, 0.564706, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("20_123r4")
-theme_override_font_sizes/font_size = 15
-text = "SFX"
-
-[node name="Sliders" type="VBoxContainer" parent="Background/OptionsPanel/Configs/Sounds"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Master" type="HSlider" parent="Background/OptionsPanel/Configs/Sounds/Sliders"]
-layout_mode = 2
-theme = ExtResource("7_ofpi3")
-theme_override_icons/grabber = ExtResource("14_xj555")
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="MusicSlider" type="HSlider" parent="Background/OptionsPanel/Configs/Sounds/Sliders"]
-layout_mode = 2
-theme = ExtResource("7_ofpi3")
-theme_override_icons/grabber = ExtResource("14_xj555")
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="SFXSlider" type="HSlider" parent="Background/OptionsPanel/Configs/Sounds/Sliders"]
-layout_mode = 2
-theme = ExtResource("7_ofpi3")
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="Fullscreen" type="HBoxContainer" parent="Background/OptionsPanel/Configs"]
-layout_mode = 2
-
-[node name="FullScreen" type="Label" parent="Background/OptionsPanel/Configs/Fullscreen"]
-modulate = Color(0.45098, 0.533333, 0.564706, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("20_123r4")
-theme_override_font_sizes/font_size = 15
-text = "FullScreen"
-
-[node name="FullscreenButton" type="CheckButton" parent="Background/OptionsPanel/Configs/Fullscreen"]
-layout_mode = 2
-theme = ExtResource("7_ofpi3")
-
-[node name="BackButton" type="Button" parent="Background"]
+[node name="BackButton" type="Button" parent="CanvasLayer"]
 modulate = Color(0.517647, 0.611765, 0.647059, 1)
-offset_left = 84.3085
-offset_top = 69.6035
-offset_right = 167.308
-offset_bottom = 98.6035
+offset_left = 997.0
+offset_top = 564.0
+offset_right = 1123.0
+offset_bottom = 616.0
 theme_override_fonts/font = ExtResource("20_123r4")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 48
 text = "Back"
 flat = true
+
+[node name="Master" type="Label" parent="CanvasLayer"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
+offset_left = 391.0
+offset_top = 248.0
+offset_right = 507.0
+offset_bottom = 277.0
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 32
+text = "Master"
+
+[node name="BGM" type="Label" parent="CanvasLayer"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
+offset_left = 391.0
+offset_top = 282.0
+offset_right = 451.0
+offset_bottom = 311.0
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 32
+text = "BGM"
+
+[node name="SFX" type="Label" parent="CanvasLayer"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
+offset_left = 391.0
+offset_top = 315.0
+offset_right = 448.0
+offset_bottom = 344.0
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 32
+text = "SFX"
+
+[node name="FullScreen" type="Label" parent="CanvasLayer"]
+modulate = Color(0.45098, 0.533333, 0.564706, 1)
+offset_left = 391.0
+offset_top = 362.0
+offset_right = 581.0
+offset_bottom = 391.0
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 32
+text = "FullScreen"
+
+[node name="FullscreenButton" type="CheckButton" parent="CanvasLayer"]
+offset_left = 604.0
+offset_top = 365.0
+offset_right = 648.0
+offset_bottom = 389.0
+theme = ExtResource("7_ofpi3")
+
+[node name="Master2" type="HSlider" parent="CanvasLayer"]
+offset_left = 520.0
+offset_top = 257.0
+offset_right = 765.0
+offset_bottom = 273.0
+theme = ExtResource("7_ofpi3")
+theme_override_icons/grabber = ExtResource("14_xj555")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 520.0
+offset_top = 292.556
+offset_right = 765.0
+offset_bottom = 308.556
+theme = ExtResource("7_ofpi3")
+theme_override_icons/grabber = ExtResource("14_xj555")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 520.0
+offset_top = 328.111
+offset_right = 765.0
+offset_bottom = 344.111
+theme = ExtResource("7_ofpi3")
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="mouse_entered" from="Menu/Start_Button" to="." method="_on_start_button_mouse_entered"]
@@ -220,11 +218,7 @@ flat = true
 [connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="Menu/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
-[connection signal="value_changed" from="Background/OptionsPanel/Configs/Sounds/Sliders/Master" to="Background/OptionsPanel" method="_on_master_value_changed"]
-[connection signal="value_changed" from="Background/OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="Background/OptionsPanel" method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="Background/OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="Background/OptionsPanel" method="_on_sfx_slider_value_changed"]
-[connection signal="toggled" from="Background/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
-[connection signal="toggled" from="Background/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
-[connection signal="toggled" from="Background/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="Background/OptionsPanel" method="_on_fullscreen_button_toggled"]
-[connection signal="mouse_entered" from="Background/BackButton" to="." method="_on_back_button_mouse_entered"]
-[connection signal="pressed" from="Background/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
