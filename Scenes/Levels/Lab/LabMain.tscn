@@ -22,13 +22,40 @@ script = ExtResource("1_ldbns")
 lab_music = ExtResource("5_m8n3x")
 bio2_music = ExtResource("6_upxff")
 boss_music = ExtResource("4_mq6wf")
+LANTERN_flag = true
+FOREST1_flag1 = true
+FOREST1_flag2 = true
+FOREST1_flag3 = true
+FOREST1_flag4 = true
+FOREST2_flag1 = true
+FOREST2_flag2 = true
+FOREST2_flag3 = true
+FOREST2_flag4 = true
+ARCH1_flag1 = true
+ARCH1_flag2 = true
+ARCH1_flag3 = true
+ARCH1_flag4 = true
+ARCH1_flag5 = true
+ARCH1_flag6 = true
+SECRET1_flag1 = true
+SECRET1_flag2 = true
+SECRET1_flag3 = true
+SECRET1_flag4 = true
+SECRET1_flag5 = true
+SECRET1_flag6 = true
+SECRET2_flag1 = true
+SECRET2_flag2 = true
+SECRET2_flag3 = true
+SECRET2_flag4 = true
+SECRET2_flag5 = true
+SECRET2_flag6 = true
 dialogue_box = NodePath("CanvasLayer/DialogueBox")
 dialogue_text = NodePath("CanvasLayer/DialogueBox/Label")
 
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("1_b3l3q")]
 player = NodePath("../Player")
 camera = NodePath("../Player/Camera")
-first_room = "SECRET2_PATH"
+first_room = "ARCH1_PATH"
 first_room_entrance = "Transition_1"
 
 [node name="Player" parent="." instance=ExtResource("2_7iffm")]

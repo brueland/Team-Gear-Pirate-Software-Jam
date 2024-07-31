@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b32cfy50biu4c"]
+[gd_scene load_steps=26 format=3 uid="uid://b32cfy50biu4c"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Arch/Arch1.gd" id="1_psecy"]
 [ext_resource type="Texture2D" uid="uid://cbjpatb7cnou5" path="res://Assets/Sprites/TileSets/Lab/Lab.png" id="3_qamd6"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bw233pw81o6mi" path="res://Assets/Sprites/Sign.png" id="10_yyb7w"]
 [ext_resource type="PackedScene" uid="uid://bsnxb3d7pqb4a" path="res://Scenes/Enemies/Ghost/ghost_spawner.tscn" id="13_xfj7r"]
 [ext_resource type="Script" path="res://Scripts/Levels/Arch/A1Dialogue3.gd" id="14_acbo5"]
+[ext_resource type="Script" path="res://Scripts/Levels/Arch/A1Dialogue4.gd" id="15_jtxo4"]
+[ext_resource type="PackedScene" uid="uid://c1doq2agloele" path="res://Scenes/Objects/pressure_plate.tscn" id="17_du6kp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wuqic"]
 texture = ExtResource("3_qamd6")
@@ -4306,12 +4308,13 @@ radius = 154.003
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aimsc"]
 size = Vector2(84, 48)
 
-[node name="Arch1" type="Node2D" node_paths=PackedStringArray("arch_positive_ghost", "ghost_phaser", "ghost_spawner", "escape_door")]
+[node name="Arch1" type="Node2D" node_paths=PackedStringArray("arch_positive_ghost", "ghost_phaser", "ghost_spawner", "escape_door", "pressure_plate")]
 script = ExtResource("1_psecy")
 arch_positive_ghost = NodePath("PositiveGhost")
 ghost_phaser = NodePath("PositiveGhostPhaser")
 ghost_spawner = NodePath("GhostSpawner")
 escape_door = NodePath("Decoration/Door2")
+pressure_plate = NodePath("Decoration/PressurePlate")
 
 [node name="TransitionPoints" type="Node" parent="."]
 
@@ -4409,6 +4412,15 @@ texture = ExtResource("10_yyb7w")
 position = Vector2(1142, 586)
 scale = Vector2(1.52429, 1.29847)
 
+[node name="Arch2Door" parent="Decoration" instance=ExtResource("9_mbkan")]
+position = Vector2(9, 227)
+scale = Vector2(1.52429, 1.65847)
+
+[node name="PressurePlate" parent="Decoration" node_paths=PackedStringArray("connected_door") instance=ExtResource("17_du6kp")]
+position = Vector2(80, 320)
+connected_door = NodePath("../Arch2Door")
+one_shot = true
+
 [node name="PositiveGhost" parent="." instance=ExtResource("8_kwuu4")]
 
 [node name="GhostSprite" parent="PositiveGhost" index="0"]
@@ -4469,6 +4481,7 @@ arch_positive_ghost = NodePath("../PositiveGhost")
 shape = SubResource("CircleShape2D_5g7aj")
 
 [node name="GhostSpawner" parent="." instance=ExtResource("13_xfj7r")]
+max_ghosts = 7
 enabled = false
 
 [node name="Dialogue" type="Node" parent="."]
@@ -4479,6 +4492,15 @@ collision_layer = 0
 script = ExtResource("14_acbo5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Dialogue3"]
+position = Vector2(16, -14)
+shape = SubResource("RectangleShape2D_aimsc")
+
+[node name="Dialogue4" type="Area2D" parent="Dialogue"]
+position = Vector2(1090, 613)
+collision_layer = 0
+script = ExtResource("15_jtxo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Dialogue4"]
 position = Vector2(16, -14)
 shape = SubResource("RectangleShape2D_aimsc")
 

@@ -29,6 +29,8 @@ class_name MainScene
 @export var ARCH1_flag4: bool = false
 @export var ARCH1_flag5: bool = false
 @export var ARCH1_flag6: bool = false
+@export var ARCH1_flag7: bool = false
+@export var ARCH1_flag8: bool = false
 
 @export var ARCH2_flag1: bool = false
 @export var ARCH2_flag2: bool = false
@@ -129,6 +131,10 @@ func check_room_flags():
 		if ARCH1_flag5 and !ARCH1_flag6:
 			show_dialogue("Looks like the best way is down.")
 			ARCH1_flag6 = true
+		if ARCH1_flag7 and !ARCH1_flag8:
+			show_dialogue("Dammit, it's locked! I need to find a way out before these Shades get me!")
+			ARCH1_flag8 = true
+			
 	
 	elif "SECRET1_PATH" in room_container.current_room:
 		if SECRET1_flag1 and !SECRET1_flag2:

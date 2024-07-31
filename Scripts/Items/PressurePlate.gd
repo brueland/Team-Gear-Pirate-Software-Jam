@@ -1,4 +1,5 @@
 extends Node2D
+
 @export var connected_door: Node2D
 @export var one_shot: bool = false
 
