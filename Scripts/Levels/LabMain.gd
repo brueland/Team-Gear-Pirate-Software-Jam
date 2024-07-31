@@ -199,7 +199,10 @@ func check_room_flags():
 			CHEM2_flag4 = true
 			
 	elif "BIO1_PATH" in room_container.current_room:
-		pass
+		if !BIO1_flag1 and !BIO1_flag2:
+			show_dialogue("I hope this doesn't lead to where I think it does, better be careful of broken glass.")
+			BIO1_flag1 = true
+			BIO1_flag2 = true
 		
 	elif "BIO2_PATH" in room_container.current_room:
 		if !BIO2_flag1:
@@ -207,9 +210,12 @@ func check_room_flags():
 			BIO2_flag1 = true
 		elif BIO2_flag2 and !BIO2_flag3:
 			AudioManager.play_music(bio2_music)
-			show_dialogue("What the hell u doin wit my arm, brah?")
+			show_dialogue("No. NO! STOP!")
 			BIO2_flag3 = true
-					
+		
+		if BIO2_flag4 and !BIO2_flag5:
+			show_dialogue("It's too late, I can't go back and stop myself...")
+			BIO2_flag5 = true		
 
 		
 func show_dialogue(dialogue: String):
