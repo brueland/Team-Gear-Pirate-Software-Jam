@@ -176,7 +176,10 @@ func check_room_flags():
 			SKELTOR_flag = true
 	
 	elif "ARCH2_PATH" in room_container.current_room:	
-		pass
+		if ARCH2_flag1 and !ARCH2_flag2:
+			show_dialogue("I can't grapple up to this ledge while holding this lantern!")
+			ARCH2_flag2 = true
+		
 		
 	elif "CHEM1_PATH" in room_container.current_room:
 		pass
