@@ -45,7 +45,7 @@ func  _physics_process(delta):
 	if !dying:
 		handle_animation()
 		handle_particle_position()
-		handle_particle_ratio()
+		#handle_particle_ratio()
 		heal(delta)
 	else:
 		dying_sequence(delta)

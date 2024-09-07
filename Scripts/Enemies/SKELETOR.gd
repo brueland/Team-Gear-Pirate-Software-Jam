@@ -40,10 +40,10 @@ func _process(_delta):
 		queue_free()
 		
 func chase_player(delta):
-	var target_position_noise = randf_range(0.90, 1.10)
-	var target_position = player.position*target_position_noise
+	var target_position_noise = randf_range(0.5, 1.50)
+	var target_position = player.position*target_position_noise+Vector2(0.0, -50.0)
 	
-	velocity = lerp(velocity, position.direction_to(target_position) * speed, delta) 
+	velocity = lerp(velocity, position.direction_to(target_position) * speed, delta)
 	
 	if velocity.x < 0.0:
 		direction = -1

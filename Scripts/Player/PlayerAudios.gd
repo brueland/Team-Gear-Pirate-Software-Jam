@@ -47,7 +47,9 @@ func _on_player_sprite_animation_changed():
 		play_random(playerJump, playerJump_w_Grunt)
 	elif "dash" in current_anim:
 		AudioManager.play_sound(dash)
-
+	elif "death" in current_anim:
+		AudioManager.play_sound(playerLanding_w_Grunt)
+		
 func _check_for_grapple_instance():
 	for child in get_tree().root.get_node("LabMain").get_children():
 		if child is Grapple:

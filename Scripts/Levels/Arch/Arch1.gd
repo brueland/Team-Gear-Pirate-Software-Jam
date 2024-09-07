@@ -15,10 +15,3 @@ func _ready():
 	
 	if get_tree().root.get_node("LabMain").SKELTOR_flag:
 		escape_door.queue_free()
-
-#
-#func _process(_delta):
-	#if arch_positive_ghost == null:
-		#get_tree().root.get_node("LabMain").ARCH2_flag4 = true
-	
-	

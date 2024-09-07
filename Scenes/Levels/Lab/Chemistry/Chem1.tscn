@@ -4087,6 +4087,7 @@ scale = Vector2(1.1, 1.1)
 texture = ExtResource("5_yccp2")
 
 [node name="GhostSpawner" parent="." instance=ExtResource("8_wgshr")]
+max_ghosts = 4
 enabled = false
 
 [node name="Dialogue" type="Node" parent="."]

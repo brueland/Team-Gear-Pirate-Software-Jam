@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ceccic3fq3gbc"]
+[gd_scene load_steps=27 format=3 uid="uid://ceccic3fq3gbc"]
 
 [ext_resource type="Shader" path="res://Materials/Shaders/DistortionTexture.gdshader" id="1_53lmx"]
 [ext_resource type="Script" path="res://Scripts/Enemies/SKELETOR.gd" id="1_umh1b"]
@@ -89,67 +89,20 @@ particles_anim_h_frames = 4
 particles_anim_v_frames = 2
 particles_anim_loop = true
 
-[sub_resource type="Gradient" id="Gradient_1xnjp"]
-offsets = PackedFloat32Array(0.0114416, 0.0526316, 0.935961, 0.981693)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1231"]
-gradient = SubResource("Gradient_1xnjp")
-
 [sub_resource type="Curve" id="Curve_4hhg2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496711, 1), 0.0, 0.0, 0, 0, Vector2(0.970395, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_qfrw6"]
-curve = SubResource("Curve_4hhg2")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aye17"]
-resource_local_to_scene = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(1.67, 2.49, 1)
-emission_shape = 1
-emission_sphere_radius = 13.81
-direction = Vector3(0, 1, 0)
-orbit_velocity_min = -0.275
-orbit_velocity_max = 0.065
-gravity = Vector3(0, -1, 0)
-scale_min = 0.5
-scale_curve = SubResource("CurveTexture_qfrw6")
-color_ramp = SubResource("GradientTexture1D_b1231")
-anim_speed_max = 1.0
-turbulence_enabled = true
-turbulence_noise_strength = 20.0
-turbulence_noise_speed = Vector3(-1, 1, 0)
-turbulence_influence_min = 0.35
-turbulence_influence_max = 0.403
-turbulence_initial_displacement_min = -1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_flbw8"]
-resource_local_to_scene = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(8.995, 9.2, 1)
-emission_shape = 1
-emission_sphere_radius = 10.76
-direction = Vector3(0, 1, 0)
-orbit_velocity_min = -0.275
-orbit_velocity_max = 0.065
-gravity = Vector3(0, -1, 0)
-scale_min = 0.5
-scale_max = 2.0
-scale_curve = SubResource("CurveTexture_qfrw6")
-color_ramp = SubResource("GradientTexture1D_b1231")
-anim_speed_max = 1.0
-turbulence_enabled = true
-turbulence_noise_strength = 20.0
-turbulence_noise_speed = Vector3(-1, 1, 0)
-turbulence_influence_min = 0.35
-turbulence_influence_max = 0.403
-turbulence_initial_displacement_min = -1.0
+[sub_resource type="Gradient" id="Gradient_1xnjp"]
+offsets = PackedFloat32Array(0.0114416, 0.0526316, 0.935961, 0.981693)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_380jp"]
 radius = 44.0114
 
 [node name="Skeletor" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("1_umh1b")
 skeletor_scream = ExtResource("2_stgp5")
 glass_break = ExtResource("3_sqwpy")
@@ -161,35 +114,54 @@ material = SubResource("ShaderMaterial_2hpr1")
 sprite_frames = SubResource("SpriteFrames_an54u")
 frame_progress = 0.335465
 
-[node name="StaticSmokeParticles" type="GPUParticles2D" parent="SkeletorAnimatedSprite2D"]
-z_index = -1
-material = SubResource("CanvasItemMaterial_y6gda")
-position = Vector2(8, -2)
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_aye17")
-texture = ExtResource("3_27oi0")
-randomness = 1.0
-trail_lifetime = 10.0
-trail_section_subdivisions = 1
-
 [node name="SkeletorSprite2D" type="Sprite2D" parent="SkeletorAnimatedSprite2D"]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 position = Vector2(7, 1)
 texture = ExtResource("4_6qlrb")
 
-[node name="SpawnParticles" type="GPUParticles2D" parent="."]
+[node name="StaticSmokeParticles" type="CPUParticles2D" parent="SkeletorAnimatedSprite2D"]
+material = SubResource("CanvasItemMaterial_y6gda")
+position = Vector2(8, -2)
+amount = 100
+randomness = 1.0
+fixed_fps = 30
+draw_order = 1
+texture = ExtResource("3_27oi0")
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, 1)
+gravity = Vector2(0, -1)
+orbit_velocity_min = -0.275
+orbit_velocity_max = 0.065
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_4hhg2")
+color_ramp = SubResource("Gradient_1xnjp")
+anim_speed_max = 1.0
+
+[node name="SpawnParticles" type="CPUParticles2D" parent="."]
+z_index = -1
 material = SubResource("CanvasItemMaterial_y6gda")
 position = Vector2(15, -4)
-amount = 500
-process_material = SubResource("ParticleProcessMaterial_flbw8")
-texture = ExtResource("3_27oi0")
+amount = 100
 randomness = 1.0
-trail_lifetime = 10.0
-trail_section_subdivisions = 1
+fixed_fps = 30
+draw_order = 1
+texture = ExtResource("3_27oi0")
+emission_shape = 1
+emission_sphere_radius = 25.0
+direction = Vector2(0, 1)
+gravity = Vector2(0, -1)
+orbit_velocity_min = -0.275
+orbit_velocity_max = 0.065
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_4hhg2")
+color_ramp = SubResource("Gradient_1xnjp")
+anim_speed_max = 1.0
 
 [node name="SpawnLight" type="PointLight2D" parent="."]
-energy = 2.5
+energy = 0.16
 blend_mode = 1
 texture = ExtResource("5_5ueix")
 texture_scale = 0.3

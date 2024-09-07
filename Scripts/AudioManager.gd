@@ -8,9 +8,16 @@ func play_sound(stream: AudioStream):
 	instance.bus = GlobalPaths.SFX_BUS
 	instance.finished.connect(remove_node.bind(instance))
 	add_child(instance)
+	instance.add_to_group("sfx_sounds")
 	instance.pitch_scale = randf_range(0.95,1.05)
 	instance.play()
-	
+		
+func stop_sounds():
+	var audio_players = get_tree().get_nodes_in_group("sfx_sounds")
+	for player in audio_players:
+		player.stop()
+		player.queue_free()
+		
 func remove_node(instance : AudioStreamPlayer):
 	instance.queue_free()
 

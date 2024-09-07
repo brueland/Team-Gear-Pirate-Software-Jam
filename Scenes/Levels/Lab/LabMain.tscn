@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwhhaipcwsipi"]
+[gd_scene load_steps=16 format=3 uid="uid://dwhhaipcwsipi"]
 
 [ext_resource type="PackedScene" uid="uid://c07q18q56d3jq" path="res://Scenes/Levels/room_container.tscn" id="1_b3l3q"]
 [ext_resource type="Script" path="res://Scripts/Levels/LabMain.gd" id="1_ldbns"]
@@ -7,17 +7,30 @@
 [ext_resource type="AudioStream" uid="uid://ded2ais0kx8ym" path="res://Assets/Music/Levels/Lab/Music_ShadowBoss_Theme.wav" id="4_mq6wf"]
 [ext_resource type="AudioStream" uid="uid://b4dhf7s3dge3a" path="res://Assets/Music/Levels/Lab/Music_MainTheme.wav" id="5_m8n3x"]
 [ext_resource type="AudioStream" uid="uid://dclvigecn8e3v" path="res://Assets/Music/Levels/BlueRustTheme.wav" id="6_upxff"]
+[ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="8_tdykl"]
 [ext_resource type="Texture2D" uid="uid://nmklh8neg836" path="res://Assets/Sprites/UI/Frames/DialogueBox.png" id="8_ykkhm"]
+[ext_resource type="Script" path="res://Scripts/UI/SkeletorTimerLabel.gd" id="9_2qpk2"]
+[ext_resource type="Script" path="res://Scripts/UI/dust_and_rocks.gd" id="11_3cl2f"]
+[ext_resource type="Texture2D" uid="uid://6r8v4acdeuym" path="res://Assets/Sprites/Decorations/dust.png" id="12_be7bw"]
+[ext_resource type="Texture2D" uid="uid://h4bo8mrjpypb" path="res://Assets/Sprites/Decorations/rock.png" id="13_eoebi"]
 
 [sub_resource type="Environment" id="Environment_hfp0s"]
 ambient_light_energy = 2.0
 glow_enabled = true
 glow_mix = 0.711
 fog_enabled = true
-fog_light_energy = 1.85
 adjustment_brightness = 0.01
 
+[sub_resource type="LabelSettings" id="LabelSettings_sw3ky"]
+font = ExtResource("8_tdykl")
+font_size = 32
+font_color = Color(0.419608, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0.321569, 0, 0, 1)
+shadow_size = 5
+
 [node name="LabMain" type="Node2D" node_paths=PackedStringArray("dialogue_box", "dialogue_text")]
+position = Vector2(4, 0)
 script = ExtResource("1_ldbns")
 lab_music = ExtResource("5_m8n3x")
 bio2_music = ExtResource("6_upxff")
@@ -52,11 +65,22 @@ script = ExtResource("4_4pk38")
 environment = SubResource("Environment_hfp0s")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.109804, 0.109804, 0.109804, 1)
+color = Color(0.662745, 0.662745, 0.662745, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="SkeletorTimerLabel" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 23.0
+offset_top = 20.0
+offset_right = 158.0
+offset_bottom = 56.0
+text = "30:00:00"
+label_settings = SubResource("LabelSettings_sw3ky")
+script = ExtResource("9_2qpk2")
+
 [node name="DialogueBox" type="NinePatchRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0.588235)
 z_index = 29
 offset_left = 218.0
@@ -86,3 +110,32 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_upxff")
+
+[node name="DustParticles" type="CPUParticles2D" parent="."]
+amount = 100
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1000)
+spread = 8.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+script = ExtResource("11_3cl2f")
+particle_texture = ExtResource("12_be7bw")
+
+[node name="RockParticles" type="CPUParticles2D" parent="."]
+amount = 10
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1000)
+spread = 8.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+script = ExtResource("11_3cl2f")
+particle_texture = ExtResource("13_eoebi")

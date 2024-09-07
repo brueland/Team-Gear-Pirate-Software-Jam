@@ -92,15 +92,35 @@ class_name MainScene
 @export var dialogue_text: Label
 var is_dialogue_visible: bool = false
 
+@onready var skeletor_timer_label : Label = $CanvasLayer/SkeletorTimerLabel
+@onready var skeletor_timeout : bool = false
+@onready var fade_to_black : bool = false
 
 func _ready():
 	AudioManager.play_music(lab_music)
 	#connect("game_over", game_over)
 	dialogue_timer.timeout.connect(_on_dialogue_timer_timeout)
-	
+
 func _process(_delta):
 	check_room_flags()
+	if (skeletor_timer_label.time_left <= 0.0) and (not skeletor_timeout):
+		skeletor_timeout = true
+		AudioManager.stop_music()
+		fade_to_black = true
 
+	if skeletor_timeout:
+		show_dialogue("I can't... escape...")
+		player.die()
+		finished_flag = true
+		if fade_to_black:
+			fade_to_black = false
+			await get_tree().create_timer(2).timeout
+			room_container.transition_fader.fade_out()
+
+		await get_tree().create_timer(8).timeout
+		AudioManager.stop_sounds()
+		get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
+		
 func check_room_flags():
 	if "FOREST1_PATH" in room_container.current_room:
 		if !FOREST1_flag1:
@@ -127,15 +147,23 @@ func check_room_flags():
 			show_dialogue("Well at least it's still standing. Guess I'll see if anyone is home.")
 		
 		if SECRET2_flag13:
+			AudioManager.stop_music()
+			AudioManager.stop_sounds()
 			AudioManager.play_music(bio2_music)
+			$DustParticles.stop()
+			$RockParticles.stop()
+			$Player/Camera.stop_shake()
 			show_dialogue("Am I... safe?")
-			room_container.transition_fader.fade_out()
-			finished_flag = true
-			await get_tree().create_timer(10).timeout
-
-		
-		if finished_flag:
-			get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
+			if not finished_flag:
+				finished_flag = true
+				fade_to_black = true
+				
+		if finished_flag and fade_to_black:
+			if fade_to_black:
+				fade_to_black = false
+				room_container.transition_fader.fade_out()
+				await get_tree().create_timer(10).timeout
+				get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
 			
 			
 	elif "ARCH1_PATH" in room_container.current_room:
@@ -177,11 +205,10 @@ func check_room_flags():
 			AudioManager.play_music(lab_music)
 			SECRET2_flag4 = true
 			SECRET2_flag5 = true
-			show_dialogue("This lantern is so hot, I can only hold it with my metal hand.")
+			show_dialogue("I'll have to drop this lantern to use my grapple...")
 	
 		if SECRET2_flag5 and !SECRET2_flag6:
 			SECRET2_flag6 = true
-			show_dialogue("I guess I'll have to go back up and look for a different route?")
 							
 		if SECRET2_flag7 and !SECRET2_flag8:
 			AudioManager.stop_music()
@@ -193,9 +220,14 @@ func check_room_flags():
 			show_dialogue("Huh?!")
 			SECRET2_flag10 = true
 			SKELTOR_flag = true
+			$Player/Camera.shake(5.0)
+			$DustParticles.start()
+			$RockParticles.start()
 			
 		if SECRET2_flag11 and !SECRET2_flag12:
 			show_dialogue("What is that monstrosity?!")
+			skeletor_timer_label.visible = true
+			skeletor_timer_label.start_timer()
 			SECRET2_flag12 = true
 	
 	elif "ARCH2_PATH" in room_container.current_room:	
@@ -252,5 +284,4 @@ func hide_dialogue():
 	is_dialogue_visible = false
 	
 func _on_dialogue_timer_timeout():
-	print('there')
 	hide_dialogue()

@@ -4481,7 +4481,7 @@ arch_positive_ghost = NodePath("../PositiveGhost")
 shape = SubResource("CircleShape2D_5g7aj")
 
 [node name="GhostSpawner" parent="." instance=ExtResource("13_xfj7r")]
-max_ghosts = 7
+max_ghosts = 4
 enabled = false
 
 [node name="Dialogue" type="Node" parent="."]

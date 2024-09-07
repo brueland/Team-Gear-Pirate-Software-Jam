@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dac54w6hyd25f"]
+[gd_scene load_steps=18 format=3 uid="uid://dac54w6hyd25f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Ghost/Ghost.gd" id="1_1fhny"]
 [ext_resource type="Shader" path="res://Materials/Shaders/PositiveGhostDistortionTexture.gdshader" id="2_88868"]
@@ -54,85 +54,21 @@ particles_anim_h_frames = 4
 particles_anim_v_frames = 2
 particles_anim_loop = true
 
-[sub_resource type="Gradient" id="Gradient_0l7eu"]
-offsets = PackedFloat32Array(0, 0.0486726, 0.882353, 1)
-colors = PackedColorArray(0.0627451, 0.121569, 0.203922, 0, 0.0105752, 0.0281144, 0.0325335, 1, 0.00290835, 0.00756682, 0.00857496, 1, 0.0745098, 0.137255, 0.141176, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_flf38"]
-gradient = SubResource("Gradient_0l7eu")
-
 [sub_resource type="Curve" id="Curve_4frgp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.126096, 1), 0.0, 0.0, 0, 0, Vector2(0.507675, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_p8mmq"]
-curve = SubResource("Curve_4frgp")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k3d88"]
-resource_local_to_scene = true
-lifetime_randomness = 0.06
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(10, 1, 1)
-emission_shape = 2
-emission_sphere_radius = 0.2
-angle_min = -32.0
-angle_max = 30.0
-direction = Vector3(1, 1, 0)
-spread = 180.0
-radial_velocity_min = -10.0
-radial_velocity_max = 10.0
-gravity = Vector3(0, -40, 0)
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-damping_min = 26.201
-damping_max = 26.201
-scale_min = 0.25
-scale_max = 0.75
-scale_curve = SubResource("CurveTexture_p8mmq")
-color_ramp = SubResource("GradientTexture1D_flf38")
-anim_speed_max = 1.0
-turbulence_enabled = true
-turbulence_noise_strength = 14.18
-turbulence_noise_speed = Vector3(1, 1, 0)
-turbulence_noise_speed_random = 2.45
-turbulence_influence_min = 0.145
-turbulence_influence_max = 0.175
-turbulence_initial_displacement_min = -1.0
-
-[sub_resource type="Gradient" id="Gradient_hfge4"]
-offsets = PackedFloat32Array(0.0114416, 0.0526316, 0.935961, 0.981693)
-colors = PackedColorArray(0.0117647, 0.0235294, 0.0313726, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0117647, 0.027451, 0.0352941, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_pqvkp"]
-gradient = SubResource("Gradient_hfge4")
+[sub_resource type="Gradient" id="Gradient_0l7eu"]
+offsets = PackedFloat32Array(0, 0.0486726, 0.882353, 1)
+colors = PackedColorArray(0.0627451, 0.121569, 0.203922, 0, 0.0105752, 0.0281144, 0.0325335, 1, 0.00290835, 0.00756682, 0.00857496, 1, 0.0745098, 0.137255, 0.141176, 0)
 
 [sub_resource type="Curve" id="Curve_2s3q1"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496711, 1), 0.0, 0.0, 0, 0, Vector2(0.970395, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_e0210"]
-curve = SubResource("Curve_2s3q1")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ac8lx"]
-resource_local_to_scene = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(3.825, 2.575, 1)
-emission_shape = 2
-emission_sphere_radius = 3.91
-direction = Vector3(0, 0, 0)
-orbit_velocity_min = 0.075
-orbit_velocity_max = 0.45
-gravity = Vector3(0, -1, 0)
-scale_min = 0.5
-scale_curve = SubResource("CurveTexture_e0210")
-color_ramp = SubResource("GradientTexture1D_pqvkp")
-anim_speed_max = 1.0
-turbulence_enabled = true
-turbulence_noise_strength = 6.41
-turbulence_noise_speed = Vector3(-1, 1, 0)
-turbulence_influence_min = 0.35
-turbulence_influence_max = 0.403
-turbulence_initial_displacement_min = -1.0
+[sub_resource type="Gradient" id="Gradient_hfge4"]
+offsets = PackedFloat32Array(0.0114416, 0.0526316, 0.935961, 0.981693)
+colors = PackedColorArray(0.0117647, 0.0235294, 0.0313726, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0117647, 0.027451, 0.0352941, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_di5am"]
 height = 24.0
@@ -152,27 +88,51 @@ ghost_noise = ExtResource("4_21o5t")
 sprite_frames = SubResource("SpriteFrames_jlbt8")
 animation = &"Idle"
 
-[node name="TrailParticles" type="GPUParticles2D" parent="GhostSprite"]
-visible = false
+[node name="TrailParticles" type="CPUParticles2D" parent="GhostSprite"]
 material = SubResource("CanvasItemMaterial_mgqdj")
 position = Vector2(-15, 5)
 scale = Vector2(5.32639, 5.32639)
-amount = 500
-process_material = SubResource("ParticleProcessMaterial_k3d88")
-texture = ExtResource("4_pkxyj")
+amount = 25
 randomness = 1.0
-trail_lifetime = 10.0
-trail_section_subdivisions = 1
+lifetime_randomness = 0.06
+fixed_fps = 30
+draw_order = 1
+texture = ExtResource("4_pkxyj")
+emission_shape = 2
+emission_sphere_radius = 0.2
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, -40)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+damping_min = 26.201
+damping_max = 26.201
+angle_min = -32.0
+angle_max = 30.0
+scale_amount_min = 0.25
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_4frgp")
+color_ramp = SubResource("Gradient_0l7eu")
+anim_speed_max = 1.0
 
-[node name="StaticSmokeParticles" type="GPUParticles2D" parent="GhostSprite"]
+[node name="StaticSmokeParticles" type="CPUParticles2D" parent="GhostSprite"]
 material = SubResource("CanvasItemMaterial_mgqdj")
 position = Vector2(-15, 5)
-amount = 500
-process_material = SubResource("ParticleProcessMaterial_ac8lx")
-texture = ExtResource("4_pkxyj")
+amount = 25
 randomness = 1.0
-trail_lifetime = 10.0
-trail_section_subdivisions = 1
+fixed_fps = 30
+draw_order = 1
+texture = ExtResource("4_pkxyj")
+emission_shape = 2
+emission_sphere_radius = 3.91
+direction = Vector2(0, 0)
+gravity = Vector2(0, -1)
+orbit_velocity_min = 0.075
+orbit_velocity_max = 0.45
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_2s3q1")
+color_ramp = SubResource("Gradient_hfge4")
+anim_speed_max = 1.0
 
 [node name="GhostCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)

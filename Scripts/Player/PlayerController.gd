@@ -39,7 +39,7 @@ class_name Player
 
 # Player Status
 @export_category("Player Status")
-@export var max_health : int = 2
+@export var max_health : int = 100
 var current_health : int = max_health
 
 # Player Aiming
@@ -539,7 +539,7 @@ func die():
 		held_lantern.queue_free()
 		
 	armSprite.visible = false
-	emit_signal("game_over")
+	#emit_signal("game_over")
 	
 func _set_mantle_y_position(target_y):
 	position.y = target_y
